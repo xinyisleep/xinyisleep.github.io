@@ -1,6 +1,6 @@
 
 # Site settings
-title:          Tale
+title:          aaaaaaaaaaa
 description:    "Minimal Jekyll theme for storytellers"
 url:            "https://chesterhow.github.io"
 
@@ -31,6 +31,7 @@ plugins:
   # - jemoji #Uncomment this to allow emoji in your post
 
 # Permalinks
+theme:      tale
 permalink:      /:year-:month-:day/:title
 paginate:       5
 
