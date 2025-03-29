@@ -5,7 +5,7 @@ author: "XinYiSleep"
 permalink: /About/
 ---
 
-这里是XinYiSleep的个人博客，会在这里写一些网络安全文章主要围绕黑盒白盒,剩下的就是关于自己的一些意难平的琐事。😘
+这里是XinYiSleep的个人博客，会在这里写一些网络安全文章主要围绕黑盒白盒,剩下的就是关于自己的意难平的琐事。😘
 <br>
 <br>
 <br>
