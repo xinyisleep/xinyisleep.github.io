@@ -2,9 +2,9 @@
 permalink:      /:year-:month-:day/:title
 
 # Setup
-title:          "北极圈"
+title:          "XinYiSec"
 paginate:       5
-baseurl:        "https://github.com/xinyisleep"
+baseurl:        ""
 url:            "https://github.com/xinyisleep"
 
 # Assets
@@ -22,9 +22,9 @@ author:
   email:        bexon@mail.com
 
 # Custom vars
-version:        3.4.1
+version:        9.9.9
 github:
-  repo:         https://github.com/bexonp
+  repo:         https://github.com/xinyisleep
 
 # Gems
 gems:
