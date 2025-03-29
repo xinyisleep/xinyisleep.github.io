@@ -7,7 +7,6 @@
 main,
 footer,
 .nav-container {
-  display: block;
   margin: 0 auto;
   max-width: 800px;
   width: 80%;
@@ -62,7 +61,7 @@ footer,
 
   a {
     color: $default-color;
-    font-family: $sans-serif;
+    font-family: $sans-font;
   }
 }
 
@@ -81,7 +80,7 @@ footer,
 }
 
 footer {
-  font-family: $serif-secondary;
+  font-family: $palatino;
   padding: 2rem 0;
   text-align: center;
 

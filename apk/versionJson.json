@@ -1,0 +1,6 @@
+{
+  "title": "v1.3 更新",
+  "serverVersion": "1.3",
+  "requestUrl": "https://bexonp.github.io/apk/ArcticCircle-1.3.apk",
+  "updateMsg": "*已修复About页面问题*\n1.添加图标！有图标了！\n2.增加关于界面\n3.修改主页Title bar为Toolbar\n4.增加Shortcut（Android 7.1以上才有效，不过也什么没用😂"
+}
