@@ -4,8 +4,8 @@ permalink:      /:year-:month-:day/:title
 # Setup
 title:          "北极圈"
 paginate:       5
-baseurl:        ""
-url:            "https://bexonp.github.io"
+baseurl:        "https://github.com/xinyisleep"
+url:            "https://github.com/xinyisleep"
 
 # Assets
 sass:
