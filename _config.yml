@@ -2,10 +2,10 @@
 permalink:      /:year-:month-:day/:title
 
 # Setup
-title:          "XinYiSec"
+title:          "XinYiSec的小木屋"
 paginate:       5
 baseurl:        ""
-url:            "https://bexonp.github.io"
+url:            "https://xinyisleep.github.io"
 
 # Assets
 sass:
@@ -17,9 +17,9 @@ markdown:       kramdown
 
 # About
 author:
-  name:         Bexon
-  url:          https://bexonp.github.io
-  email:        bexon@mail.com
+  name:         xinyisleep
+  url:          https://xinyisleep.github.io
+  email:        10086@qq.com
 
 # Custom vars
 version:        9.9.9
