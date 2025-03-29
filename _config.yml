@@ -1,41 +1,31 @@
+# Permalinks
+permalink:      /:year-:month-:day/:title
 
-# Site settings
-title:          "admin"
-description:    "Minimal Jekyll theme for storytellers"
-
-# Google Analytics
-google_analytics: UA—XXXXXXXX-X
-
-# Author
-author:
-  name:         Chester How
-  url:          https://chester.how
-  email:        chesterhow@gmail.com
-
-# Build settings
-markdown:       kramdown
-include:
-  - _pages
+# Setup
+title:          "北极圈"
+paginate:       5
+baseurl:        ""
+url:            "https://github.com/xinyisleep"
 
 # Assets
 sass:
   sass_dir:     _sass
-  style:        compressed
+  style:        :compressed
+
+# Build settings
+markdown:       kramdown
+
+# About
+author:
+  name:         Bexon
+  url:          https://bexonp.github.io
+  email:        bexon@mail.com
+
+# Custom vars
+version:        3.4.1
+github:
+  repo:         https://github.com/bexonp
 
 # Gems
-plugins:
-  - jekyll-feed
+gems:
   - jekyll-paginate
-  - jekyll-seo-tag
-  # - jemoji #Uncomment this to allow emoji in your post
-
-# Permalinks
-theme:      tale
-permalink:      /:year-:month-:day/:title
-paginate:       5
-
-# Excludes
-exclude: [ Gemfile, Gemfile.lock, tale.gemspec ]
-
-# Disqus (Set to your disqus id)
-disqus:         jekyll-tale
