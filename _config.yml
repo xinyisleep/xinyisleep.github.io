@@ -24,7 +24,7 @@ author:
 # Custom vars
 version:        9.9.9
 github:
-  repo:         https://github.com/xinyisleep
+  repo:         https://github.com/bexonp
 
 # Gems
 gems:
