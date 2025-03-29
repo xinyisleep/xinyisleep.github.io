@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "About"
-author: "Bexon"
-permalink: /about/
+author: "XinYiSleep"
+permalink: /About/
 ---
 
-这里是Bexon的个人博客，会在这里写写文什么的，如果你感兴趣就留下来多看看，如果不感兴趣也没什么关系，你自己舒适就好。😘
+这里是XinYiSleep的个人博客，会在这里写一些网络安全文章主要围绕黑盒白盒,剩下的就是关于自己的一些意难平的琐事。😘
 <br>
 <br>
 <br>
 ## 联系方式
-可以给我发邮件 → [E-mail](mailto:bexon@mail.com).
+可以给我发邮件 → [E-mail](想了想还是先空着).
 
-祝你生活愉快～😉
+祝自己和你们生活愉快，技术更上一层楼～😉。
