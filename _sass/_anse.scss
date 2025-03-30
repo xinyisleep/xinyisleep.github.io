@@ -1,0 +1,23 @@
+body {
+  background-color: #181a1b; /* 柔和深灰背景，非纯黑 */
+  color: #e8e6e3;           /* 浅灰白文字颜色，柔和眼睛 */
+  font-weight: 400;         /* 正文字体适中粗细 */
+  line-height: 1.6;         /* 增加行间距，提升阅读体验 */
+}
+
+a {
+  color: #8ab4f8;          /* 链接颜色改为柔和浅蓝 */
+  text-decoration: none;   /* 去除默认的下划线 */
+  font-weight: 500;        /* 链接字体稍微加粗以区分 */
+}
+
+button, input, select, textarea {
+  background-color: #252729; /* 输入表单背景，柔和深灰 */
+  color: #e8e6e3;            /* 表单文字颜色，保持一致 */
+  border: 1px solid #3a3b3c; /* 表单边框，柔和线条 */
+}
+
+::selection {
+  background-color: #8ab4f8; /* 选中内容高亮背景 */
+  color: #ffffff;            /* 选中文字颜色 */
+}
