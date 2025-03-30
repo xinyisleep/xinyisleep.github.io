@@ -1,7 +1,10 @@
 body {
-  background-color: #121212; /* 暗色背景 */
-  color: #f1f1f1;           /* 更亮的文字颜色 */
+  background-color: #1d1d1d; /* 背景色，亮度提升后 */
+  color: #f5f5f5;           /* 更亮的字体颜色 */
+  font-weight: 400;         /* 正文字体稍微变粗 */
+  letter-spacing: 0.5px;    /* 字母间距，增强清晰度 */
 }
 a {
-  color: #69b3ff;            /* 更亮的链接颜色 */
+  color: #7abfff;           /* 提高亮度的浅蓝色链接 */
+  font-weight: 500;         /* 链接稍微加粗 */
 }
