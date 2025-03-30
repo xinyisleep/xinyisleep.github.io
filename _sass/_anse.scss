@@ -7,16 +7,16 @@ body {
 
 /* 针对段落 */
 p {
-  color: #ffffff;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  color: #ffffff !important; /* 强制字体为白色 */
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
 }
 span{
-  color: #ffffff;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  color: #ffffff !important; /* 强制字体为白色 */
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
 }
 div{
-  color: #ffffff;
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  color: #ffffff !important; /* 强制字体为白色 */
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
 }
 /* 针对标题 */
 h1, h2, h3, h4, h5, h6 {
