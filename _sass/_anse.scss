@@ -1,30 +1,41 @@
 body {
-  /* 背景亮度提高 50% */
-  background-color: #2c2f30; /* 原始暗色背景 (#181a1b)，亮度提升50% */
+  /* 背景亮度提高50% */
+  background-color: hsl(200, 5%, 15%); /* 背景亮度变化更显著 */
 
-  /* 字体变为白色，亮度提升后的效果 */
-  color: #ffffff; /* 将字体变成完全白色 */
+  /* 字体变为纯白色 */
+  color: #ffffff;
 
-  font-weight: 400; /* 正文字体粗细保持适中 */
-  line-height: 1.6; /* 提高行间距，增强阅读体验 */
+  /* 让字体在亮背景中更加清晰 */
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5); /* 添加轻微阴影 */
 }
 
 a {
-  /* 链接设置为亮白色进行突显 */
-  color: #ffffff;          /* 链接也变成白色，与文字保持一致 */
-  text-decoration: none;   /* 去除默认下划线 */
-  font-weight: 600;        /* 链接字体稍微加粗，更明显 */
+  /* 链接字体也设置为白色 */
+  color: #ffffff;
+  text-decoration: underline; /* 添加下划线以便于区分 */
 }
 
 button, input, select, textarea {
-  /* 表单背景亮度提升 50%，且字体变为白色 */
-  background-color: #3a3d3e; /* 原始表单背景 (#252729) 调亮50% */
-  color: #ffffff;           /* 表单文字颜色变为白色 */
-  border: 1px solid #5a5b5c; /* 表单边框亮度调高 */
+  /* 表单背景亮度提升 */
+  background-color: hsl(200, 5%, 20%); /* 适当提亮表单背景 */
+  color: #ffffff; /* 表单文本依然为白色 */
+  border: 1px solid hsl(200, 5%, 30%); /* 边框亮度增加以区分元素 */
 }
 
 ::selection {
-  /* 选中文本背景亮度调高 */
-  background-color: #8ab4f8; /* 浅蓝色选中背景，保持亮度 */
-  color: #ffffff;           /* 选中字体颜色为白色 */
+  /* 选中文本样式 */
+  background-color: hsl(210, 90%, 70%); /* 明亮的蓝色选中背景 */
+  color: #ffffff; /* 选中文字变为白色 */
+}
+
+h1, h2, h3, h4, h5, h6, p, span, li, td, th {
+  /* 全部文字强制为白色，更亮 */
+  color: #ffffff;
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4); /* 增加阴影效果以确保清晰 */
+}
+
+.navbar, .footer, .header {
+  /* 如果页面有导航栏或页脚，背景色和文字整体调整 */
+  background-color: hsl(200, 5%, 18%); /* 较正文背景略暗 */
+  color: #ffffff;
 }
