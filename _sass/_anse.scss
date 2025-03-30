@@ -1,23 +1,30 @@
 body {
-  background-color: #181a1b; /* 柔和深灰背景，非纯黑 */
-  color: #e8e6e3;           /* 浅灰白文字颜色，柔和眼睛 */
-  font-weight: 400;         /* 正文字体适中粗细 */
-  line-height: 1.6;         /* 增加行间距，提升阅读体验 */
+  /* 背景亮度提高 50% */
+  background-color: #2c2f30; /* 原始暗色背景 (#181a1b)，亮度提升50% */
+
+  /* 字体变为白色，亮度提升后的效果 */
+  color: #ffffff; /* 将字体变成完全白色 */
+
+  font-weight: 400; /* 正文字体粗细保持适中 */
+  line-height: 1.6; /* 提高行间距，增强阅读体验 */
 }
 
 a {
-  color: #8ab4f8;          /* 链接颜色改为柔和浅蓝 */
-  text-decoration: none;   /* 去除默认的下划线 */
-  font-weight: 500;        /* 链接字体稍微加粗以区分 */
+  /* 链接设置为亮白色进行突显 */
+  color: #ffffff;          /* 链接也变成白色，与文字保持一致 */
+  text-decoration: none;   /* 去除默认下划线 */
+  font-weight: 600;        /* 链接字体稍微加粗，更明显 */
 }
 
 button, input, select, textarea {
-  background-color: #252729; /* 输入表单背景，柔和深灰 */
-  color: #e8e6e3;            /* 表单文字颜色，保持一致 */
-  border: 1px solid #3a3b3c; /* 表单边框，柔和线条 */
+  /* 表单背景亮度提升 50%，且字体变为白色 */
+  background-color: #3a3d3e; /* 原始表单背景 (#252729) 调亮50% */
+  color: #ffffff;           /* 表单文字颜色变为白色 */
+  border: 1px solid #5a5b5c; /* 表单边框亮度调高 */
 }
 
 ::selection {
-  background-color: #8ab4f8; /* 选中内容高亮背景 */
-  color: #ffffff;            /* 选中文字颜色 */
+  /* 选中文本背景亮度调高 */
+  background-color: #8ab4f8; /* 浅蓝色选中背景，保持亮度 */
+  color: #ffffff;           /* 选中字体颜色为白色 */
 }
