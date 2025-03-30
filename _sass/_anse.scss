@@ -1,56 +1,31 @@
-/* 全局设置 */
+/* 全局样式 */
 body {
-  background-color: hsl(200, 5%, 15%); /* 背景亮度提升50% */
-  color: #ffffff; /* 全局字体颜色为纯白色 */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5); /* 添加阴影增加清晰度 */
+  background-color: hsl(200, 5%, 15%); /* 背景亮度50% */
+  color: #ffffff; /* 全局字体颜色为纯白 */
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5); /* 添加阴影增强清晰度 */
 }
 
-/* 段落和文字 */
-p, span, strong, em {
-  color: #ffffff; /* 设置段落、普通文本颜色为纯白 */
+/* 针对段落 */
+p {
+  color: #ffffff;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* 标题标签 */
+/* 针对标题 */
 h1, h2, h3, h4, h5, h6 {
-  color: #ffffff; /* 标题字体设置为白色 */
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); /* 添加阴影以增强清晰度 */
-  margin-top: 18px;
-  margin-bottom: 16px;
+  color: #ffffff;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* 链接样式 */
+/* 单独处理 .catalogue-title 类 */
+h1.catalogue-title {
+  color: #ffffff !important; /* 强制字体为白色 */
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
+}
+
+/* 针对链接样式 */
 a {
-  color: #ffffff; /* 链接字体颜色 */
-  text-decoration: underline; /* 为链接添加下划线 */
-  font-weight: bold; /* 加粗链接文字 */
-}
-
-/* 表单和输入框样式 */
-button, input, select, textarea {
-  background-color: hsl(200, 5%, 20%); /* 明亮表单背景 */
-  color: #ffffff; /* 白色文本内容 */
-  border: 1px solid hsl(200, 5%, 30%); /* 为边框添加轻微对比 */
-}
-
-/* 引用、列表、表格等块级标签 */
-blockquote, ul, ol, li, td, th {
-  color: #ffffff; /* 强制统一颜色 */
-}
-
-/* 选中文本高亮 */
-::selection {
-  background-color: hsl(210, 90%, 70%); /* 选中文本背景亮蓝色 */
-  color: #ffffff; /* 选中文本字体为白色 */
-}
-
-/* 表头样式（额外统一，以免遗漏） */
-thead, tfoot {
-  background-color: hsl(200, 5%, 18%);
-  color: #ffffff;
-}
-
-/* 辅助样式 */
-.navbar, .footer, .header {
-  background-color: hsl(200, 5%, 18%); /* 导航/页脚背景明暗搭配 */
-  color: #ffffff;
+  color: #ffffff !important; /* 链接字体颜色调整为白色 */
+  text-decoration: underline;
+  font-weight: bold;
 }
