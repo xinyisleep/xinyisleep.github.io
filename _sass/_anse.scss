@@ -44,3 +44,12 @@ a {
   text-decoration: underline;
   font-weight: bold;
 }
+/* 针对 .highlight 类代码块，保持默认或预定义的颜色样式 */
+pre.highlight, code {
+  background-color: #f5f5f5; /* 设定浅色背景 */
+  color: #333333; /* 设置代码文字为深色，常用的黑色或灰色 */
+  padding: 10px; /* 设定一点内边距让文字更易读 */
+  border: 1px solid #dddddd; /* 添加浅色边框以区分代码块 */
+  overflow-x: auto; /* 使长代码能够左右滚动，而不是自动换行 */
+  font-family: 'Courier New', monospace; /* 使用等宽字体，方便阅读代码 */
+}
