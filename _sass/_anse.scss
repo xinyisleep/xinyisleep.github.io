@@ -42,31 +42,12 @@ a {
   font-weight: bold;
 }
 
-/* 通用代码块样式 */
-pre.highlighter-rouge {
-  background-color: #2e3440;  /* 深色背景，护眼效果 */
-  color: #d8dee9;            /* 字体为浅灰色，清晰易读 */
-  border-radius: 6px;        /* 圆角边框，视觉柔和 */
-  padding: 16px;             /* 内边距，内容有足够空间 */
-  font-family: 'Fira Code', monospace; /* 专业等宽字体，为代码优化 */
-  font-size: 14px;           /* 字体大小适中 */
-  line-height: 1.5;          /* 行间距，提升阅读体验 */
-  white-space: pre;          /* 保留代码格式（换行和缩进） */
-  overflow-x: auto;          /* 水平滚动条：代码超出宽度时支持滑动 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 添加阴影，层次分明 */
+.highlight {
+  overflow-x:auto;
+  margin:1rem 0;
+  padding:10px 15px;
+  border-radius:4px;
+  background:#212326;
+  font-family:Menlo,"Meslo LG",monospace;
+  -webkit-border-radius:4px
 }
-
-/* 滑动滚动条样式优化 */
-pre.highlighter-rouge::-webkit-scrollbar {
-  height: 6px;              /* 滚动条高度 */
-}
-
-pre.highlighter-rouge::-webkit-scrollbar-thumb {
-  background: #4c566a;      /* 滑块颜色：深色 */
-  border-radius: 10px;      /* 滑块圆角设计 */
-}
-
-pre.highlighter-rouge::-webkit-scrollbar-track {
-  background: #2e3440;      /* 滚动条轨道颜色：与背景一致 */
-}
-
