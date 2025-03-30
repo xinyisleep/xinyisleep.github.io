@@ -42,39 +42,52 @@ a {
   font-weight: bold;
 }
 
-/* 通用代码块容器样式 */
+/* 原始代码块样式 */
 .highlight {
-  overflow-x: auto;                    /* 超出宽度时滑动横向滚动条 */
-  margin: 1rem 0;                      /* 上下边距适中 */
-  padding: 10px 15px;                  /* 内边距留出足够空间 */
-  border-radius: 4px;                  /* 圆角设计，让视觉更柔和 */
-  background: #212326;                 /* 深色背景（类似 IDE 颜色） */
-  font-family: Menlo, "Meslo LG", monospace; /* 等宽字体，让代码内容更整齐 */
-  -webkit-border-radius: 4px;          /* 兼容 Safari 浏览器 */
-  color: #d4d4d4;                      /* 默认代码块字体颜色 */
-  font-size: 14px;                     /* 字体大小适中，易读 */
+  overflow-x: auto;                   /* 超出宽度时显示滚动条 */
+  margin: 1rem 0;                     /* 上下边距 */
+  padding: 10px 15px;                 /* 内边距 */
+  border-radius: 4px;                 /* 圆角 */
+  background: #212326;                /* 黑色背景，类似 IDE */
+  font-family: Menlo, "Meslo LG", monospace; /* 使用等宽字体 */
+  font-size: 14px;                    /* 字体大小适中 */
+  color: #d4d4d4;                     /* 默认代码字体颜色 */
+  -webkit-border-radius: 4px;         /* Safari 支持圆角 */
 }
 
-/* 语法高亮的颜色（仿 VS Code 样式） */
-.highlight .keyword { color: #569cd6; } /* 关键字（如：function, if） */
-.highlight .string { color: #ce9178; }  /* 字符串（如："Hello World"） */
-.highlight .number { color: #b5cea8; }  /* 数字（如：123, 3.14） */
-.highlight .comment { color: #6a9955; font-style: italic; }  /* 注释 */
-.highlight .operator { color: #dcdcaa; } /* 操作符（如：+ - * / &&） */
-.highlight .function { color: #dcdcaa; } /* 函数名和调用 */
-.highlight .variable { color: #9cdcfe; } /* 变量（如：x, arr） */
-
-/* 优化滚动条样式 */
-.highlight::-webkit-scrollbar {
-  height: 8px;                      /* 滚动条高度 */
+/* 关键字高亮（如 function、return 等） */
+.highlight .keyword {
+  color: #569cd6;                     /* 蓝色关键字（VS Code 风格） */
 }
 
-.highlight::-webkit-scrollbar-thumb {
-  background: #3a3a3a;              /* 滑块颜色（暗色调） */
-  border-radius: 4px;               /* 滑块圆角 */
+/* 字符串高亮（如 "Hello World"） */
+.highlight .string {
+  color: #ce9178;                     /* 浅棕色字符串 */
 }
 
-.highlight::-webkit-scrollbar-track {
-  background: #212326;              /* 滚动条轨道颜色 */
+/* 数字高亮（如 123, 3.14） */
+.highlight .number {
+  color: #b5cea8;                     /* 绿色数字 */
+}
+
+/* 注释高亮（包括单行和多行注释） */
+.highlight .comment {
+  color: #6a9955;                     /* 浅绿色注释 */
+  font-style: italic;                 /* 注释倾斜 */
+}
+
+/* 函数名高亮 */
+.highlight .function {
+  color: #dcdcaa;                     /* 淡黄色函数名 */
+}
+
+/* 操作符高亮（如 +, -, *, /） */
+.highlight .operator {
+  color: #d4d4d4;                     /* 默认浅灰色 */
+}
+
+/* 变量高亮 */
+.highlight .variable {
+  color: #9cdcfe;                     /* 浅蓝色变量 */
 }
 
