@@ -42,12 +42,39 @@ a {
   font-weight: bold;
 }
 
+/* 通用代码块容器样式 */
 .highlight {
-  overflow-x:auto;
-  margin:1rem 0;
-  padding:10px 15px;
-  border-radius:4px;
-  background:#212326;
-  font-family:Menlo,"Meslo LG",monospace;
-  -webkit-border-radius:4px
+  overflow-x: auto;                    /* 超出宽度时滑动横向滚动条 */
+  margin: 1rem 0;                      /* 上下边距适中 */
+  padding: 10px 15px;                  /* 内边距留出足够空间 */
+  border-radius: 4px;                  /* 圆角设计，让视觉更柔和 */
+  background: #212326;                 /* 深色背景（类似 IDE 颜色） */
+  font-family: Menlo, "Meslo LG", monospace; /* 等宽字体，让代码内容更整齐 */
+  -webkit-border-radius: 4px;          /* 兼容 Safari 浏览器 */
+  color: #d4d4d4;                      /* 默认代码块字体颜色 */
+  font-size: 14px;                     /* 字体大小适中，易读 */
 }
+
+/* 语法高亮的颜色（仿 VS Code 样式） */
+.highlight .keyword { color: #569cd6; } /* 关键字（如：function, if） */
+.highlight .string { color: #ce9178; }  /* 字符串（如："Hello World"） */
+.highlight .number { color: #b5cea8; }  /* 数字（如：123, 3.14） */
+.highlight .comment { color: #6a9955; font-style: italic; }  /* 注释 */
+.highlight .operator { color: #dcdcaa; } /* 操作符（如：+ - * / &&） */
+.highlight .function { color: #dcdcaa; } /* 函数名和调用 */
+.highlight .variable { color: #9cdcfe; } /* 变量（如：x, arr） */
+
+/* 优化滚动条样式 */
+.highlight::-webkit-scrollbar {
+  height: 8px;                      /* 滚动条高度 */
+}
+
+.highlight::-webkit-scrollbar-thumb {
+  background: #3a3a3a;              /* 滑块颜色（暗色调） */
+  border-radius: 4px;               /* 滑块圆角 */
+}
+
+.highlight::-webkit-scrollbar-track {
+  background: #212326;              /* 滚动条轨道颜色 */
+}
+
