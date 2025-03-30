@@ -42,52 +42,70 @@ a {
   font-weight: bold;
 }
 
-/* 原始代码块样式 */
 .highlight {
-  overflow-x: auto;                   /* 超出宽度时显示滚动条 */
-  margin: 1rem 0;                     /* 上下边距 */
-  padding: 10px 15px;                 /* 内边距 */
-  border-radius: 4px;                 /* 圆角 */
-  background: #212326;                /* 黑色背景，类似 IDE */
-  font-family: Menlo, "Meslo LG", monospace; /* 使用等宽字体 */
-  font-size: 14px;                    /* 字体大小适中 */
-  color: #d4d4d4;                     /* 默认代码字体颜色 */
-  -webkit-border-radius: 4px;         /* Safari 支持圆角 */
+  overflow-x:auto;
+  margin:1rem 0;
+  padding:10px 15px;
+  border-radius:4px;
+  background:#212326;
+  font-family:Menlo,"Meslo LG",monospace;
+  -webkit-border-radius:4px
 }
-
-/* 关键字高亮（如 function、return 等） */
-.highlight .keyword {
-  color: #569cd6;                     /* 蓝色关键字（VS Code 风格） */
+.highlight figcaption {
+  margin:-5px 0 5px;
+  color:#908d8d;
+  font-size:.9em;
+  transform:scale(1)
 }
-
-/* 字符串高亮（如 "Hello World"） */
-.highlight .string {
-  color: #ce9178;                     /* 浅棕色字符串 */
+.highlight figcaption a {
+  float:right;
+  color:#908d8d;
+  font-style:italic;
+  font-size:.8em;
+  background-image:linear-gradient(transparent,transparent 10px,#d480aa 10px,#d480aa);
+  background-position:bottom;
+  background-size:100% 6px;
+  background-repeat:repeat-x
 }
-
-/* 数字高亮（如 123, 3.14） */
-.highlight .number {
-  color: #b5cea8;                     /* 绿色数字 */
+.highlight figcaption a:hover {
+  color:#a6a4a4
 }
-
-/* 注释高亮（包括单行和多行注释） */
-.highlight .comment {
-  color: #6a9955;                     /* 浅绿色注释 */
-  font-style: italic;                 /* 注释倾斜 */
+.highlight figcaption content: "",
+.highlight figcaption:before {
+  display:table
 }
-
-/* 函数名高亮 */
-.highlight .function {
-  color: #dcdcaa;                     /* 淡黄色函数名 */
+.highlight figcaption:after {
+  clear:both
 }
-
-/* 操作符高亮（如 +, -, *, /） */
-.highlight .operator {
-  color: #d4d4d4;                     /* 默认浅灰色 */
+.highlight:hover .btn-copy {
+  opacity:1
 }
-
-/* 变量高亮 */
-.highlight .variable {
-  color: #9cdcfe;                     /* 浅蓝色变量 */
+.highlight .btn-copy {
+  font-size:1.2rem;
+  position:absolute;
+  right:20px;
+  opacity:0;
+  transition:opacity .2s ease-in
 }
-
+.highlight .btn-copy:hover {
+  color:#2bbc8a
+}
+.highlight pre {
+  margin:0;
+  padding:0;
+  border:none;
+  background:0 0
+}
+.highlight table {
+  width:auto
+}
+.highlight td.gutter {
+  text-align:right;
+  opacity:.2
+}
+.highlight .line {
+  height:22px
+}
+#header-post #actions {
+  direction:ltr!important
+}
