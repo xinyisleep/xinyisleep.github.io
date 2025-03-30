@@ -1,56 +1,56 @@
-/* 全局样式 */
+/* 全局设置 */
 body {
-  /* 背景亮度从原始深灰色提升 50% */
-  background-color: hsl(200, 5%, 15%); /* 原始亮度为 10%，提升 50% 后为 15% */
-
-  /* 全局字体颜色为纯白色 */
-  color: #ffffff;
-
-  /* 增加轻微阴影让字体更清晰 */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  background-color: hsl(200, 5%, 15%); /* 背景亮度提升50% */
+  color: #ffffff; /* 全局字体颜色为纯白色 */
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5); /* 添加阴影增加清晰度 */
 }
 
-/* 针对段落、标题等所有常规标签 */
-h1, h2, h3, h4, h5, h6, p, span, li, td, th {
-  /* 所有文字强制变为白色，并确保清晰 */
-  color: #ffffff;
-  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); /* 添加阴影效果增强显示 */
+/* 段落和文字 */
+p, span, strong, em {
+  color: #ffffff; /* 设置段落、普通文本颜色为纯白 */
 }
 
-/* `a` 链接样式 */
+/* 标题标签 */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff; /* 标题字体设置为白色 */
+  text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5); /* 添加阴影以增强清晰度 */
+  margin-top: 18px;
+  margin-bottom: 16px;
+}
+
+/* 链接样式 */
 a {
-  color: #ffffff; /* 链接颜色变为白色 */
-  text-decoration: underline; /* 添加醒目的下划线以区分普通文字 */
-  font-weight: bold; /* 加粗链接字体 */
+  color: #ffffff; /* 链接字体颜色 */
+  text-decoration: underline; /* 为链接添加下划线 */
+  font-weight: bold; /* 加粗链接文字 */
 }
 
-/* 表单元素样式 */
+/* 表单和输入框样式 */
 button, input, select, textarea {
-  background-color: hsl(200, 5%, 20%); /* 表单背景颜色变得更亮 */
-  color: #ffffff; /* 表单字体颜色为白色 */
-  border: 1px solid hsl(200, 5%, 30%); /* 比背景略亮的边框 */
+  background-color: hsl(200, 5%, 20%); /* 明亮表单背景 */
+  color: #ffffff; /* 白色文本内容 */
+  border: 1px solid hsl(200, 5%, 30%); /* 为边框添加轻微对比 */
 }
 
-/* 用户选中文本的样式 */
+/* 引用、列表、表格等块级标签 */
+blockquote, ul, ol, li, td, th {
+  color: #ffffff; /* 强制统一颜色 */
+}
+
+/* 选中文本高亮 */
 ::selection {
-  background-color: hsl(210, 90%, 70%); /* 使用亮蓝色选中背景 */
-  color: #ffffff; /* 选中字体颜色变为白色 */
+  background-color: hsl(210, 90%, 70%); /* 选中文本背景亮蓝色 */
+  color: #ffffff; /* 选中文本字体为白色 */
 }
 
-/* 针对导航栏、页脚 */
+/* 表头样式（额外统一，以免遗漏） */
+thead, tfoot {
+  background-color: hsl(200, 5%, 18%);
+  color: #ffffff;
+}
+
+/* 辅助样式 */
 .navbar, .footer, .header {
-  background-color: hsl(200, 5%, 18%); /* 导航背景亮度高于正文背景 */
-  color: #ffffff; /* 导航栏字体调整为白色 */
-}
-
-/* 其他辅助样式 */
-strong, b {
+  background-color: hsl(200, 5%, 18%); /* 导航/页脚背景明暗搭配 */
   color: #ffffff;
-  font-weight: bold;
 }
-
-em, i {
-  color: #ffffff;
-  font-style: italic;
-}
-
