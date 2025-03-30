@@ -42,33 +42,31 @@ a {
   font-weight: bold;
 }
 
+/* 通用代码块样式 */
 pre.highlighter-rouge {
-  padding: 10px;
-  border-radius: 5px;
-  overflow-x: auto;
-  font-family: 'Courier New', monospace;
-}
-.language-info {
-  background-color: #e7f4f9; /* 浅蓝色背景，非常符合信息提示 */
-  color: #31708f; /* 深蓝色字体，更好地与背景对比 */
-  border-left: 5px solid #bce8f1; /* 左边栏，增强信息视觉提示 */
-  padding: 10px;
-  border-radius: 4px;
-  font-family: 'Arial', sans-serif; /* 比代码更通用的字体，适合信息显示 */
-  margin: 10px 0;
+  background-color: #2e3440;  /* 深色背景，护眼效果 */
+  color: #d8dee9;            /* 字体为浅灰色，清晰易读 */
+  border-radius: 6px;        /* 圆角边框，视觉柔和 */
+  padding: 16px;             /* 内边距，内容有足够空间 */
+  font-family: 'Fira Code', monospace; /* 专业等宽字体，为代码优化 */
+  font-size: 14px;           /* 字体大小适中 */
+  line-height: 1.5;          /* 行间距，提升阅读体验 */
+  white-space: pre;          /* 保留代码格式（换行和缩进） */
+  overflow-x: auto;          /* 水平滚动条：代码超出宽度时支持滑动 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 添加阴影，层次分明 */
 }
 
-.language-php {
-  background-color: #2c3e50; /* 深蓝色背景 */
-  color: #ecf0f1; /* 亮灰色字体 */
+/* 滑动滚动条样式优化 */
+pre.highlighter-rouge::-webkit-scrollbar {
+  height: 6px;              /* 滚动条高度 */
 }
 
-.language-java {
-  background-color: #f7df1e; /* 浅黄色背景 */
-  color: #333333; /* 深色字体 */
+pre.highlighter-rouge::-webkit-scrollbar-thumb {
+  background: #4c566a;      /* 滑块颜色：深色 */
+  border-radius: 10px;      /* 滑块圆角设计 */
 }
 
-.language-python {
-  background-color: #306998; /* Python 蓝色 */
-  color: #ffffff; /* 白色字体 */
+pre.highlighter-rouge::-webkit-scrollbar-track {
+  background: #2e3440;      /* 滚动条轨道颜色：与背景一致 */
 }
+
