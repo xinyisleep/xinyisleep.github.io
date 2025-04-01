@@ -1,41 +1,149 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-<meta charset="utf-8" />
-<title>404</title>
-<meta name="theme-color" content="#fff" />
-<meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet" />
-<style type="text/css">     
-body{
-margin:0;
-padding:0;
-background-color:#fff;
-overflow:hidden;
-font-family:"微软雅黑", 'Open Sans Condensed', sans-serif;
-}
-p.a, p.b{
-text-align:center;
-font-size:100%;
-}
-p.a{
-padding-top:50px;
-}
-a{
-color:grey;
-text-decoration:none;
-}
-.nfp{
-text-align:center;
-font-size:900%;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 动态黑客雨页面</title>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式 */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: black; /* 黑客风黑色背景 */
+            font-family: 'Share Tech Mono', 'ZCOOL QingKe HuangYou', monospace;
+            color: #00ff00;
+        }
 
+        /* 黑客雨背景 */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* 打字机文字部分 */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .dynamic-text {
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+
+        .return-link {
+            margin-top: 20px;
+            display: none;
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border: 2px solid #00ff00;
+            padding: 10px 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .return-link:hover {
+            color: black;
+            background: #00ff00;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
-<p class="a">似乎迷路了呢</p>
-<div class="nfp">4 0 4</div>
-<p class="b">返回<a href="https://bexonp.github.io">主页</a>看看吧</p>
+
+<!-- 动态黑客雨背景 -->
+<canvas id="matrix"></canvas>
+
+<div class="content">
+    <!-- 动态打字文字 -->
+    <div class="dynamic-text" id="dynamicText"></div>
+    <!-- 返回按钮 -->
+    <a href="https://xinyisleep.github.io" class="return-link" id="returnLink">返回主页</a>
+</div>
+
+<script>
+    /* 黑客风代码雨背景 */
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    // 初始化画布尺寸
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // 定义代码雨字符
+    const matrixChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ生命进化黑洞✓⚠☣';
+    const fontSize = 16; // 字体大小
+    const columns = canvas.width / fontSize; // 按屏幕宽度划分列数
+
+    // 每列下落的初始位置，初始化为 0
+    const drops = Array(Math.floor(columns)).fill(0);
+
+    // 绘制代码雨函数
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // 黑背景透明层，用于实现尾迹效果
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#00ff00'; // 绿色字符
+        ctx.font = `${fontSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+            const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+            ctx.fillText(char, i * fontSize, drops[i] * fontSize);
+
+            // 当字符超出屏幕，高度随机重置
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+
+            // 下落速度
+            drops[i]++;
+        }
+
+        requestAnimationFrame(drawMatrix); // 递归刷新画面
+    }
+
+    drawMatrix();
+
+    /* 打字机效果 */
+    const dynamicTextContainer = document.getElementById('dynamicText');
+    const returnLink = document.getElementById('returnLink');
+
+    const text = [
+        "错误 404",
+        "你小子想干嘛,快快退下。",
+        "回到主页。"
+    ];
+
+    let charIndex = 0;    // 当前字符索引
+    let lineIndex = 0;    // 当前行索引
+
+    function typeText() {
+        if (lineIndex < text.length) {
+            const currentLine = text[lineIndex];
+            if (charIndex < currentLine.length) {
+                dynamicTextContainer.innerHTML += currentLine[charIndex];
+                charIndex++;
+                setTimeout(typeText, 150); // 每个字符显示间隔
+            } else {
+                dynamicTextContainer.innerHTML += "<br>"; // 换行
+                charIndex = 0;
+                lineIndex++;
+                setTimeout(typeText, 500); // 每行结束后的等待时间
+            }
+        } else {
+            returnLink.style.display = "inline-block"; // 打字完成后显示按钮
+        }
+    }
+
+    typeText();
+</script>
 </body>
 </html>
