@@ -9,25 +9,21 @@ tags:
 ---
 
 <div class="content">
+  <!-- 页面标题 -->
   <h1>{{ page.title }}</h1>
 
-  <!-- 判断 category -->
-{% if page.category == "Java" %}
-<p>这篇文章属于 Java 分类。</p>
-{% endif %}
+  <!-- 静态描述 -->
+  <p>这里是关于 Java 的专题页面，涵盖相关的文章内容。</p>
 
-  <!-- 判断 tags -->
-{% if page.tags contains 'Java' %}
-<p>这篇文章有 Java 标签。</p>
-{% endif %}
-
-  <!-- 判断 permalink -->
-{% if page.permalink == '/Java专题/' %}
-<p>这是 Java专题的永久链接。</p>
-{% endif %}
-
-  <!-- 判断是否用默认布局 -->
-{% if page.layout == 'default' %}
-<p>使用的是默认布局。</p>
-{% endif %}
+  <!-- 动态显示文章列表 -->
+<h2>相关文章：</h2>
+  <ul>
+    {% for post in site.posts %}
+      {% if post.category == page.category %}
+        <li>
+          <a href="{{ post.url }}">{{ post.title }}</a> - <small>{{ post.date | date: "%Y-%m-%d" }}</small>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
 </div>
