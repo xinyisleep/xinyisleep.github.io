@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Java专题
-permalink: /Java专题/
-category: Java
+title: PHP专题
+permalink: /PHP专题/
+category: PHP
 tags:
-  - Java
+  - PHP
 ---
 
 <div class="content">
