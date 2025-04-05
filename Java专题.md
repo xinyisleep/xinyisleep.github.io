@@ -9,13 +9,7 @@ tags:
 ---
 
 <div class="content">
-  <!-- 页面标题 -->
   <h1>{{ page.title }}</h1>
-
-  <!-- 静态描述 -->
-  <p>这里是关于 Java 的专题页面，涵盖相关的文章内容。</p>
-
-  <!-- 动态显示文章列表 -->
 <h2>相关文章：</h2>
   <ul>
     {% for post in site.posts %}
