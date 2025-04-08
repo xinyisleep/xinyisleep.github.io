@@ -46,12 +46,6 @@ a {
 .catalogue-item {
   break-inside: avoid; /* 防止内容断裂 */
 }
-
-/* 首屏优化 */
-.catalogue-header {
-  contain: content; /* 提升浏览器渲染性能 */
-}
-
 /* 暗黑模式支持 */
 @media (prefers-color-scheme: dark) {
   .catalogue-time {
