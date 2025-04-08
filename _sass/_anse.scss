@@ -41,3 +41,26 @@ a {
   text-decoration: underline;
   font-weight: bold;
 }
+//看nm
+/* 基础排版增强 */
+.catalogue-item {
+  break-inside: avoid; /* 防止内容断裂 */
+}
+
+/* 首屏优化 */
+.catalogue-header {
+  contain: content; /* 提升浏览器渲染性能 */
+}
+
+/* 暗黑模式支持 */
+@media (prefers-color-scheme: dark) {
+  .catalogue-time {
+    color: #a0aec0;
+  }
+}
+
+/* 触控友好优化 */
+.pagination-arrow {
+  padding: 0.8rem;
+  min-width: 44px; /* WCAG触控最小尺寸 */
+}
