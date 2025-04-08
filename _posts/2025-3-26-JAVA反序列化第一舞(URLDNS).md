@@ -42,7 +42,7 @@ public static void serialize(Object obj) throws Exception {
 
 }
 ```
-![](https://xinyisleep.github.io/img/2025/URLDNS/1.png)
+![](https://xinyisleep.github.io/img/2025/URLDNS/1.jpg)
 ```
 上面可以看到生成的数据是难以手工修改的，下面进行反序列化,可以看到我们把属性输出的时候，
 输出了上图的内容，实际上图会执行toString方法默认没写toString方法的时候执行父类的toString方法，父类也就是Object,虽然没写继承但是也会执行Object因为所有类默认都是继承的Object方法
@@ -62,7 +62,7 @@ public static Object unserialize(String name) throws Exception {
     return o;
 }
 ```
-![](https://xinyisleep.github.io/img/2025/URLDNS/2.png)
+![](https://xinyisleep.github.io/img/2025/URLDNS/2.jpg)
 ```java
 @Override
 public String toString() {
@@ -77,7 +77,7 @@ public String toString() {
             '}';
 }
 ```
-![](https://xinyisleep.github.io/img/2025/URLDNS/3.png)
+![](https://xinyisleep.github.io/img/2025/URLDNS/3.jpg)
 <h3 id="rdI0E">1.2：重写readObject</h3>
 ```
 这里就很有意思了，重写redaObject意思是说我们上面进行反序列化的是User类如果说上面User类中重写了readObject，
@@ -130,8 +130,8 @@ public class Main {
 
 }
 ```
-![](https://xinyisleep.github.io/img/2025/URLDNS/4.png)
-![](https://xinyisleep.github.io/img/2025/URLDNS/5.png)
+![](https://xinyisleep.github.io/img/2025/URLDNS/4.jpg)
+![](https://xinyisleep.github.io/img/2025/URLDNS/5.jpg)
 
 <h3 id="EvfAi">1.3：URLDNS</h3>
 <h4 id="tZdPq">1.3.1: 链子分析</h4>
@@ -148,7 +148,7 @@ handler是URLStreamHandler并且transient修饰符表示了在序列化的时候
 到了URLStreamHandler.hashCode方法发现我们的参数走到了getHostAddress(u)，跟进去看看
 InetAddress.getByName(host); host就是我们控制的key,到这里其实就结束了，搜索一下就知道 这个是java官方的jdk手册可以知道是进行dns解析的，到此分析完毕。
 ```
-![](https://xinyisleep.github.io/img/2025/URLDNS/6.png)
+![](https://xinyisleep.github.io/img/2025/URLDNS/6.jpg)
 ```java
 HashMap类
 public V put(K key, V value) {
@@ -198,7 +198,7 @@ protected synchronized InetAddress getHostAddress(URL u) {
 //后面的不重要
 ```
 
-![](https://xinyisleep.github.io/img/2025/URLDNS/7.png)
+![](https://xinyisleep.github.io/img/2025/URLDNS/7.jpg)
 
 <h4 id="P7Mgs">1.3.2：链子编写</h4>
 ```java
