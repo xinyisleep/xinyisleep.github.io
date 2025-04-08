@@ -3,30 +3,56 @@ layout: default
 title: Home
 ---
 
-<div class="catalogue">
-  {% for post in paginator.posts %}
-    <a href="{{ post.url | prepend: site.url }}" class="catalogue-item">
-      <div>
-        <time datetime="{{ post.date }}" class="catalogue-time">{{ post.date | date: "%B %d, %Y" }}</time>
-        <h1 class="catalogue-title">{{ post.title }}</h1>
-        <div class="catalogue-line"></div>
+<main role="main" aria-label="Main content">
+  <section class="catalogue" itemscope itemtype="http://schema.org/Blog">
+    {% for post in paginator.posts %}
+    <article class="catalogue-item" role="article" itemscope itemtype="http://schema.org/Article">
+      <a href="{{ post.url | relative_url }}" class="catalogue-link" aria-label="Read {{ post.title }}">
+        <header class="catalogue-header">
+          <time datetime="{{ post.date | date_to_xmlschema }}"
+                class="catalogue-time"
+                itemprop="datePublished">
+            {{ post.date | date: "%B %d, %Y" }}
+          </time>
+          <h2 class="catalogue-title" itemprop="headline">
+            {{ post.title | escape }}
+          </h2>
+        </header>
 
-        <p>
-          {{ post.content | truncate: 80 | strip_html }}
-        </p>
+        <div class="catalogue-summary" itemprop="description">
+          {% if post.excerpt %}
+          {{ post.excerpt | strip_html | truncate: 120 }}
+          {% else %}
+          {{ post.content | strip_html | truncate: 120 }}
+          {% endif %}
+        </div>
 
-      </div>
+        <meta itemprop="url" content="{{ post.url | absolute_url }}">
+      </a>
+    </article>
+    {% endfor %}
+  </section>
+
+  <nav class="pagination" role="navigation" aria-label="Pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}"
+       class="pagination-arrow prev"
+       aria-label="Previous page">
+      ← <span class="sr-only">Previous</span>
     </a>
-  {% endfor %}
-</div>
+    {% endif %}
 
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.url }}" class="left arrow">&#8592;</a>
-  {% endif %}
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.url }}" class="right arrow">&#8594;</a>
-  {% endif %}
+    <span class="pagination-current"
+          aria-current="page">
+      Page {{ paginator.page }} of {{ paginator.total_pages }}
+    </span>
 
-  <span>{{ paginator.page }}</span>
-</div>
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}"
+       class="pagination-arrow next"
+       aria-label="Next page">
+      → <span class="sr-only">Next</span>
+    </a>
+    {% endif %}
+  </nav>
+</main>
