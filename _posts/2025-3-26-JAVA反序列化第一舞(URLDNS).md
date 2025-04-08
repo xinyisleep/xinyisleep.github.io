@@ -5,7 +5,9 @@ title: "JAVA反序列化第一舞(URLDNS)"
 author: "XinYiSleep"
 category: Java
 ---
-<h1 id="y1d2Y">一.java反序列化介绍</h1>
+<h1 id="y1d2Y">一. 基础信息</h1>
+
+
 <h3 id="z6QuK">1.1：反序列化概念和基础</h3>
 
 ```
