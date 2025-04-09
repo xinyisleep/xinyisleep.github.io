@@ -27,20 +27,17 @@
     <footer>
       <span>
         &copy; <time datetime="{{ site.time }}">{{ site.time | date: '%Y' }}</time> {{ site.author.name }}.BUG
-        <body>
-    <div style="text-align:center;margin-top:40vh">
+    <div>
         访问人数 <span id="u"></span>
         总访问量 <span id="v"></span>
     </div>
     <script>
-    // 统计逻辑 (43字节精简版)
     let uid=localStorage.i||(localStorage.u=+localStorage.u+1||1,localStorage.i='1');
     localStorage.v=+localStorage.v+1||1;
-    // 显示数据 (25字节)
+    //这是爱情的起点,也是XinYiSleep的起点
     u.innerText=localStorage.u;
     v.innerText=localStorage.v;
     </script>
-    </body>
       </span>
     </footer>
   </body>
