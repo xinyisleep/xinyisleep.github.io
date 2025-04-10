@@ -27,7 +27,7 @@ maven:
 ```
 ![](https://xinyisleep.github.io/img/2025/commons-collections/1.png)
 ![](https://xinyisleep.github.io/img/2025/commons-collections/2.png)
-![](https://xinyisleep.github.io/img/2025/commons-collections/3.png)
+![](https://xinyisleep.github.io/img/2025/commons-collections/3.jpg)
 
 <h1 id="m6L3f">二: 链查找</h1>
 <h2 id="OQ4oi">0x2.1:危险方法查找</h2>
@@ -69,7 +69,7 @@ new InvokerTransformer("exec",new Class[]{String.class},new Object[]{"calc"}).tr
 但是又存在一个问题就是图一我们可以看到checkSetValue也protected，这里先使用反射模拟构造执行一下吧。
 ```
 
-![](https://xinyisleep.github.io/img/2025/commons-collections/5.png)
+![](https://xinyisleep.github.io/img/2025/commons-collections/5.jpg)
 
 ![](https://xinyisleep.github.io/img/2025/commons-collections/6.png)
 
@@ -196,9 +196,9 @@ new InvokerTransformer("exec", new Class[]{String.class}, new Object[]{"calc"})
 ChainedTransformer chainedTransformer = new ChainedTransformer(transformers);
 ```
 
-![](https://xinyisleep.github.io/img/2025/commons-collections/14.png)
+![](https://xinyisleep.github.io/img/2025/commons-collections/14.jpg)
 
-![](https://xinyisleep.github.io/img/2025/commons-collections/14.5.png)
+![](https://xinyisleep.github.io/img/2025/commons-collections/14.5.jpg)
 
 ![](https://xinyisleep.github.io/img/2025/commons-collections/15.png)
 
