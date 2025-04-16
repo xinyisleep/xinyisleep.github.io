@@ -42,10 +42,38 @@ title: Home
     </a>
     {% endif %}
 
-    <span class="pagination-current"
-          aria-current="page">
-      Page {{ paginator.page }} of {{ paginator.total_pages }}
+    <nav class="pagination" role="navigation" aria-label="Pagination">
+      <!-- 前一个页面箭头 -->
+      {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}"
+         class="pagination-link pagination-prev"
+         aria-label="Previous page">
+        ←
+      </a>
+      {% endif %}
+
+      <!-- 当前页码：添加微交互动效 -->
+      <span class="pagination-current"
+            aria-current="page"
+            style="--hover-color: #f0f0f0;"> <!-- 可自定义悬停色 -->
+    <span class="pagination-indicator">Page</span> <!-- 添加标签语义 -->
+    <span class="pagination-numbers">
+      {{ paginator.page }}
+      <span class="pagination-divider">/</span>
+      {{ paginator.total_pages }}
     </span>
+  </span>
+
+      <!-- 下一个页面箭头 -->
+      {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}"
+         class="pagination-link pagination-next"
+         aria-label="Next page">
+        →
+      </a>
+      {% endif %}
+    </nav>
+
 
     {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path | relative_url }}"
