@@ -62,57 +62,40 @@ a {
 
 
 
-/* 分页容器 */
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem; /* 元素间距 */
-  margin-top: 2rem;
-}
-
-/* 统一所有分页元素样式 */
-.pagination-link,
+/* 极简版本 */
 .pagination-current {
   display: inline-flex;
   align-items: center;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   font-size: 0.95rem;
-  transition: background 0.3s ease;
-}
-
-/* 当前页码样式 */
-.pagination-current {
-  background: #f5f5f5; /* 浅灰色背景 */
-  color: #333;
-  border: 1px solid #ddd; /* 细边框 */
-}
-
-/* 分页指示文字 */
-.pagination-indicator {
-  margin-right: 0.3rem;
-  opacity: 0.7; /* 降低"Page"文字对比度 */
-}
-
-/* 分页数字部分 */
-.pagination-numbers {
-  font-weight: 500; /* 加粗数字 */
-}
-
-/* 分页符 */
-.pagination-divider {
-  margin: 0 0.3rem;
-  opacity: 0.5;
-}
-
-/* 分页箭头按钮交互 */
-.pagination-link {
-  background: transparent;
   color: #666;
-  border: 1px solid #eee;
+  padding: 0.25rem 0;
 }
 
-.pagination-link:hover {
-  background: var(--hover-color, #f8f8f8);
-  color: #444;
+.current {
+  color: #222;
+  font-weight: 600;
+  margin-right: 0.4rem;
+}
+
+.separator {
+  color: #ddd;
+  margin-right: 0.4rem;
+  transform: translateY(-1px);
+}
+
+.total {
+  color: #888;
+  font-weight: 500;
+}
+
+/* 增加交互反馈 */
+@media (hover: hover) {
+  .pagination-current .current {
+    transition: color 0.2s;
+    cursor: default;
+  }
+  .pagination-current:hover .current {
+    color: #007bff; /* 品牌色建议 */
+  }
 }
