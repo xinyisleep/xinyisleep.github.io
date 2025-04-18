@@ -19,7 +19,11 @@ JDK1.8.*
 <h1 id="aUp8M">二.再次寻找transform</h1>
 
 ```
-在我们学习cc3或cc1的时候其实我们知道用到LazyMap.decorate静态方法，执行构造方法修改factory形成闭环，但是呢在commons-collections4中并没有decorate这个静态方法导致无法执行构造方法那就更别想着控制factory了，不过这里的构造方法在commons-collections4中中是public所以只要改一下依然可以执行cc3的结合(图一,图二)，看下面代码(代码一)，上面都是题外话了，主要讲一下cc4我们链子比如断在这块了，下面就去找transform，在TransformingComparator.compare中找到了(图三)，transformer熟悉是一个泛型，刚好ChainedTransformer类就实现Transformer接口(图四)，下面就去找compare，好那我们先模拟运行一下(代码二)。
+在我们学习cc3或cc1的时候其实我们知道用到LazyMap.decorate静态方法，执行构造方法修改factory形成闭环，
+但是呢在commons-collections4中并没有decorate这个静态方法导致无法执行构造方法那就更别想着控制factory了，
+不过这里的构造方法在commons-collections4中中是public所以只要改一下依然可以执行cc3的结合(图一,图二)，看下面代码(代码一)，
+上面都是题外话了，主要讲一下cc4我们链子比如断在这块了，下面就去找transform，在TransformingComparator.compare中找到了(图三)，
+transformer熟悉是一个泛型，刚好ChainedTransformer类就实现Transformer接口(图四)，下面就去找compare，好那我们先模拟运行一下(代码二)。
 
 ```
 ```java
