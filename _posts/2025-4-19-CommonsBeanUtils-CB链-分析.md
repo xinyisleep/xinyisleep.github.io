@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2025-4-18
-title: "CommonsCollections-CC4-分析"
+date: 2025-4-19
+title: "CommonsBeanUtils-CB链-分析"
 author: "XinYiSleep"
 category: Java
 ---
