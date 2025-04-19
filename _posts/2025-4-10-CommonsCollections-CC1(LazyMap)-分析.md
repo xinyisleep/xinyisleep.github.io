@@ -15,6 +15,13 @@ category: Java
 </dependency>
 
 javaversion: 1.8.65
+        
+堆栈
+InvokerTransformer.transform 
+    ChainedTransformer.transform
+        LazyMap.get
+            AnnotationInvocationHandler.invoke
+                AnnotationInvocationHandler.readObject
 ```
 
 <h1 id="n5pBs">二.LazyMap</h1>

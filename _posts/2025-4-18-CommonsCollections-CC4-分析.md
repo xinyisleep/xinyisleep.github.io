@@ -15,6 +15,19 @@ category: Java
 </dependency>
 
 JDK1.8.*
+堆栈
+TemplatesImpl.defineClass
+    TemplatesImpl.defineTransletClasses
+        TemplatesImpl.getTransletInstance
+            TemplatesImpl.newTransformer
+                TrAXFilter.TrAXFilter(构造方法)
+                    InstantiateTransformer.transform
+                         ChainedTransformer.transform
+                            TransformingComparator.compare
+                                PriorityQueue.siftDownUsingComparator
+                                    PriorityQueue.siftDown
+                                        PriorityQueue.heapify
+                                            PriorityQueue.readObject
 ```
 <h1 id="aUp8M">二.再次寻找transform</h1>
 

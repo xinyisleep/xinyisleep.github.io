@@ -15,6 +15,20 @@ category: Java
 </dependency>
 
 结合cc6不限制版本
+
+堆栈
+TemplatesImpl.defineClass
+        TemplatesImpl.defineTransletClasses
+            TemplatesImpl.getTransletInstance
+                TemplatesImpl.newTransformer
+                    TrAXFilter.TrAXFilter(构造方法)
+                        InstantiateTransformer.transform
+                            ChainedTransformer.transform
+                                LazyMap.get
+                                    TiedMapEntry.getValue
+                                        TiedMapEntry.hashCode
+                                            HashMap.hash
+                                                HashMap.readObject
 ```
 <h1 id="cLHPX">二.动态加载机制</h1>
 

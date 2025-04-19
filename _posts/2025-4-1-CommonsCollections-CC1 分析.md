@@ -18,6 +18,12 @@ maven:
     <artifactId>commons-collections</artifactId>
     <version>3.2.1</version>
 </dependency>
+堆栈
+InvokerTransformer.transform
+    ChainedTransformer.transform
+        TransformedMap.checkSetValue
+            AbstractInputCheckedMapDecorator.setValue
+                AnnotationInvocationHandler.readObject
 ```
 <h2 id="novcc">0x1.1: 环境搭建</h2>
 ```

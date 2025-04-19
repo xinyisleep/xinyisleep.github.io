@@ -13,6 +13,15 @@ category: Java
     <artifactId>commons-collections</artifactId>
     <version>3.2.1</version>
 </dependency>
+        
+堆栈
+InvokerTransformer.transform
+    ChainedTransformer.transform
+        LazyMap.get
+            TiedMapEntry.getValue
+                TiedMapEntry.hashCode
+                    HashMap.hash
+                        HashMap.readObject
 ```
 <h1 id="PiyFJ">二.眼熟的hashCode</h1>
 
