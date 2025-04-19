@@ -22,9 +22,9 @@ author:
   email:        10086@qq.com
 
 # Custom vars
-version:        9.9.9
+version:        99.99.99
 github:
-  repo:         https://github.com/bexonp
+  repo:         https://github.com/xinyisleep
 
 # Gems
 gems:
