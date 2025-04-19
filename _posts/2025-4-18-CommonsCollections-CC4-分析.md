@@ -16,7 +16,7 @@ category: Java
 
 JDK1.8.*
 堆栈
-TemplatesImpl.defineClass
+TemplatesImpl.TransletClassLoader.defineClass
     TemplatesImpl.defineTransletClasses
         TemplatesImpl.getTransletInstance
             TemplatesImpl.newTransformer
