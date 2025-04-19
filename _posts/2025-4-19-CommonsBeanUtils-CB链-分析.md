@@ -98,7 +98,7 @@ objectBeanComparator.compare(templates,123456);
 ```
 ![](https://xinyisleep.github.io/img/2025/CommonsBeanUtils/1.png)
 
-![](https://xinyisleep.github.io/img/2025/CommonsBeanUtils/2.pngg)
+![](https://xinyisleep.github.io/img/2025/CommonsBeanUtils/2.png)
 
 ![](https://xinyisleep.github.io/img/2025/CommonsBeanUtils/3.png)
 
