@@ -1,24 +1,22 @@
-/* 保持暗色代码块的基础样式 */
+/* 代码块整体样式 */
 pre {
-  background-color: #212326; /* 暗色背景，专业且易于阅读 */
-  color: #d4d4d4; /* 字体颜色柔和，适合长时间阅读 */
-  padding: 15px; /* 适当的内边距，增加代码块留白 */
-  border-radius: 8px; /* 增加较大的圆角，更现代化 */
-  overflow-x: auto; /* 防止代码溢出，启用横向滚动条 */
-  font-family: Menlo, "Meslo LG", Consolas, monospace; /* 等宽专业编程字体 */
-  font-size: 14px; /* 保持适中的字体大小 */
-  line-height: 1.6; /* 增加行高提升阅读体验 */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* 添加细致阴影，代码块视觉上稍有立体感 */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* 增加低对比度边框，视觉框架更清晰 */
+  background-color: #1E1E2F; /* 优雅的深暗背景，专业且舒适 */
+  color: #C7D5E0; /* 字体颜色柔和，眼睛友好 */
+  padding: 16px; /* 留白更舒适 */
+  border-radius: 12px; /* 更大的圆角，增加现代感 */
+  overflow-x: auto; /* 启用横向滚动条 */
+  font-family: "Fira Code", Consolas, Monaco, monospace; /* 更流畅美观的等宽编程字体 */
+  font-size: 15px; /* 字体大小适中，提升阅读体验 */
+  line-height: 1.8; /* 行高增加，便于阅读 */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* 美观的深阴影，增加立体感 */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* 优雅的边框，不显突兀 */
+  transition: background-color 0.3s, box-shadow 0.3s; /* 鼠标悬浮效果平滑 */
 }
 
-/* 代码块内的代码样式 */
-code {
-  color: inherit; /* 代码内容保持默认颜色 */
-  background-color: rgba(255, 255, 255, 0.05); /* 轻微背景区分关键字或代码块 */
-  font-family: inherit; /* 字体继承父元素样式 */
-  border-radius: 5px; /* 子元素的小圆角修饰 */
-  padding: 2px 4px; /* 为内联代码增加适当的空间 */
+/* 鼠标悬停时代码块样式变化 */
+pre:hover {
+  background-color: #24243A; /* 背景稍加明亮，突出显示 */
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6); /* 增强阴影效果 */
 }
 
 /* 滚动条样式优化 */
@@ -27,17 +25,30 @@ pre::-webkit-scrollbar {
 }
 
 pre::-webkit-scrollbar-thumb {
-  background-color: #3e4042; /* 滚动条颜色，与背景协调 */
-  border-radius: 5px; /* 滚动条圆角 */
+  background-color: #4E5A65; /* 滚动条颜色 */
+  border-radius: 5px; /* 圆角修饰 */
 }
 
 pre::-webkit-scrollbar-track {
-  background-color: #212326; /* 滚动条轨道颜色，与代码块背景一致 */
+  background-color: #1E1E2F; /* 滚动条轨道颜色，与背景一致 */
 }
 
-/* 鼠标悬停时高亮代码块 */
-pre:hover {
-  background-color: #2a2c2f; /* 鼠标悬停时进一步加深背景色 */
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5); /* 鼠标悬停时阴影增强 */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* 鼠标悬停时边框更明显 */
+/* 内联代码的样式优化 */
+code {
+  background-color: rgba(255, 255, 255, 0.1); /* 内联代码背景稍突出 */
+  color: #FF79C6; /* 内联代码强调色（粉红色是流行配色方案） */
+  padding: 2px 6px; /* 适度留白更舒适 */
+  border-radius: 6px; /* 圆角更美观 */
+  font-weight: 500; /* 内联代码文字加权，突出显示 */
+}
+
+/* 可选：为代码块加标题样式 */
+.code-title {
+  font-size: 14px; /* 标题字体大小 */
+  font-weight: bold; /* 字体加粗 */
+  color: #C7D5E0; /* 和代码块文字颜色一致 */
+  background-color: #2A2A40; /* 标题背景色稍浅，便于区分 */
+  padding: 8px 12px; /* 标题内容内边距 */
+  border-radius: 12px 12px 0 0; /* 标题的圆角更连贯 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 标题与代码块分割线 */
 }
