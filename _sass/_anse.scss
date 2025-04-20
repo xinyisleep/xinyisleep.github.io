@@ -43,15 +43,15 @@
 //}
 //看nm
 /* 基础排版增强 */
-.catalogue-item {
-  break-inside: avoid; /* 防止内容断裂 */
-}
-/* 暗黑模式支持 */
-@media (prefers-color-scheme: dark) {
-  .catalogue-time {
-    color: #a0aec0;
-  }
-}
+//.catalogue-item {
+//  break-inside: avoid; /* 防止内容断裂 */
+//}
+///* 暗黑模式支持 */
+//@media (prefers-color-scheme: dark) {
+//  .catalogue-time {
+//    color: #a0aec0;
+//  }
+//}
 
 
 
