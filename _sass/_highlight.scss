@@ -1,73 +1,72 @@
 /* 代码块整体样式 */
+.code-container {
+  position: relative; /* 用于实现按钮定位 */
+}
+
 pre {
-  background-color: #1a1d23; /* 温暖暗色调，柔和，护眼优质 */
-  color: #d8dee9; /* 字体颜色清晰低饱和，减轻视觉压力 */
-  padding: 20px; /* 舒适留白，视觉布局优秀 */
-  border-radius: 16px; /* 增加强圆角设计，柔和现代感 */
-  font-family: "Cascadia Code", "Fira Code", monospace; /* 人性化、护眼等宽字体 */
-  font-size: 16px; /* 字体优化为护眼阅读大小 */
-  line-height: 1.75; /* 行距改进，便于快速扫描代码段 */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4); /* 柔和阴影，不干扰主体 */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* 低调细线边框，强调代码块区域 */
-  overflow-x: auto; /* 防止长代码溢出 */
-  transition: background-color 0.3s, box-shadow 0.3s; /* 动效更平滑，减少干扰 */
+  background-color: #1a1d23; /* 深色护眼背景 */
+  color: #d8dee9; /* 字体颜色柔和 */
+  padding: 20px;
+  border-radius: 16px; /* 圆角设计增加柔和感 */
+  font-family: "Cascadia Code", "Fira Code", monospace; /* 护眼等宽字体 */
+  font-size: 16px; /* 易于阅读的字体大小 */
+  line-height: 1.75; /* 行距优化 */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4); /* 柔和阴影 */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* 精细的边框 */
+  overflow-x: auto; /* 横向滚动 */
 }
 
-/* 鼠标悬停效果 */
-pre:hover {
-  background-color: #23272e; /* 鼠标悬停时浅暗，给出交互感 */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* 鼠标悬停时阴影稍增强，层次分明 */
+/* 行号样式 */
+pre .line-numbers {
+  display: inline-block;
+  width: 40px; /* 宽度适中 */
+  color: #616e88; /* 浅灰护眼色 */
+  text-align: right; /* 行号右对齐 */
+  padding-right: 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08); /* 分割线 */
+  font-size: 14px; /* 行号兼容更小字体 */
+  font-weight: 400; /* 稍轻行号，不喧宾夺主 */
 }
 
-/* 滚动条优化：保持现代美感 */
-pre::-webkit-scrollbar {
-  height: 8px; /* 横向滚动条 */
-  width: 10px; /* 纵向滚动条 */
-}
-pre::-webkit-scrollbar-thumb {
-  background-color: #4b4f5a; /* 滚动条颜色，与整体配色融合 */
-  border-radius: 5px; /* 滚动条圆角增添舒适感 */
-}
-pre::-webkit-scrollbar-track {
-  background-color: #1a1d23; /* 滚动条轨道与代码块背景一致 */
-}
-
-/* 代码高亮配色 - 基础样式 */
-code {
-  color: inherit; /* 默认继承代码块颜色 */
-  font-family: inherit; /* 字体继承代码块样式 */
-  font-weight: 500; /* 字体稍加权重，减少内容混乱 */
-}
-
-/* 语法高亮-关键词 */
+/* 语法高亮规则 */
 .keyword {
-  color: #88c0d0; /* 柔和蓝色关键词，清晰视觉引导 */
-  font-weight: 600; /* 加权，突出重要性 */
+  color: #88c0d0; /* 蓝色关键词 */
+  font-weight: bold;
 }
 
-/* 语法高亮-字符串 */
 .string {
-  color: #a3be8c; /* 柔和绿色字符串，集中注意力 */
+  color: #a3be8c; /* 浅绿色字符串 */
 }
 
-/* 语法高亮-函数名 */
 .function {
-  color: #5e81ac; /* 深蓝函数名，内容主次分明 */
+  color: #5e81ac; /* 深蓝函数名 */
 }
 
-/* 语法高亮-注释 */
 .comment {
-  color: #616e88; /* 稍淡灰色注释，避免干扰理解 */
-  font-style: italic; /* 斜体弱化非重要信息 */
+  color: #616e88; /* 灰色注释 */
+  font-style: italic;
 }
 
-/* 代码块标题样式 */
-.code-title {
-  background-color: #23272e; /* 标题浅暗背景色 */
-  color: #d8dee9; /* 浅明文字，便于说明 */
-  font-size: 15px; /* 标题大小适中，突显作用 */
-  font-weight: bold; /* 加粗字体说明 */
-  padding: 12px 18px; /* 标题内边距 */
-  border-radius: 16px 16px 0 0; /* 顶端圆角与代码块整体保持一致 */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 分割清晰 */
+/* 自动复制按钮样式 */
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #4b4f5a; /* 按钮背景颜色 */
+  color: #d8dee9; /* 按钮文字颜色 */
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.copy-btn:hover {
+  background-color: #5e81ac; /* 鼠标悬停时颜色 */
+  transform: scale(1.05);
+}
+
+.copy-btn:active {
+  background-color: #4c566a; /* 按下按钮时颜色 */
 }
