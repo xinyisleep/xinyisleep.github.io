@@ -1,54 +1,67 @@
-/* 代码块整体样式 */
+/* 优化暗色代码块主体 */
 pre {
-  background-color: #1E1E2F; /* 优雅的深暗背景，专业且舒适 */
-  color: #C7D5E0; /* 字体颜色柔和，眼睛友好 */
-  padding: 16px; /* 留白更舒适 */
-  border-radius: 12px; /* 更大的圆角，增加现代感 */
+  background-color: #131722; /* 深邃背景，轻微蓝调，科技感强 */
+  color: #dcdfe4; /* 字体颜色柔和，不刺眼 */
+  padding: 20px; /* 内边距宽敞，布局更舒适 */
+  border-radius: 14px; /* 圆角设计大方优雅 */
+  font-family: "JetBrains Mono", "Fira Code", monospace; /* 专业等宽字体，高颜值 */
+  font-size: 16px; /* 字体适中，阅读无压力 */
+  line-height: 1.9; /* 行距舒适，快速扫描代码 */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* 立体感优雅的深阴影 */
+  border: 1px solid rgba(255, 255, 255, 0.08); /* 细腻低调的边框 */
   overflow-x: auto; /* 启用横向滚动条 */
-  font-family: "Fira Code", Consolas, Monaco, monospace; /* 更流畅美观的等宽编程字体 */
-  font-size: 15px; /* 字体大小适中，提升阅读体验 */
-  line-height: 1.8; /* 行高增加，便于阅读 */
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); /* 美观的深阴影，增加立体感 */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* 优雅的边框，不显突兀 */
-  transition: background-color 0.3s, box-shadow 0.3s; /* 鼠标悬浮效果平滑 */
+  transition: background-color 0.4s, box-shadow 0.4s; /* 鼠标交互体验更平滑 */
 }
 
-/* 鼠标悬停时代码块样式变化 */
+/* 鼠标悬停时的增强效果 */
 pre:hover {
-  background-color: #24243A; /* 背景稍加明亮，突出显示 */
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6); /* 增强阴影效果 */
+  background-color: #202738; /* 背景色略加明亮，层次突出 */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7); /* 阴影加深，视觉更吸引 */
 }
 
 /* 滚动条样式优化 */
 pre::-webkit-scrollbar {
   width: 10px; /* 滚动条宽度 */
 }
-
 pre::-webkit-scrollbar-thumb {
-  background-color: #4E5A65; /* 滚动条颜色 */
-  border-radius: 5px; /* 圆角修饰 */
+  background-color: #3a3f4b; /* 滚动条颜色，显得协调低调 */
+  border-radius: 6px; /* 圆角过渡细腻 */
 }
-
 pre::-webkit-scrollbar-track {
-  background-color: #1E1E2F; /* 滚动条轨道颜色，与背景一致 */
+  background-color: #131722; /* 滚动条轨道颜色，与背景融合 */
 }
 
-/* 内联代码的样式优化 */
-code {
-  background-color: rgba(255, 255, 255, 0.1); /* 内联代码背景稍突出 */
-  color: #FF79C6; /* 内联代码强调色（粉红色是流行配色方案） */
-  padding: 2px 6px; /* 适度留白更舒适 */
-  border-radius: 6px; /* 圆角更美观 */
-  font-weight: 500; /* 内联代码文字加权，突出显示 */
+/* 为代码语法支持基础关键字高亮(可生成更复杂语法配置) */
+pre code {
+  color: inherit; /* 保持代码块的主要颜色 */
+  font-family: inherit; /* 字体继承 */
+  font-weight: 500; /* 适度加粗，层次分明 */
 }
 
-/* 可选：为代码块加标题样式 */
+pre code .keyword {
+  color: #ff7b72; /* 关键词高亮（红色偏橙） */
+  font-weight: 600; /* 突出关键词更明显 */
+}
+
+pre code .string {
+  color: #bafc83; /* 字符串高亮（浅绿） */
+}
+
+pre code .function {
+  color: #79c0ff; /* 函数高亮（蓝色） */
+}
+
+pre code .comment {
+  color: #8b949e; /* 注释淡化，更不抢眼 */
+}
+
+/* 标题样式：为代码块附加模块说明 */
 .code-title {
-  font-size: 14px; /* 标题字体大小 */
-  font-weight: bold; /* 字体加粗 */
-  color: #C7D5E0; /* 和代码块文字颜色一致 */
-  background-color: #2A2A40; /* 标题背景色稍浅，便于区分 */
-  padding: 8px 12px; /* 标题内容内边距 */
-  border-radius: 12px 12px 0 0; /* 标题的圆角更连贯 */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 标题与代码块分割线 */
+  font-size: 15px; /* 标题字体大小，略大于主体 */
+  font-weight: 600; /* 加粗标题文字 */
+  color: #e4e6eb; /* 标题文字颜色更贴近白色 */
+  background-color: #202738; /* 标题背景轻亮暗色 */
+  padding: 10px 16px; /* 标题内容留白更舒适 */
+  border-radius: 14px 14px 0 0; /* 圆角与代码块一致性 */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* 标题底部分割线 */
 }
