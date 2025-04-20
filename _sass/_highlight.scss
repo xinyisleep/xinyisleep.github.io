@@ -1,28 +1,12 @@
-//pre {
-//  background-color: #212326; /* IDE 样式黑色背景 */
-//  color: #d4d4d4; /* 默认字体颜色 */
-//  padding: 15px;
-//  border-radius: 5px;
-//  overflow-x: auto;
-//  font-family: Menlo, "Meslo LG", monospace; /* 等宽字体 */
-//  font-size: 14px;
-//}
-///* 关键字高亮 */
-//.keyword { color: #569cd6; }
-///* 字符串高亮 */
-//.string { color: #ce9178; }
-///* 数字高亮 */
-//.number { color: #b5cea8; }
-///* 注释高亮 */
-//.comment { color: #6a9955; font-style: italic; }
-///* 函数名高亮 */
-//.function { color: #dcdcaa; }
-///* 操作符高亮 */
-//.operator { color: #d4d4d4; }
-//弄耸呢
+pre {
+  background-color: #212326; /* IDE 样式黑色背景 */
+  //color: #d4d4d4; /* 默认字体颜色 */
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  //font-family: Menlo, "Meslo LG", monospace; /* 等宽字体 */
+  font-size: 14px;
 
-div[class="language-java highlighter-rouge"],
-pre[class="language-java highlighter-rouge"] {
   color: #c5c8c6;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
@@ -42,21 +26,33 @@ pre[class="language-java highlighter-rouge"] {
   -ms-hyphens: none;
   hyphens: none;
 }
+/* 关键字高亮 */
+.keyword { color: #569cd6; }
+/* 字符串高亮 */
+.string { color: #ce9178; }
+/* 数字高亮 */
+.number { color: #b5cea8; }
+/* 注释高亮 */
+.comment { color: #6a9955; font-style: italic; }
+/* 函数名高亮 */
+.function { color: #dcdcaa; }
+/* 操作符高亮 */
+.operator { color: #d4d4d4; }
+//弄耸呢
 
-/* Code blocks */
-pre[class="highlight"] {
+pre {
   padding: 1em;
   margin: .5em 0;
   overflow: auto;
 }
 
-:not(pre) > code[class="language-java highlighter-rouge"],
-pre[class="language-java highlighter-rouge"] {
+:not(pre) > code,
+pre {
   background: #1d1f21;
 }
 
 /* Inline code */
-:not(pre) > code[class="language-java highlighter-rouge"] {
+:not(pre) > code {
   padding: .1em;
   border-radius: .3em;
 }
