@@ -3,16 +3,15 @@ layout: default
 title: Home
 ---
 
-<main role="main" aria-label="Main content">
+<main class="main-content" role="main" aria-label="Main content">
+  <!-- Blog Catalogue Section -->
   <section class="catalogue" itemscope itemtype="http://schema.org/Blog">
     {% for post in paginator.posts %}
     <article class="catalogue-item" itemscope itemtype="http://schema.org/Article">
       <a href="{{ post.url | relative_url }}" class="catalogue-link" aria-label="Read {{ post.title }}">
         <header class="catalogue-header">
-          <time datetime="{{ post.date | date_to_xmlschema }}"
-                class="catalogue-time"
-                itemprop="datePublished">
-            {{ post.date | date: "%B %d, %Y" }}
+          <time datetime="{{ post.date | date_to_xmlschema }}" class="catalogue-time" itemprop="datePublished">
+            {{ post.date | date: "%b %d, %Y" }}
           </time>
           <h2 class="catalogue-title" itemprop="headline">
             {{ post.title | escape }}
@@ -20,12 +19,12 @@ title: Home
         </header>
 
         <p class="catalogue-summary" itemprop="description">
-          {% if post.excerpt %}
           {{ post.excerpt | strip_html | truncate: 120 }}
-          {% else %}
-          {{ post.content | strip_html | truncate: 120 }}
-          {% endif %}
         </p>
+
+        <footer class="catalogue-footer">
+          <span class="read-more">Read More →</span>
+        </footer>
 
         <meta itemprop="url" content="{{ post.url | absolute_url }}">
       </a>
@@ -33,26 +32,25 @@ title: Home
     {% endfor %}
   </section>
 
+  <!-- Pagination -->
   <nav class="pagination" role="navigation" aria-label="Pagination">
     {% if paginator.previous_page %}
     <a href="{{ paginator.previous_page_path | relative_url }}"
        class="pagination-arrow prev"
        aria-label="Previous page">
-      ← <span class="sr-only">Previous</span>
+      ← <span>Prev</span>
     </a>
     {% endif %}
 
     <span class="pagination-current" aria-current="page">
-      <span class="current-page">{{ paginator.page }}</span>
-      <span class="divider">/</span>
-      <span class="total-pages">{{ paginator.total_pages }}</span>
+      Page <strong>{{ paginator.page }}</strong> / {{ paginator.total_pages }}
     </span>
 
     {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path | relative_url }}"
        class="pagination-arrow next"
        aria-label="Next page">
-      → <span class="sr-only">Next</span>
+      <span>Next</span> →
     </a>
     {% endif %}
   </nav>

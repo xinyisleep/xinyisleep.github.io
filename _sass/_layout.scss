@@ -1,91 +1,89 @@
-.container {
-  margin: 0 auto;
+/* Overall Layout */
+.main-content {
   max-width: 800px;
-  width: 80%;
-}
-
-main,
-footer,
-.nav-container {
   margin: 0 auto;
-  max-width: 800px;
-  width: 80%;
+  padding: 2rem 1rem;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.8;
+  color: #444;
 }
 
-.nav {
-  box-shadow: 0 2px 2px -2px $shadow-color;
-  overflow: auto;
-
-  &-container {
-    margin: 1rem auto;
-    position: relative;
-    text-align: center;
-  }
-
-  &-title {
-    @include transition(all .2s ease-out);
-    color: $default-color;
-    display: inline-block;
-    margin: 0;
-    padding-right: .2rem;
-
-    &:hover,
-    &:focus {
-      opacity: .6;
-    }
-  }
-
-  ul {
-    list-style-type: none;
-    margin: 1rem 0 0;
-    padding: 0;
-    text-align: center;
-  }
-
-  li {
-    @include transition(all .2s ease-out);
-    color: $default-color;
-    display: inline-block;
-    opacity: .6;
-    padding: 0 2rem 0 0;
-
-    &:last-child {
-      padding-right: 0;
-    }
-
-    &:hover,
-    &:focus {
-      opacity: 1;
-    }
-  }
-
-  a {
-    color: $default-color;
-    font-family: $sans-font;
-  }
+/* Blog Catalogue */
+.catalogue {
+  display: grid;
+  gap: 2rem;
 }
 
-@media (min-width: 600px) {
-  .nav {
-    &-container {
-      text-align: left;
-    }
-
-    ul {
-      bottom: 0;
-      position: absolute;
-      right: 0;
-    }
-  }
+.catalogue-item {
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 1.5rem;
 }
 
-footer {
-  font-family: $palatino;
-  padding: 2rem 0;
-  text-align: center;
+.catalogue-link {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s, background-color 0.3s;
+}
 
-  span {
-    color: $default-color;
-    font-size: .8rem;
-  }
+.catalogue-link:hover {
+  background: #f9f9f9;
+}
+
+.catalogue-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalogue-time {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 0.25rem;
+}
+
+.catalogue-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.catalogue-summary {
+  font-size: 1rem;
+  color: #666;
+  margin: 0.5rem 0 1rem;
+}
+
+.catalogue-footer .read-more {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #0077cc;
+  text-transform: uppercase;
+}
+
+.catalogue-footer .read-more:hover {
+  color: #005999;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+.pagination-arrow {
+  text-decoration: none;
+  color: #0077cc;
+  margin: 0 1rem;
+  font-weight: bold;
+}
+
+.pagination-arrow:hover {
+  color: #005999;
+}
+
+.pagination-current {
+  font-size: 0.9rem;
+  color: #555;
 }
