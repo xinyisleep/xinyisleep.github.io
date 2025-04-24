@@ -1,29 +1,32 @@
 ---
 layout: default
 ---
-<div class="post">
-  <div class="post-info">
-    <span>bypass{{ page.author }}</span>
-    {% if page.date %}
-      <br>
-      <span>on&nbsp;</span><time datetime="{{ page.date }}">{{ page.date | date: "%B %d, %Y" }}</time>
-    {% endif %}
-  </div>
 
-  <h1 class="post-title">{{ page.title }}</h1>
-  <div class="post-line"></div>
+<article class="post">
+  <header class="post-header">
+    <p class="post-author">
+      <span>by {{ page.author }}</span>
+      {% if page.date %}
+      <span> &bull; </span>
+      <time datetime="{{ page.date }}">{{ page.date | date: "%B %d, %Y" }}</time>
+      {% endif %}
+    </p>
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
+
+  <hr class="post-divider">
+
   <div class="post-content">
-  {{ content }}
+    {{ content }}
   </div>
-</div>
+</article>
 
-<div class="pagination">
-  {% if page.next.url %}
-    <a href="{{ page.next.url | prepend: site.url }}" class="left arrow">&#8592;</a>
-  {% endif %}
+<nav class="post-navigation">
   {% if page.previous.url %}
-    <a href="{{ page.previous.url | prepend: site.url }}" class="right arrow">&#8594;</a>
+  <a href="{{ page.previous.url | prepend: site.url }}" class="nav-link prev" title="Previous Post">&#x25C0; Previous</a>
   {% endif %}
-
-  <a href="#" class="top">Top</a>
-</div>
+  {% if page.next.url %}
+  <a href="{{ page.next.url | prepend: site.url }}" class="nav-link next" title="Next Post">Next &#x25B6;</a>
+  {% endif %}
+  <a href="#" class="nav-link top" title="Go to top">↑ Top</a>
+</nav>
