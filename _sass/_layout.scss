@@ -1,69 +1,91 @@
-/* 全局样式 */
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.5;
-  color: #333;
-  background-color: #fff;
-  margin: 0;
-  padding: 0;
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 80%;
 }
 
-/* 主内容区域 */
-main {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 0 15px;
+main,
+footer,
+.nav-container {
+  margin: 0 auto;
+  max-width: 800px;
+  width: 80%;
 }
 
-/* 文章部分 */
-article {
-  margin-bottom: 25px;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 15px;
+.nav {
+  box-shadow: 0 2px 2px -2px $shadow-color;
+  overflow: auto;
+
+  &-container {
+    margin: 1rem auto;
+    position: relative;
+    text-align: center;
+  }
+
+  &-title {
+    @include transition(all .2s ease-out);
+    color: $default-color;
+    display: inline-block;
+    margin: 0;
+    padding-right: .2rem;
+
+    &:hover,
+    &:focus {
+      opacity: .6;
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  li {
+    @include transition(all .2s ease-out);
+    color: $default-color;
+    display: inline-block;
+    opacity: .6;
+    padding: 0 2rem 0 0;
+
+    &:last-child {
+      padding-right: 0;
+    }
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  a {
+    color: $default-color;
+    font-family: $sans-font;
+  }
 }
 
-article:last-child {
-  border-bottom: none;
+@media (min-width: 600px) {
+  .nav {
+    &-container {
+      text-align: left;
+    }
+
+    ul {
+      bottom: 0;
+      position: absolute;
+      right: 0;
+    }
+  }
 }
 
-a {
-  text-decoration: none;
-  color: #007acc; /* 一个清爽的蓝色 */
-}
+footer {
+  font-family: $palatino;
+  padding: 2rem 0;
+  text-align: center;
 
-a:hover {
-  color: #005799; /* 悬停时稍微变深，突显交互 */
-}
-
-h2 {
-  font-size: 1.25rem;
-  margin: 0 0 10px;
-  color: #222;
-}
-
-p {
-  font-size: 0.9rem;
-  color: #555;
-  margin: 0 0 10px;
-}
-
-time {
-  font-size: 0.85rem;
-  color: #888;
-}
-
-/* 分页导航 */
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.pagination a {
-  font-size: 0.9rem;
-  color: #007acc;
-}
-
-.pagination a:hover {
-  color: #005799;
+  span {
+    color: $default-color;
+    font-size: .8rem;
+  }
 }
