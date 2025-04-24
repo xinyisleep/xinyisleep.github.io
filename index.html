@@ -3,30 +3,30 @@ layout: default
 title: Home
 ---
 
-<main class="main-content" role="main" aria-label="Main content">
-  <!-- Blog Catalogue Section -->
+<main class="content" role="main" aria-label="Main content">
+  <!-- Blog Section -->
   <section class="catalogue" itemscope itemtype="http://schema.org/Blog">
     {% for post in paginator.posts %}
     <article class="catalogue-item" itemscope itemtype="http://schema.org/Article">
       <a href="{{ post.url | relative_url }}" class="catalogue-link" aria-label="Read {{ post.title }}">
-        <header class="catalogue-header">
-          <time datetime="{{ post.date | date_to_xmlschema }}" class="catalogue-time" itemprop="datePublished">
-            {{ post.date | date: "%b %d, %Y" }}
+        <div class="catalogue-thumbnail">
+          <img src="{{ post.thumbnail | relative_url }}" alt="{{ post.title }}" loading="lazy" />
+        </div>
+        <div class="catalogue-content">
+          <time datetime="{{ post.date | date_to_xmlschema }}" class="catalogue-date" itemprop="datePublished">
+            {{ post.date | date: "%B %d, %Y" }}
           </time>
           <h2 class="catalogue-title" itemprop="headline">
             {{ post.title | escape }}
           </h2>
-        </header>
-
-        <p class="catalogue-summary" itemprop="description">
-          {{ post.excerpt | strip_html | truncate: 120 }}
-        </p>
-
-        <footer class="catalogue-footer">
-          <span class="read-more">Read More →</span>
-        </footer>
-
-        <meta itemprop="url" content="{{ post.url | absolute_url }}">
+          <p class="catalogue-summary" itemprop="description">
+            {% if post.excerpt %}
+            {{ post.excerpt | strip_html | truncate: 100 }}
+            {% else %}
+            {{ post.content | strip_html | truncate: 100 }}
+            {% endif %}
+          </p>
+        </div>
       </a>
     </article>
     {% endfor %}
@@ -35,22 +35,18 @@ title: Home
   <!-- Pagination -->
   <nav class="pagination" role="navigation" aria-label="Pagination">
     {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}"
-       class="pagination-arrow prev"
-       aria-label="Previous page">
-      ← <span>Prev</span>
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link prev" aria-label="Previous page">
+      ← Previous
     </a>
     {% endif %}
 
-    <span class="pagination-current" aria-current="page">
-      Page <strong>{{ paginator.page }}</strong> / {{ paginator.total_pages }}
+    <span class="pagination-current">
+      Page <span class="current">{{ paginator.page }}</span> of <span class="total">{{ paginator.total_pages }}</span>
     </span>
 
     {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}"
-       class="pagination-arrow next"
-       aria-label="Next page">
-      <span>Next</span> →
+    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link next" aria-label="Next page">
+      Next →
     </a>
     {% endif %}
   </nav>

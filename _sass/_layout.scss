@@ -1,89 +1,95 @@
-/* Overall Layout */
-.main-content {
-  max-width: 800px;
+/* Layout */
+.content {
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  font-family: 'Inter', sans-serif;
-  line-height: 1.8;
-  color: #444;
+  padding: 20px 15px;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
 }
 
-/* Blog Catalogue */
+/* Blog Section */
 .catalogue {
   display: grid;
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .catalogue-item {
-  border-bottom: 1px solid #ececec;
-  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.catalogue-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .catalogue-link {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s, background-color 0.3s;
 }
 
-.catalogue-link:hover {
-  background: #f9f9f9;
+.catalogue-thumbnail img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
 }
 
-.catalogue-header {
-  display: flex;
-  flex-direction: column;
+.catalogue-content {
+  padding: 20px 15px;
 }
 
-.catalogue-time {
+.catalogue-date {
   font-size: 0.85rem;
   color: #888;
-  margin-bottom: 0.25rem;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .catalogue-title {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: bold;
   color: #333;
+  margin: 0 0 10px;
 }
 
 .catalogue-summary {
   font-size: 1rem;
-  color: #666;
-  margin: 0.5rem 0 1rem;
-}
-
-.catalogue-footer .read-more {
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #0077cc;
-  text-transform: uppercase;
-}
-
-.catalogue-footer .read-more:hover {
-  color: #005999;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* Pagination */
 .pagination {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-}
-
-.pagination-arrow {
-  text-decoration: none;
-  color: #0077cc;
-  margin: 0 1rem;
+  gap: 10px;
+  margin-top: 30px;
+  font-size: 1rem;
   font-weight: bold;
+  color: #007aff;
 }
 
-.pagination-arrow:hover {
-  color: #005999;
+.pagination-link {
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+.pagination-link:hover {
+  color: #005bb5;
+  background-color: #f1f1f1;
+  border-color: #ddd;
 }
 
 .pagination-current {
-  font-size: 0.9rem;
-  color: #555;
+  color: #444;
 }
