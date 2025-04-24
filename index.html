@@ -3,11 +3,10 @@ layout: default
 title: Home
 ---
 
-
 <main role="main" aria-label="Main content">
   <section class="catalogue" itemscope itemtype="http://schema.org/Blog">
     {% for post in paginator.posts %}
-    <article class="catalogue-item" role="article" itemscope itemtype="http://schema.org/Article">
+    <article class="catalogue-item" itemscope itemtype="http://schema.org/Article">
       <a href="{{ post.url | relative_url }}" class="catalogue-link" aria-label="Read {{ post.title }}">
         <header class="catalogue-header">
           <time datetime="{{ post.date | date_to_xmlschema }}"
@@ -20,13 +19,13 @@ title: Home
           </h2>
         </header>
 
-        <div class="catalogue-summary" itemprop="description">
+        <p class="catalogue-summary" itemprop="description">
           {% if post.excerpt %}
           {{ post.excerpt | strip_html | truncate: 120 }}
           {% else %}
           {{ post.content | strip_html | truncate: 120 }}
           {% endif %}
-        </div>
+        </p>
 
         <meta itemprop="url" content="{{ post.url | absolute_url }}">
       </a>
@@ -44,11 +43,10 @@ title: Home
     {% endif %}
 
     <span class="pagination-current" aria-current="page">
-  <span class="current">{{ paginator.page }}</span>
-  <span class="separator">/</span>
-  <span class="total">{{ paginator.total_pages }}</span>
-</span>
-
+      <span class="current-page">{{ paginator.page }}</span>
+      <span class="divider">/</span>
+      <span class="total-pages">{{ paginator.total_pages }}</span>
+    </span>
 
     {% if paginator.next_page %}
     <a href="{{ paginator.next_page_path | relative_url }}"
