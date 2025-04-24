@@ -1,70 +1,69 @@
 /* 全局样式 */
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
   color: #333;
-  background-color: #fafafa;
+  background-color: #fff;
   margin: 0;
   padding: 0;
 }
 
-/* 主体内容区 */
-.blog-list {
-  max-width: 650px;
-  margin: 40px auto;
+/* 主内容区域 */
+main {
+  max-width: 700px;
+  margin: 30px auto;
   padding: 0 15px;
 }
 
-/* 单篇文章样式 */
-.post-item {
-  margin-bottom: 40px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
+/* 文章部分 */
+article {
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
 }
 
-.post-link {
+article:last-child {
+  border-bottom: none;
+}
+
+a {
   text-decoration: none;
-  color: inherit;
+  color: #007acc; /* 一个清爽的蓝色 */
 }
 
-.post-title {
-  font-size: 1.5rem;
+a:hover {
+  color: #005799; /* 悬停时稍微变深，突显交互 */
+}
+
+h2 {
+  font-size: 1.25rem;
   margin: 0 0 10px;
   color: #222;
 }
 
-.post-title:hover {
-  color: #0077cc;
-}
-
-.post-excerpt {
-  font-size: 1rem;
-  margin: 0 0 10px;
+p {
+  font-size: 0.9rem;
   color: #555;
+  margin: 0 0 10px;
 }
 
-.post-date {
-  font-size: 0.875rem;
+time {
+  font-size: 0.85rem;
   color: #888;
 }
 
-/* 分页样式 */
+/* 分页导航 */
 .pagination {
   display: flex;
   justify-content: space-between;
-  margin: 30px auto 0;
-  max-width: 650px;
-  padding: 0 15px;
+  margin-top: 20px;
 }
 
-.pagination-prev,
-.pagination-next {
-  text-decoration: none;
-  color: #0077cc;
-  font-size: 0.875rem;
+.pagination a {
+  font-size: 0.9rem;
+  color: #007acc;
 }
 
-.pagination-prev:hover,
-.pagination-next:hover {
-  color: #0056a3;
+.pagination a:hover {
+  color: #005799;
 }

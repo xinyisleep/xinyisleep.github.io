@@ -3,15 +3,15 @@ layout: default
 title: Home
 ---
 
-<main role="main" class="blog-list">
+<main role="main">
   {% for post in paginator.posts %}
-  <article class="post-item">
-    <a href="{{ post.url | relative_url }}" class="post-link">
-      <h2 class="post-title">{{ post.title }}</h2>
-      <p class="post-excerpt">
+  <article>
+    <a href="{{ post.url | relative_url }}">
+      <h2>{{ post.title }}</h2>
+      <p>
         {{ post.excerpt | strip_html | truncate: 100 }}
       </p>
-      <time datetime="{{ post.date | date: "%Y-%m-%d" }}" class="post-date">
+      <time datetime="{{ post.date | date: "%Y-%m-%d" }}">
       {{ post.date | date: "%B %d, %Y" }}
       </time>
     </a>
@@ -20,10 +20,10 @@ title: Home
 
   <nav class="pagination" role="navigation">
     {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-prev">← Newer Posts</a>
+    <a href="{{ paginator.previous_page_path | relative_url }}">← Newer Posts</a>
     {% endif %}
     {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-next">Older Posts →</a>
+    <a href="{{ paginator.next_page_path | relative_url }}">Older Posts →</a>
     {% endif %}
   </nav>
 </main>
