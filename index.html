@@ -3,51 +3,27 @@ layout: default
 title: Home
 ---
 
-<main class="content" role="main" aria-label="Main content">
-  <!-- Blog Section -->
-  <section class="catalogue" itemscope itemtype="http://schema.org/Blog">
-    {% for post in paginator.posts %}
-    <article class="catalogue-item" itemscope itemtype="http://schema.org/Article">
-      <a href="{{ post.url | relative_url }}" class="catalogue-link" aria-label="Read {{ post.title }}">
-        <div class="catalogue-thumbnail">
-          <img src="{{ post.thumbnail | relative_url }}" alt="{{ post.title }}" loading="lazy" />
-        </div>
-        <div class="catalogue-content">
-          <time datetime="{{ post.date | date_to_xmlschema }}" class="catalogue-date" itemprop="datePublished">
-            {{ post.date | date: "%B %d, %Y" }}
-          </time>
-          <h2 class="catalogue-title" itemprop="headline">
-            {{ post.title | escape }}
-          </h2>
-          <p class="catalogue-summary" itemprop="description">
-            {% if post.excerpt %}
-            {{ post.excerpt | strip_html | truncate: 100 }}
-            {% else %}
-            {{ post.content | strip_html | truncate: 100 }}
-            {% endif %}
-          </p>
-        </div>
-      </a>
-    </article>
-    {% endfor %}
-  </section>
+<main role="main" class="blog-list">
+  {% for post in paginator.posts %}
+  <article class="post-item">
+    <a href="{{ post.url | relative_url }}" class="post-link">
+      <h2 class="post-title">{{ post.title }}</h2>
+      <p class="post-excerpt">
+        {{ post.excerpt | strip_html | truncate: 100 }}
+      </p>
+      <time datetime="{{ post.date | date: "%Y-%m-%d" }}" class="post-date">
+      {{ post.date | date: "%B %d, %Y" }}
+      </time>
+    </a>
+  </article>
+  {% endfor %}
 
-  <!-- Pagination -->
-  <nav class="pagination" role="navigation" aria-label="Pagination">
+  <nav class="pagination" role="navigation">
     {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link prev" aria-label="Previous page">
-      ← Previous
-    </a>
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-prev">← Newer Posts</a>
     {% endif %}
-
-    <span class="pagination-current">
-      Page <span class="current">{{ paginator.page }}</span> of <span class="total">{{ paginator.total_pages }}</span>
-    </span>
-
     {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link next" aria-label="Next page">
-      Next →
-    </a>
+    <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-next">Older Posts →</a>
     {% endif %}
   </nav>
 </main>
