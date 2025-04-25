@@ -1,9 +1,102 @@
+//.container {
+//  margin: 0 auto;
+//  max-width: 800px;
+//  width: 80%;
+//}
+//
+//main,
+//footer,
+//.nav-container {
+//  margin: 0 auto;
+//  max-width: 800px;
+//  width: 80%;
+//}
+//
+//.nav {
+//  box-shadow: 0 2px 2px -2px $shadow-color;
+//  overflow: auto;
+//
+//  &-container {
+//    margin: 1rem auto;
+//    position: relative;
+//    text-align: center;
+//  }
+//
+//  &-title {
+//    @include transition(all .2s ease-out);
+//    color: $default-color;
+//    display: inline-block;
+//    margin: 0;
+//    padding-right: .2rem;
+//
+//    &:hover,
+//    &:focus {
+//      opacity: .6;
+//    }
+//  }
+//
+//  ul {
+//    list-style-type: none;
+//    margin: 1rem 0 0;
+//    padding: 0;
+//    text-align: center;
+//  }
+//
+//  li {
+//    @include transition(all .2s ease-out);
+//    color: $default-color;
+//    display: inline-block;
+//    opacity: .6;
+//    padding: 0 2rem 0 0;
+//
+//    &:last-child {
+//      padding-right: 0;
+//    }
+//
+//    &:hover,
+//    &:focus {
+//      opacity: 1;
+//    }
+//  }
+//
+//  a {
+//    color: $default-color;
+//    font-family: $sans-font;
+//  }
+//}
+//
+//@media (min-width: 600px) {
+//  .nav {
+//    &-container {
+//      text-align: left;
+//    }
+//
+//    ul {
+//      bottom: 0;
+//      position: absolute;
+//      right: 0;
+//    }
+//  }
+//}
+//
+//footer {
+//  font-family: $palatino;
+//  padding: 2rem 0;
+//  text-align: center;
+//
+//  span {
+//    color: $default-color;
+//    font-size: .8rem;
+//  }
+//}
+/* 简约容器样式 */
 .container {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 800px; /* 最大内容宽度 */
   width: 80%;
 }
 
+/* 布局样式 */
 main,
 footer,
 .nav-container {
@@ -12,9 +105,10 @@ footer,
   width: 80%;
 }
 
+/* 导航栏样式 */
 .nav {
-  box-shadow: 0 2px 2px -2px $shadow-color;
-  overflow: auto;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.2); /* 替换$shadow-color */
+  overflow: auto; /* 没有定义时设置默认值 */
 
   &-container {
     margin: 1rem auto;
@@ -23,30 +117,30 @@ footer,
   }
 
   &-title {
-    @include transition(all .2s ease-out);
-    color: $default-color;
+    transition: all 0.2s ease-out; /* 替换SASS @include */
+    color: #333; /* 替换 $default-color */
     display: inline-block;
     margin: 0;
-    padding-right: .2rem;
+    padding-right: 0.2rem;
 
     &:hover,
     &:focus {
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 
   ul {
-    list-style-type: none;
+    list-style-type: none; /* 去除默认列表样式 */
     margin: 1rem 0 0;
     padding: 0;
     text-align: center;
   }
 
   li {
-    @include transition(all .2s ease-out);
-    color: $default-color;
+    transition: all 0.2s ease-out; /* 替换SASS @include */
+    color: #333; /* 替换成具体颜色 */
     display: inline-block;
-    opacity: .6;
+    opacity: 0.6;
     padding: 0 2rem 0 0;
 
     &:last-child {
@@ -60,11 +154,13 @@ footer,
   }
 
   a {
-    color: $default-color;
-    font-family: $sans-font;
+    color: #333; /* 替换成具体颜色 */
+    font-family: Arial, sans-serif; /* 替换SASS变量 $sans-font */
   }
 }
 
+
+/* 增强导航栏适配体验 */
 @media (min-width: 600px) {
   .nav {
     &-container {
@@ -79,13 +175,14 @@ footer,
   }
 }
 
+/* 页脚样式 */
 footer {
-  font-family: $palatino;
+  font-family: Georgia, serif; /* 替换SASS变量 $palatino */
   padding: 2rem 0;
   text-align: center;
 
   span {
-    color: $default-color;
-    font-size: .8rem;
+    color: #333; /* 替换成具体颜色 */
+    font-size: 0.8rem;
   }
 }
