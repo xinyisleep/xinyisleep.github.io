@@ -11,10 +11,9 @@ category: Java
 之前我们讲了1.2.24的利用，但是在1.2.25版本开始引入了一个修复这个修复大体一直延续到最新版，
 autoTypeSupport这个属性默认是false,会进行黑名单和白名单的检测，说到这里有点懵不要紧，我们先对比一下1.2.24和1.2.25的修复区别是什么(图一，图二)。
 ```
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/1.png)
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/1.jpg)
-
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/2.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/2.png)
 
 ```
 1.2.24中是直接loadClass了，但是在1.25中以及之后执行了checkAutoType(代码一)，
@@ -117,13 +116,13 @@ ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
 静态代码块进行了实例，那么直接执行setAutoTypeSupport方法就可了。
 ```
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/3.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/3.png)
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/3.5.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/3.5.png)
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/4.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/4.png)
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/5.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/5.png)
 
 ```java
 
@@ -133,18 +132,18 @@ String A="{\"@type\":\"java.lang.NoSuchMethodExceptionl\",\"dataSourceName\":\"l
 JSON.parseObject(A);
 ```
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/6.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/6.png)
 
 ```
 咦，怎么报错了，这里其实有认真看上面代码一的话应该知道其实是有很名单的(图一，图二)，
 那么应该怎么办呢？我们看图三我们知道上面设置autoTypeSupport这个属性true,所以可以直接进入，并且可以看到判断
 前面是L后面是;就会截取中间的内容重新执行并且返回，就可以绕过了(代码一)。
 ```
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/7.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/7.png)
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/8.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/8.png)
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/9.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/9.png)
 
 ```java
 
@@ -158,9 +157,9 @@ JSON.parseObject(A);
 ,为了方式匹配我们把之前payload L ; 再写一遍就行了反正他会循环执行直到你前面会面没有 L ；为止(图二)，之后进入contextClassLoader.loadClass动态加载然后returm,最终payload(代码一)。
 ```
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/10.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/10.png)
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/11.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/11.png)
 
 ```java
 
@@ -175,9 +174,9 @@ JSON.parseObject(A);
 最终payload代码一
 ```
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/12.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/12.png)
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/13.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/13.png)
 
 ```java
 
@@ -204,9 +203,9 @@ org.apache.ibatis.datasource.jndi.JndiDataSourceFactory
 Properties是不是一个泛型，当然他肯定是的(图二)，并且是Object,那就爽歪歪了，所以最终payload代码一，这里可以简单思考一下是不是在图一中我们可以走到第一个lookup呢？答案是当然可以代码二。
 ```
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/14.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/14.png)
 
-![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/15.jpg)
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.25/15.png)
 
 ```java
 
