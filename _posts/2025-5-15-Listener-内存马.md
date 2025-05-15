@@ -124,7 +124,7 @@ public class ListenerWeblshell implements ServletRequestListener {
 ```
 ![](https://xinyisleep.github.io/img/2025/Webshell/Listener/7.png)
 
-<h1 id="cZYlj">三：完整Listener内存马</h1>
+<h1 id="cZYlj">三.完整Listener内存马</h1>
 
 ```
 首先获取org.apache.catalina.connector.Request的实例，在JSP中request是org.apache.catalina.connector.RequestFacade他实现了HttpServletRequest(图一,图二)，
