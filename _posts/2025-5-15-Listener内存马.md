@@ -7,7 +7,6 @@ category: Java
 ---
 <h1 id="GT0vV">一.基础信息</h1>
 
-
 ```
 在上一篇文章中我们已经简单的了解了一下Listener了，那么首先能考虑被作为内存马的是ServletRequestListener：对请求对象的初始化和销毁进行监听
 说人话就是每次请求的时候就是初始化，请求结束销毁，这一技术主要在Servlet3.0之后，并且呢tomcat7.x及以上才可以用，因为tomcat7.x在支持Servlet3.0，
