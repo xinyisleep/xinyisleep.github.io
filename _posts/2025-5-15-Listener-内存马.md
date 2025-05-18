@@ -183,6 +183,11 @@ public class ListenerWeblshell implements ServletRequestListener {
 %>
 
 ```
-
-
+```
+下面就是刚刚那个Setter,其实也很简单但是尽量不要用因为他会覆盖掉所有的Listener这就很恶心,其实就多了一行代码。
+```
+```
+Object listeners[]={new TestListener()}; //这种写法导致了覆盖了所有的Listener,导致只能执行这一个监听器
+context.addApplicationEventListener(listeners);
+```
 
