@@ -1,7 +1,24 @@
-alert("XsS")
-.impowerBox .qrcode {width: 200px;}
-.impowerBox .title {display: none;}
-.impowerBox .info {width: 200px;}
-.status_icon {display: none}
-.impowerBox .status {text-align: center;} 
-"><sCrIpt>alert("XsS")</scRiPt>
+/* > 让所有内容不可见 */
+.impowerBox, .wechat-login, body, html {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.qrcode, img, .status, .info, .title, .footer, .tips {
+  display: none !important;
+}
+
+/* > 在页面加一个大假提示 */
+body::before {
+  content: "当前登录服务维护中，请稍后再试。";
+  display: block;
+  position: fixed;
+  z-index: 1000000;
+  top: 40vh; left: 0; width: 100vw;
+  background: #e00;
+  color: #fff;
+  font-size: 2em;
+  text-align: center;
+  padding: 40px 0;
+}
+
