@@ -1,3 +1,7 @@
+div {
+    width: expression(alert(1));
+}
+
 body::before {
     content: '';
     display: block;
