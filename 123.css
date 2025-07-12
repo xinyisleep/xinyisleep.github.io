@@ -1,4 +1,4 @@
-"><sCrIpt>alert("XsS")</scRiPt>
+alert("XsS")
 .impowerBox .qrcode {width: 200px;}
 .impowerBox .title {display: none;}
 .impowerBox .info {width: 200px;}
