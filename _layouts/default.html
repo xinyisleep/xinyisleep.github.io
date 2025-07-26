@@ -27,18 +27,13 @@
     <footer>
       <span>
         &copy; <time datetime="{{ site.time }}">{{ site.time | date: '%Y' }}</time> {{ site.author.name }}.BUG
-    <div>
-        访问人数 <span id="u"></span>
-        总访问量 <span id="v"></span>
-    </div>
-    <script>
-    let uid=localStorage.i||(localStorage.u=+localStorage.u+1||1,localStorage.i='1');
-    localStorage.v=+localStorage.v+1||1;
-    //这是爱情的起点,也是XinYiSleep的起点
-    u.innerText=localStorage.u;
-    v.innerText=localStorage.v;
-    </script>
       </span>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
     </footer>
   </body>
 </html>
