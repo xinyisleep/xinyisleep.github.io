@@ -1,151 +1,235 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
+
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - 你小子</title>
-    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
-    <style>
-        /* 全局样式 */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: black; /* 黑客风黑色背景 */
-            font-family: 'Share Tech Mono', 'ZCOOL QingKe HuangYou', monospace;
-            color: #00ff00;
-        }
-
-        /* 黑客雨背景 */
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        /* 打字机文字部分 */
-        .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        .dynamic-text {
-            font-size: 2rem;
-            line-height: 2.5rem;
-        }
-
-        .return-link {
-            margin-top: 20px;
-            display: none;
-            color: #00ff00;
-            text-decoration: none;
-            font-size: 1.2rem;
-            border: 2px solid #00ff00;
-            padding: 10px 20px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .return-link:hover {
-            color: black;
-            background: #00ff00;
-            transform: scale(1.1);
-        }
-    </style>
+    <title>你小子别乱搞!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
+
 <body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-<!-- 动态黑客雨背景 -->
-<canvas id="matrix"></canvas>
+    html {
+        height: 100%;
+        overflow: hidden;
+    }
 
-<div class="content">
-    <!-- 动态打字文字 -->
-    <div class="dynamic-text" id="dynamicText"></div>
-    <!-- 返回按钮 -->
-    <a href="https://xinyisleep.github.io" class="return-link" id="returnLink">返回主页</a>
+    canvas {
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .caps {
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        animation: as 8s linear infinite;
+    }
+
+    .caps img {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    @keyframes as {
+        0% {
+            opacity: 0;
+        }
+
+        10% {
+            opacity: .3;
+        }
+
+        20% {
+            opacity: .1;
+        }
+
+        30% {
+            opacity: .5;
+        }
+
+        40% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: .8;
+        }
+
+        55% {
+            opacity: 0;
+        }
+
+        55% {
+            opacity: 0;
+        }
+    }
+
+    .frame {
+        z-index: 3;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: -moz-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 19%, rgba(0, 0, 0, 0.9) 100%);
+        /* FF3.6+ */
+        background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(19%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.9)));
+        /* Chrome,Safari4+ */
+        background: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 19%, rgba(0, 0, 0, 0.9) 100%);
+        /* Chrome10+,Safari5.1+ */
+        background: -o-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 19%, rgba(0, 0, 0, 0.9) 100%);
+        /* Opera 12+ */
+        background: -ms-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 19%, rgba(0, 0, 0, 0.9) 100%);
+        /* IE10+ */
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 19%, rgba(0, 0, 0, 0.9) 100%);
+        /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#e6000000', GradientType=1);
+        /* IE6-9 fallback on horizontal gradient */
+
+    }
+
+    .frame div {
+        position: absolute;
+        left: 0;
+        top: -20%;
+        width: 100%;
+        height: 20%;
+        background-color: rgba(0, 0, 0, .12);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        animation: asd 12s linear infinite;
+    }
+
+    .frame div:nth-child(1) {
+        animation-delay: 0;
+    }
+
+    .frame div:nth-child(2) {
+        animation-delay: 4s;
+    }
+
+    .frame div:nth-child(3) {
+        animation-delay: 8s;
+    }
+
+    @keyframes asd {
+        0% {
+            top: -20%;
+        }
+
+        100% {
+            top: 100%;
+        }
+    }
+
+    h1 {
+        z-index: 3;
+        position: absolute;
+        font: bold 200px/200px Arial, sans-serif;
+        left: 50%;
+        top: 50%;
+        margin-top: -100px;
+        width: 100%;
+        margin-left: -50%;
+        height: 200px;
+        text-align: center;
+        color: transparent;
+        text-shadow: 0 0 30px rgba(0, 0, 0, .5);
+        animation: asdd 2s linear infinite;
+    }
+
+    @media only screen and (max-width: 414px) {
+        h1 {
+            font: bold 100px/200px Arial, sans-serif;
+        }
+    }
+
+    @keyframes asdd {
+        0% {
+            text-shadow: 0 0 30px rgba(0, 0, 0, .5);
+        }
+
+        33% {
+            text-shadow: 0 0 10px rgba(0, 0, 0, .4);
+        }
+
+        66% {
+            text-shadow: 0 0 20px rgba(0, 0, 0, .2);
+        }
+
+        100% {
+            text-shadow: 0 0 40px rgba(0, 0, 0, .8);
+        }
+    }
+</style>
+<h1>XinYiSec</h1>
+<div class="frame">
+    <div></div>
+    <div></div>
+    <div></div>
 </div>
-
+<canvas id="canvas"></canvas>
 <script>
-    /* 黑客风代码雨背景 */
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-
-    // 初始化画布尺寸
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    // 定义代码雨字符
-    const matrixChars = '01ABCDEFGHIJKLMNOPQRSTUVWXYZ生命进化黑洞✓⚠☣';
-    const fontSize = 16; // 字体大小
-    const columns = canvas.width / fontSize; // 按屏幕宽度划分列数
-
-    // 每列下落的初始位置，初始化为 0
-    const drops = Array(Math.floor(columns)).fill(0);
-
-    // 绘制代码雨函数
-    function drawMatrix() {
-        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // 黑背景透明层，用于实现尾迹效果
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#00ff00'; // 绿色字符
-        ctx.font = `${fontSize}px monospace`;
-
-        for (let i = 0; i < drops.length; i++) {
-            const char = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-            ctx.fillText(char, i * fontSize, drops[i] * fontSize);
-
-            // 当字符超出屏幕，高度随机重置
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-
-            // 下落速度
-            drops[i]++;
-        }
-
-        requestAnimationFrame(drawMatrix); // 递归刷新画面
+    const RAF = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window
+        .mozRequestAnimationFrame || window.msRequestAnimationFrame || function (cb) {
+        setTimeout(cb, 1000 / 60)
     }
 
-    drawMatrix();
+    var Application = (function () {
+        var canvas;
+        var ctx;
+        var imgData;
+        var pix;
+        var WIDTH;
+        var HEIGHT;
+        var flickerInterval;
 
-    /* 打字机效果 */
-    const dynamicTextContainer = document.getElementById('dynamicText');
-    const returnLink = document.getElementById('returnLink');
+        var init = function () {
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+            canvas.width = WIDTH = Math.min(screen.width, 1920);
+            canvas.height = HEIGHT = Math.min(screen.height, 1080);
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, WIDTH, HEIGHT);
+            ctx.fill();
+            imgData = ctx.getImageData(0, 0, WIDTH, HEIGHT);
+            pix = imgData.data;
+            // flickerInterval = setInterval(flickering, 30);
+            RAF(flickering)
+        };
 
-    const text = [
-        "错误 404",
-        "你小子想干嘛,快快退下。",
-        "回到主页。"
-    ];
-
-    let charIndex = 0;    // 当前字符索引
-    let lineIndex = 0;    // 当前行索引
-
-    function typeText() {
-        if (lineIndex < text.length) {
-            const currentLine = text[lineIndex];
-            if (charIndex < currentLine.length) {
-                dynamicTextContainer.innerHTML += currentLine[charIndex];
-                charIndex++;
-                setTimeout(typeText, 150); // 每个字符显示间隔
-            } else {
-                dynamicTextContainer.innerHTML += "<br>"; // 换行
-                charIndex = 0;
-                lineIndex++;
-                setTimeout(typeText, 500); // 每行结束后的等待时间
+        var flickering = function () {
+            for (var i = 0; i < pix.length; i += 4) {
+                var color = (Math.random() * 255) + 50;
+                pix[i] = color;
+                pix[i + 1] = color;
+                pix[i + 2] = color;
             }
-        } else {
-            returnLink.style.display = "inline-block"; // 打字完成后显示按钮
-        }
-    }
+            ctx.putImageData(imgData, 0, 0);
+            RAF(flickering)
+        };
 
-    typeText();
+        return {
+            init: init
+        };
+    }());
+
+    Application.init();
 </script>
 </body>
+
 </html>
