@@ -5,7 +5,7 @@ title: "fastjson(1.2.68-1.2.80)反序列化-分析-利用"
 author: "XinYiSleep"
 category: Java
 ---
-<h1 id="pCrd7">1.基本信息</h1>
+<h1 id="pCrd7">一.基本信息</h1>
 
 ```
 今天我们来学习1.2.68和1.2.80中的绕过，一个一个来先看看1.2.68。
@@ -22,7 +22,7 @@ category: Java
             <version>1.2.80</version>
         </dependency>
 ```
-<h1 id="Vq7R8">2:1.2.68分析</h1>
+<h1 id="Vq7R8">二:1.2.68分析</h1>
 
 ```
 1.2.68是无需开启 AutoType  ，直接能绕过`CheckAutoType()`方法的，绕过原理是执行第二次checkAutoType()方法中第二个参数expectClass造成的绕过，
@@ -144,7 +144,7 @@ fieldDeser.setValue(object, fieldValue);执行Setter也是反射执行的就不�
 
 ![](https://xinyisleep.github.io/img/2025/fastjson/fastjson1.2.68/12.png)
 
-<h1 id="B9dNK">3.真实利用</h1>
+<h1 id="B9dNK">三.真实利用</h1>
 
 ```
 上面那个只是本地测试，也就是绕过姿势，在真实环境中怎么可能有我上面代码直接让你命令执行，所以我们得去找利用链，现在我们是有条件的，那就是必须实AutoCloseable 
@@ -206,7 +206,7 @@ JSON.parseObject(payload1);
 。。。。。
 ```
 
-<h1 id="D5RPP">4.1.2.80浅析-利用</h1>
+<h1 id="D5RPP">四.1.2.80浅析-利用</h1>
 
 ```
 这里是针对1.2.68绕过，其中1.2.80中把`java.lang.Runnable`，`java.lang.Readable` 和 `java.lang.AutoCloseable`写入到了黑名单，
