@@ -1,73 +1,144 @@
-/* 代码块整体样式 */
 pre {
-  background-color: #1a1d23; /* 温暖暗色调，柔和，护眼优质 */
-  color: #d8dee9; /* 字体颜色清晰低饱和，减轻视觉压力 */
-  padding: 20px; /* 舒适留白，视觉布局优秀 */
-  border-radius: 16px; /* 增加强圆角设计，柔和现代感 */
-  font-family: "Cascadia Code", "Fira Code", monospace; /* 人性化、护眼等宽字体 */
-  font-size: 16px; /* 字体优化为护眼阅读大小 */
-  line-height: 1.75; /* 行距改进，便于快速扫描代码段 */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4); /* 柔和阴影，不干扰主体 */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* 低调细线边框，强调代码块区域 */
-  overflow-x: auto; /* 防止长代码溢出 */
-  transition: background-color 0.3s, box-shadow 0.3s; /* 动效更平滑，减少干扰 */
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  color: #e6edf3;
+  padding: 24px;
+  border-radius: 12px;
+  font-family: "JetBrains Mono", "Cascadia Code", "Fira Code", "SF Mono", Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06),
+          inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border: 1px solid #30363d;
+  overflow-x: auto;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 鼠标悬停效果 */
+pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
 pre:hover {
-  background-color: #23272e; /* 鼠标悬停时浅暗，给出交互感 */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* 鼠标悬停时阴影稍增强，层次分明 */
+  transform: translateY(-1px);
+  box-shadow:
+          0 8px 25px -5px rgba(0, 0, 0, 0.2),
+          0 4px 12px -2px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border-color: #484f58;
 }
 
-/* 滚动条优化：保持现代美感 */
 pre::-webkit-scrollbar {
-  height: 8px; /* 横向滚动条 */
-  width: 10px; /* 纵向滚动条 */
+  height: 6px;
+  width: 6px;
 }
+
 pre::-webkit-scrollbar-thumb {
-  background-color: #4b4f5a; /* 滚动条颜色，与整体配色融合 */
-  border-radius: 5px; /* 滚动条圆角增添舒适感 */
+  background: linear-gradient(45deg, #6366f1, #8b5cf6);
+  border-radius: 8px;
+  transition: background 0.3s ease;
 }
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #7c3aed, #a855f7);
+}
+
 pre::-webkit-scrollbar-track {
-  background-color: #1a1d23; /* 滚动条轨道与代码块背景一致 */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
 }
 
-/* 代码高亮配色 - 基础样式 */
+pre::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 code {
-  color: inherit; /* 默认继承代码块颜色 */
-  font-family: inherit; /* 字体继承代码块样式 */
-  font-weight: 500; /* 字体稍加权重，减少内容混乱 */
+  color: inherit;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 0.95em;
+  letter-spacing: 0.025em;
 }
 
-/* 语法高亮-关键词 */
 .keyword {
-  color: #88c0d0; /* 柔和蓝色关键词，清晰视觉引导 */
-  font-weight: 600; /* 加权，突出重要性 */
+  color: #ff7b72;
+  font-weight: 600;
+  text-shadow: 0 0 2px rgba(255, 123, 114, 0.3);
 }
 
-/* 语法高亮-字符串 */
 .string {
-  color: #a3be8c; /* 柔和绿色字符串，集中注意力 */
+  color: #7ee787;
+  position: relative;
 }
 
-/* 语法高亮-函数名 */
+.string::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, #7ee787, transparent);
+  opacity: 0.3;
+}
+
 .function {
-  color: #5e81ac; /* 深蓝函数名，内容主次分明 */
+  color: #d2a8ff;
+  font-weight: 500;
 }
 
-/* 语法高亮-注释 */
 .comment {
-  color: #616e88; /* 稍淡灰色注释，避免干扰理解 */
-  font-style: italic; /* 斜体弱化非重要信息 */
+  color: #8b949e;
+  font-style: italic;
+  opacity: 0.8;
 }
 
-/* 代码块标题样式 */
+.number {
+  color: #79c0ff;
+}
+
+.operator {
+  color: #ff7b72;
+}
+
 .code-title {
-  background-color: #23272e; /* 标题浅暗背景色 */
-  color: #d8dee9; /* 浅明文字，便于说明 */
-  font-size: 15px; /* 标题大小适中，突显作用 */
-  font-weight: bold; /* 加粗字体说明 */
-  padding: 12px 18px; /* 标题内边距 */
-  border-radius: 16px 16px 0 0; /* 顶端圆角与代码块整体保持一致 */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 分割清晰 */
+  background: linear-gradient(135deg, #21262d 0%, #30363d 100%);
+  color: #f0f6fc;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #21262d;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.code-title::before {
+  content: '●●●';
+  color: #30363d;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.code-title + pre {
+  border-radius: 0 0 12px 12px;
+  border-top: none;
+  margin-top: 0;
+}
+
+.code-block-wrapper {
+  margin: 1.5em 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  border: 1px solid #30363d;
 }
