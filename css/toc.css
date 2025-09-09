@@ -95,11 +95,7 @@
 }
 
 /* 文章内容区域调整 */
-@media (min-width: 1201px) {
-    .post {
-        margin-right: 280px;
-    }
-}
+
 
 /* 暗色主题支持 */
 @media (prefers-color-scheme: dark) {
