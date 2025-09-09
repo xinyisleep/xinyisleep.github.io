@@ -1,7 +1,6 @@
 ---
 layout: default
 ---
-
 <article class="post">
   <header class="post-header">
     <p class="post-author">
@@ -21,6 +20,9 @@ layout: default
   </div>
 </article>
 
+<!-- 目录容器 -->
+<div class="toc-container"></div>
+
 <nav class="post-navigation">
   {% if page.previous.url %}
   <a href="{{ page.previous.url | prepend: site.url }}" class="nav-link prev" title="Previous Post">&#x25C0; Previous</a>
@@ -30,3 +32,115 @@ layout: default
   {% endif %}
   <a href="#" class="nav-link top" title="Go to top">↑ Top</a>
 </nav>
+
+<!-- 引入CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/toc.css' | relative_url }}">
+
+<!-- 内嵌JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 生成目录
+    function generateTOC() {
+      const postContent = document.querySelector('.post-content');
+      const tocContainer = document.querySelector('.toc-container');
+
+      if (!postContent || !tocContainer) return;
+
+      // 查找所有标题
+      const headings = postContent.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+      if (headings.length === 0) {
+        tocContainer.style.display = 'none';
+        return;
+      }
+
+      // 为标题添加 ID
+      headings.forEach((heading, index) => {
+        if (!heading.id) {
+          heading.id = `heading-${index}`;
+        }
+      });
+
+      // 生成目录HTML
+      let tocHTML = '<h3>目录</h3><ul class="toc-list">';
+
+      headings.forEach((heading) => {
+        const level = parseInt(heading.tagName.charAt(1));
+        const text = heading.textContent;
+        const id = heading.id;
+
+        tocHTML += `<li class="toc-item toc-level-${level}">
+                <a href="#${id}" class="toc-link">${text}</a>
+            </li>`;
+      });
+
+      tocHTML += '</ul>';
+      tocContainer.innerHTML = tocHTML;
+
+      // 添加点击事件
+      const tocLinks = tocContainer.querySelectorAll('.toc-link');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+
+            // 更新活跃状态
+            updateActiveLink(this);
+          }
+        });
+      });
+    }
+
+    // 更新活跃链接
+    function updateActiveLink(activeLink) {
+      const tocLinks = document.querySelectorAll('.toc-link');
+      tocLinks.forEach(link => link.classList.remove('active'));
+      activeLink.classList.add('active');
+    }
+
+    // 滚动时高亮当前章节
+    function highlightOnScroll() {
+      const headings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6');
+      const tocLinks = document.querySelectorAll('.toc-link');
+
+      if (headings.length === 0) return;
+
+      let currentHeading = null;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      headings.forEach(heading => {
+        const rect = heading.getBoundingClientRect();
+        const offsetTop = rect.top + scrollTop;
+
+        if (offsetTop <= scrollTop + 100) {
+          currentHeading = heading;
+        }
+      });
+
+      if (currentHeading) {
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + currentHeading.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    }
+
+    // 初始化
+    generateTOC();
+
+    // 监听滚动事件
+    window.addEventListener('scroll', highlightOnScroll);
+
+    // 初始高亮
+    setTimeout(highlightOnScroll, 100);
+  });
+</script>
