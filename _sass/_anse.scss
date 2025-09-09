@@ -87,14 +87,17 @@ h3:hover::after {
   width: 60px;
 }
 
-h1.catalogue-title {
+/* 修正：改为 h2.catalogue-title 匹配你的HTML */
+h2.catalogue-title {
   color: #f8fafc !important;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
-  font-size: 2.5em;
+  font-size: 1.5em; /* 统一大小 */
   background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 h1.post-title {
@@ -211,8 +214,8 @@ blockquote::before {
     padding: 1rem;
   }
 
-  h1.catalogue-title {
-    font-size: 2em;
+  h2.catalogue-title {
+    font-size: 1.25em;
   }
 
   h1.post-title {
