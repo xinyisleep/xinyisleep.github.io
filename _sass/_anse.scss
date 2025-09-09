@@ -1,57 +1,225 @@
-/* 全局样式 */
 body {
-  background-color: hsl(200, 5%, 20%); /* 背景亮度50% */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5); /* 添加阴影增强清晰度 */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  color: #f8fafc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
 }
 
-/* 针对段落 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+          radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+          radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
 p {
-  color: #ffffff !important; /* 强制字体为白色 */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
+  color: #e2e8f0 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  margin-bottom: 1.25em;
+  font-weight: 400;
 }
-span{
-  color: #ffffff !important; /* 强制字体为白色 */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
+
+span {
+  color: #e2e8f0 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
 }
-div.post-line{
-  color: #ffffff !important; /* 强制字体为白色 */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
+
+div.post-line {
+  color: #e2e8f0 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !important;
+  padding: 0.5em 0;
+  border-left: 3px solid transparent;
+  transition: border-color 0.3s ease;
 }
-/* 针对标题 */
+
+div.post-line:hover {
+  border-left-color: #3b82f6;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  color: #ffffff !important; /* 强制字体为白色 */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
+  color: #f1f5f9 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+h1::after, h2::after, h3::after {
+  content: '';
+  position: absolute;
+  bottom: -0.5em;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, transparent);
+  transition: width 0.3s ease;
+}
+
+h1::after {
+  width: 60px;
+}
+
+h2::after {
+  width: 45px;
+}
+
+h3::after {
+  width: 30px;
+}
+
+h1:hover::after {
+  width: 120px;
+}
+
+h2:hover::after {
+  width: 90px;
+}
+
+h3:hover::after {
+  width: 60px;
 }
 
 h1.catalogue-title {
-  color: #ffffff !important; /* 强制字体为白色 */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
+  color: #f8fafc !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  font-size: 2.5em;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
+
 h1.post-title {
-  color: #ffffff !important; /* 强制字体为白色 */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
+  color: #f8fafc !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  font-size: 2.25em;
+  margin-bottom: 0.5em;
 }
+
 h2.nav-title {
-  color: #ffffff !important; /* 强制字体为白色 */
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5) !important; /* 强制增加阴影，保持清晰度 */
+  color: #f1f5f9 !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  font-size: 1.5em;
+  position: relative;
+  overflow: hidden;
 }
-/* 针对链接样式 */
+
+h2.nav-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+h2.nav-title:hover::before {
+  left: 100%;
+}
+
 a {
-  color: #ffffff !important; /* 链接字体颜色调整为白色 */
-  text-decoration: underline;
-  font-weight: bold;
+  color: #60a5fa !important;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
 }
-//看nm
-/* 基础排版增强 */
+
+a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transition: width 0.3s ease;
+}
+
+a:hover {
+  color: #93c5fd !important;
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+a:hover::before {
+  width: 100%;
+}
+
 .catalogue-item {
-  break-inside: avoid; /* 防止内容断裂 */
+  break-inside: avoid;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
 }
-/* 暗黑模式支持 */
+
+.catalogue-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.catalogue-time {
+  color: #94a3b8 !important;
+  font-size: 0.875em;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+blockquote {
+  border-left: 4px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+  position: relative;
+}
+
+blockquote::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 3em;
+  color: #3b82f6;
+  opacity: 0.3;
+}
+
 @media (prefers-color-scheme: dark) {
   .catalogue-time {
-    color: #a0aec0;
+    color: #64748b !important;
   }
 }
 
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 1rem;
+  }
 
+  h1.catalogue-title {
+    font-size: 2em;
+  }
 
+  h1.post-title {
+    font-size: 1.875em;
+  }
+
+  .catalogue-item {
+    padding: 0.75rem;
+  }
+}
