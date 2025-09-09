@@ -87,17 +87,24 @@ h3:hover::after {
   width: 60px;
 }
 
-/* 修正：改为 h2.catalogue-title 匹配你的HTML */
+/* 修复：统一目录标题样式 */
 h2.catalogue-title {
   color: #f8fafc !important;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
-  font-size: 1.5em; /* 统一大小 */
+  font-size: 1.4em !important; /* 固定大小 */
+  font-weight: 600 !important;
   background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin-top: 0.5em !important;
+  margin-bottom: 0.5em !important;
+  line-height: 1.3 !important;
+}
+
+/* 移除 catalogue-title 的默认 h2 样式 */
+h2.catalogue-title::after {
+  display: none;
 }
 
 h1.post-title {
@@ -215,7 +222,7 @@ blockquote::before {
   }
 
   h2.catalogue-title {
-    font-size: 1.25em;
+    font-size: 1.2em !important;
   }
 
   h1.post-title {
