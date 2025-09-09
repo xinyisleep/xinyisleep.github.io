@@ -4,36 +4,52 @@
     color: $default-color;
     display: inline-block;
     padding: 2rem 0;
+    width: 100%;
 
-    &:hover .catalogue-line,
-    &:focus .catalogue-line {
-      width: 5rem;
+    &:hover {
+      .catalogue-line {
+        opacity: .2;
+      }
+
+      .catalogue-title {
+        opacity: .8;
+      }
     }
-
-    &:last-child {
-      border: 0;
-    }
-  }
-
-  &-time {
-    color: $default-tint;
-    font-family: $palatino;
-    letter-spacing: .5px;
   }
 
   &-title {
     color: $default-shade;
     display: block;
     font-family: $sans-font;
-    font-size: 2rem;
+    font-size: 1.5rem !important;
     font-weight: 700;
     margin: .5rem 0;
+    line-height: 1.4;
+    height: 3.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+
+  &-time {
+    color: $default-color;
+    font-family: $palatino;
+    letter-spacing: .5px;
   }
 
   &-line {
     @include transition(all .3s ease-out);
-    border-top: .2rem solid $default-shade;
-    display: block;
-    width: 2rem;
+    border-left: .2rem solid $default-color;
+    border-radius: .2rem;
+    margin: .3rem 0;
+    opacity: .6;
+    padding-left: .5rem;
+  }
+
+  &-subtitle {
+    color: $default-color;
+    font-family: $palatino;
   }
 }
