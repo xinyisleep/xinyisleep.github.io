@@ -1,13 +1,14 @@
 body {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-  color: #f8fafc;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.7;
-  letter-spacing: 0.02em;
-  /* 增强整体文字渲染 */
+  background: linear-gradient(135deg, #0a0f1c 0%, #151b2e 50%, #1f2937 100%);
+  /* 更亮的主文字颜色 */
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 body::before {
@@ -18,47 +19,55 @@ body::before {
   width: 100%;
   height: 100%;
   background:
-          radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-          radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.05) 0%, transparent 50%);
+          radial-gradient(circle at 30% 20%, rgba(34, 197, 94, 0.03) 0%, transparent 60%),
+          radial-gradient(circle at 70% 80%, rgba(59, 130, 246, 0.03) 0%, transparent 60%),
+          radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.02) 0%, transparent 70%);
   pointer-events: none;
   z-index: -1;
 }
 
 p {
-  color: #e2e8f0 !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
-  margin-bottom: 1.25em;
-  font-weight: 450; /* 稍微加粗一点 */
+  /* 非常亮的白色 */
+  color: #ffffff !important;
+  /* 柔和的阴影增强清晰度，不让字体变黑 */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  margin-bottom: 1.4em;
+  font-weight: 500;
+  letter-spacing: 0.025em;
 }
 
 span {
-  color: #e2e8f0 !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
-  font-weight: 450; /* 稍微加粗一点 */
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  font-weight: 500;
+  letter-spacing: 0.025em;
 }
 
 div.post-line {
-  color: #e2e8f0 !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
-  padding: 0.5em 0;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+  padding: 0.6em 0;
   border-left: 3px solid transparent;
   transition: border-color 0.3s ease;
-  font-weight: 450; /* 稍微加粗一点 */
+  font-weight: 500;
+  letter-spacing: 0.025em;
 }
 
 div.post-line:hover {
-  border-left-color: #3b82f6;
+  border-left-color: #22d3ee;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #f8fafc !important;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.6) !important;
+  /* 纯白标题 */
+  color: #ffffff !important;
+  /* 轻微阴影，不让字体变暗 */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
   font-weight: 700;
   margin-top: 2em;
   margin-bottom: 1em;
   position: relative;
-  /* 增强标题清晰度 */
   -webkit-font-smoothing: antialiased;
+  letter-spacing: 0.02em;
 }
 
 h1::after, h2::after, h3::after {
@@ -67,7 +76,7 @@ h1::after, h2::after, h3::after {
   bottom: -0.5em;
   left: 0;
   height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6, transparent);
+  background: linear-gradient(90deg, #22d3ee, #06b6d4, transparent);
   transition: width 0.3s ease;
 }
 
@@ -95,43 +104,48 @@ h3:hover::after {
   width: 60px;
 }
 
-/* 修复：统一目录标题样式 - 增强清晰度 */
+/* 目录标题 - 超亮 */
 h2.catalogue-title {
-  color: #f8fafc !important;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.7) !important;
-  font-size: 1.4em !important;
-  font-weight: 700 !important; /* 增加字重 */
-  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  /* 纯白色作为备用 */
+  color: #ffffff !important;
+  /* 轻微阴影保持清晰 */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
+  font-size: 1.5em !important;
+  font-weight: 700 !important;
+  /* 更亮的渐变色 */
+  background: linear-gradient(135deg, #7dd3fc, #38bdf8, #0ea5e9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-top: 0.5em !important;
-  margin-bottom: 0.5em !important;
-  line-height: 1.3 !important;
-  /* 为渐变文字添加备用方案 */
-  filter: contrast(1.2) brightness(1.1);
+  margin-top: 0.6em !important;
+  margin-bottom: 0.6em !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.03em;
+  /* 增强亮度 */
+  filter: brightness(1.3) saturate(1.2);
 }
 
-/* 移除 catalogue-title 的默认 h2 样式 */
 h2.catalogue-title::after {
   display: none;
 }
 
 h1.post-title {
-  color: #f8fafc !important;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.7) !important;
-  font-size: 2.25em;
-  margin-bottom: 0.5em;
-  font-weight: 800; /* 增加字重 */
+  color: #ffffff !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+  font-size: 2.5em;
+  margin-bottom: 0.6em;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 h2.nav-title {
-  color: #f1f5f9 !important;
-  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6) !important;
-  font-size: 1.5em;
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  font-size: 1.6em;
   position: relative;
   overflow: hidden;
-  font-weight: 700; /* 增加字重 */
+  font-weight: 700;
+  letter-spacing: 0.025em;
 }
 
 h2.nav-title::before {
@@ -141,7 +155,7 @@ h2.nav-title::before {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: left 0.5s ease;
 }
 
@@ -150,12 +164,15 @@ h2.nav-title:hover::before {
 }
 
 a {
-  color: #7dd3fc !important; /* 更亮的蓝色 */
+  /* 亮蓝色链接 */
+  color: #38bdf8 !important;
   text-decoration: none;
-  font-weight: 600; /* 增加字重 */
+  font-weight: 600;
   position: relative;
   transition: all 0.3s ease;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); /* 添加阴影 */
+  /* 轻微发光效果 */
+  text-shadow: 0 0 4px rgba(56, 189, 248, 0.3);
+  letter-spacing: 0.02em;
 }
 
 a::before {
@@ -165,13 +182,14 @@ a::before {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  background: linear-gradient(90deg, #38bdf8, #0ea5e9);
   transition: width 0.3s ease;
 }
 
 a:hover {
-  color: #bae6fd !important;
-  text-shadow: 0 0 12px rgba(59, 130, 246, 0.6) !important;
+  /* 悬停时更亮 */
+  color: #7dd3fc !important;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.6) !important;
   transform: translateY(-1px);
 }
 
@@ -181,69 +199,84 @@ a:hover::before {
 
 .catalogue-item {
   break-inside: avoid;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .catalogue-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
 .catalogue-time {
-  color: #cbd5e1 !important; /* 更亮的颜色 */
-  font-size: 0.875em;
-  font-weight: 500; /* 增加字重 */
+  /* 亮灰色时间 */
+  color: #e5e7eb !important;
+  font-size: 0.9em;
+  font-weight: 500;
   opacity: 0.9;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); /* 添加阴影 */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.03em;
 }
 
 blockquote {
-  border-left: 4px solid #3b82f6;
-  background: rgba(59, 130, 246, 0.05);
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
-  border-radius: 0 8px 8px 0;
+  border-left: 4px solid #38bdf8;
+  background: rgba(56, 189, 248, 0.06);
+  padding: 1.2rem 1.8rem;
+  margin: 1.8rem 0;
+  border-radius: 0 10px 10px 0;
   position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 blockquote::before {
   content: '"';
   position: absolute;
   top: -10px;
-  left: 10px;
+  left: 15px;
   font-size: 3em;
-  color: #3b82f6;
-  opacity: 0.3;
+  color: #38bdf8;
+  opacity: 0.4;
+}
+
+/* 选中文字高亮 */
+::selection {
+  background: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(56, 189, 248, 0.25);
+  color: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
   .catalogue-time {
-    color: #94a3b8 !important;
+    color: #d1d5db !important;
   }
 }
 
 @media (max-width: 768px) {
   body {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.7;
     padding: 1rem;
   }
 
   h2.catalogue-title {
-    font-size: 1.2em !important;
+    font-size: 1.3em !important;
   }
 
   h1.post-title {
-    font-size: 1.875em;
+    font-size: 2em;
   }
 
   .catalogue-item {
-    padding: 0.75rem;
+    padding: 1rem;
   }
 }
