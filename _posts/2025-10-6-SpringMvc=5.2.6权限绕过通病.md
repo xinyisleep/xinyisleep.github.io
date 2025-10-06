@@ -6,6 +6,7 @@ author: "XinYiSleep"
 category: Java
 ---
 <h1 id="UQ1CO">一：基础信息</h1>
+
 ```
 这两天国庆节打算好好和朋友畅饮一番(实际基本天天畅饮)，昨天突然看到关于权限验证的一个问题，
 发现我也没写过相关文章，其实这个问题是java进行权限验证的通病，在Spring Boot<=2.3.0.RELEASE spring-webmvc<=5.2.6,
