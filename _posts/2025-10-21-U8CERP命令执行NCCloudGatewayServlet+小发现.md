@@ -13,7 +13,7 @@ category: Java
 下面分析中我会非常细的分析，所以你只需要用友java安全的基础就足够了，因为这个漏洞也不难，难就难到
 到达危险方法其中会经过许多参数，但是也问题不大废话不多说那我们开始吧。
 ```
-![](https://xinyisleep.github.io/img/2025/U8CERP/1.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/1.png)
 
 <h1 id="Dl1wf">二.获取源码+远程调试</h1>
 
@@ -25,9 +25,9 @@ category: Java
 再去idea配置一下图二,那么远程调试的debug就配置好了，对比php的远程debug调试的话还是非常简单了。
 ```
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/1.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/2.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/2.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/3.png)
 
 <h1 id="GZJDL">三.补丁分析-路由分析-小发现</h1>
 
@@ -39,11 +39,11 @@ com.yonyou.nccloud.gateway.adaptor.servlet.ServletForGW 这个类图一，那么
 
 ```
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/3.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/4.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/4.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/5.5.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/5.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/5.png)
 
 ```
 进去之后可以看到进入lookup图一,根据名字我们这里其实是进行了jndi注入的事实也确实这样不着急先一步一步来看图二，我们可以看到图二中开头是
@@ -51,28 +51,28 @@ java:comp/env/但是我们并不是所以不会走到lookup这里其实就是进
 这些黑名单就是对应的请求key对应的value就是类(也不能这样 讲先这么理解)图二中还有个方法是jndi但是这里的meta变量已经不等于null所以不会走进去这里先不提后面说。
 ```
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/6.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/6.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/7.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/7.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/8.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/8.png)
 
 ```
 那么这里其实就已经走出来了，回到InvokerServlet#doAction看下面图一我已经解释了，所以到这里路由分析就结束了，就问你细不细？基本是一步一步走的。
 ```
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/9.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/9.png)
 
 ```
 还记得上面的jndi方法吗？这里我们先随便写一个路由让上面的Map匹配不到key就可以进去了图一，接着都进
 jndiwithReTry方法图二，到这里其实就行了要是在往下走就真的到底层jndi注入了可以看图三
 ```
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/10.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/10.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/11.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/11.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/12.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/12.png)
 
 ```
 但是实际上呢？这里是存在问题的那就是最开始InvokerServlet#doAction方法的第一行代码
@@ -93,9 +93,9 @@ String pathInfo = request.getPathInfo();
 TJ6RT-3FVCB-DPYP8-XF7QM-96FV3,
 接着进入到callNCService方法这里请求json不然转换空进不去。
 ```
-![](https://xinyisleep.github.io/img/2025/U8CERP/13.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/13.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/14.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/14.png)
 
 ```java
 import nc.vo.framework.rsa.Encode;
@@ -359,7 +359,7 @@ Object ncService = NCLocator.getInstance().lookup(serviceClassName);
             Object invokeRes = MethodUtils.invokeMethod(ncService, methodName, argValues, argTypes);
 ```
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/15.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/15.png)
 
 ```
 GWWhiteCtrlUtil.getInstance().checkAuthority(serviceClassName, argValues);
@@ -369,11 +369,11 @@ GWWhiteCtrlUtil类那么补丁中确实有这么一个类文件，其中里面�
 openFile直接结束，里面直接Runitme进行命令执行了。
 ```
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/16.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/16.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/17.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/17.png)
 
-![](https://xinyisleep.github.io/img/2025/U8CERP/18.jpg)
+![](https://xinyisleep.github.io/img/2025/U8CERP/18.png)
 
 <h2 id="Xv7cq">4.2：payload构造</h2>
 ```
