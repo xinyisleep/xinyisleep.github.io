@@ -1,7 +1,7 @@
 ---
 layout: post
 date: 2025-11-24
-title: "jeecg实战系列1"
+title: "oracle-Jndi注入-反序列化链"
 author: "XinYiSleep"
 category: Java
 ---
