@@ -44,8 +44,8 @@ category: Java
 <h1 id="EafED">二：spring-webmvc<=5.2.6(2.3.0)绕过</h1>
 ```
 首先我们在org.springframework.web.servlet.handler.AbstractHandlerMethodMapping类中找到getHandlerInternal方法进行断点分析，
-为什么是这里因为再往上就是doGet了下面图一,下面我们跟进去getLookupPathForRequest，下面我们直接走进去看看getPathWithinServletMapping
-方法图二，直接我就直接讲关键点了，一些对请求路由一些处理我就不细看了，接着我们看看getServletPath方法是怎么处理我们的路由的图三，
+请求到这里就已经过了doFilter方法，然后会进入getHandlerInternal方法，为什么是这里因为再往上就是doGet了下面图一,我们跟进去getLookupPathForRequest，
+接着走进去看看getPathWithinServletMapping方法图二，我就直接讲关键点了，一些对请求路由一些处理我就不细看了，接着我们看看getServletPath方法是怎么处理我们的路由的图三，
 这里其实没必要再跟进去了，因为底层其实就是Request类的getServletPath方法，那么他就是获取我们的请求返回调用servlet的URL部分如当然是
 不包含请求上下文路径的，那么这里就会造成权限验证的一个问题当然如在filter过滤器中进行了严格的验证就不会出现问题，
 如果只是使用getRequestURI()那么就是权限验证问题了。
