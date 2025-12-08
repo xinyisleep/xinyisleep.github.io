@@ -15,11 +15,16 @@ category: Java
 ```
 
 ```java
-<dependency>
-    <groupId>org.apache.tomcat</groupId>
-    <artifactId>tomcat-catalina</artifactId>
-    <version>8.5.100</version>
-</dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-catalina</artifactId>
+            <version>8.5.54</version>
+        </dependency>
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.30.2-GA</version>
+        </dependency>
 ```
 
 ![](https://xinyisleep.github.io/img/2025/Webshell/Listener/1.png)
