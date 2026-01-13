@@ -7,6 +7,7 @@ category: Java
 ---
 <h1 id="X26fk">一基础信息</h1>
 
+
 ```
 这里FreeMarker还是有必要学习的，FreeMarker是不可以通过传参rce的，攻击面对比其他模板就不是很灵活了，比如：
 	1.通过文件上传html
