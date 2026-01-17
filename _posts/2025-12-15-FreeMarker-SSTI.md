@@ -92,6 +92,21 @@ public class Freemarker {
 ![](https://xinyisleep.github.io/img/2025/SSTI/FreeMarker/1.png)
 
 
+
+```
+这里可以看到的是我写了一个renderMergedTemplateModel关键字，这是什么呢？
+
+1.AbstractTemplateView 是 Spring 里“模板视图”体系的顶层模板类，定义了所有渲染流程的抽象方法。
+
+2.MVC 的渲染流程（最终输出html、xml等）都经过这个链路。
+
+3.renderMergedTemplateModel 就是必须实现的抽象方法，被子类继承并实现后，用来“组合Model数据和模板，输出到浏览器”。
+
+说白了就是说AbstractTemplateView这个抽象类就是关于springmvc模块渲染最顶类，其中关于renderMergedTemplateModel方法
+就是这个类的主要功能来进行渲染输出的，那么在代码审计中如果在controller中没有看到process关键字就去找renderMergedTemplateModel
+方法有可能重写了逻辑但是最终还是需要执行process的下面图一。
+```
+![](https://xinyisleep.github.io/img/2025/SSTI/FreeMarker/14.png)
 <h1 id="gwroR">二.代码分析</h1>
 ```
 在我们简单了解了之后就需要知道解决三个疑问
