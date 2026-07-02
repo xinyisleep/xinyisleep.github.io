@@ -1,40 +1,58 @@
-.catalogue {
-  &-item {
-    border-bottom: 1px solid $grey-2;
-    color: $default-color;
-    display: inline-block;
-    padding: 2rem 0;
+/* 内联代码样式 */
+code {
+  font-family: "Cascadia Code", "Fira Code", "JetBrains Mono", Menlo, Monaco, monospace;
+  font-size: 0.88em;
+  background: rgba(56, 189, 248, 0.12);
+  color: #7dd3fc;
+  padding: 0.15em 0.5em;
+  border-radius: 6px;
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
 
-    &:hover .catalogue-line,
-    &:focus .catalogue-line {
-      width: 5rem;
-    }
+pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  font-size: inherit;
+}
 
-    &:last-child {
-      border: 0;
-    }
-  }
+/* 代码块复制按钮 */
+.code-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 12px;
+  background: #23272e;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
 
-  &-time {
-    color: $default-tint;
-    font-family: $palatino;
-    letter-spacing: .5px;
-  }
+.copy-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  padding: 4px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
 
-  &-title {
-    color: $default-shade;
-    display: block;
-    font-family: $sans-font;
-    font-size: 1.5rem !important;
-    font-weight: 700;
-    margin: .5rem 0;
-    line-height: 1.3 !important;
-  }
+.copy-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  color: #7dd3fc;
+  border-color: rgba(56, 189, 248, 0.3);
+}
 
-  &-line {
-    @include transition(all .3s ease-out);
-    border-top: .2rem solid $default-shade;
-    display: block;
-    width: 2rem;
-  }
+.copy-btn.copied {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* 代码块包裹层 */
+.highlight {
+  position: relative;
 }

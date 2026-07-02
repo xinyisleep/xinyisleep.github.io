@@ -10,13 +10,17 @@
           <h2 class="nav-title">{{ site.title }}</h2>
         </a>
         <ul>
-
+          <li><a href="{{ '/2026/' | prepend: site.url }}">2026</a></li>
           <li><a href="{{ '/2025/' | prepend: site.url }}">2025</a></li>
           <li><a href="{{ '/2024/' | prepend: site.url }}">2024</a></li>
           <li><a href="{{ '/Java专题/' | prepend: site.url }}">Java专题</a></li>
           <li><a href="{{ '/PHP专题/' | prepend: site.url }}">PHP专题</a></li>
           <li><a href="{{ '/About/' | prepend: site.url }}">About</a></li>
         </ul>
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="搜索文章..." aria-label="搜索">
+          <div id="search-results" class="search-results" style="display:none;"></div>
+        </div>
     </div>
   </nav>
 
@@ -38,5 +42,55 @@
 </script>
 
     </footer>
+
+    <script>
+      (function() {
+        var searchInput = document.getElementById('search-input');
+        var searchResults = document.getElementById('search-results');
+        var posts = [];
+
+        if (!searchInput) return;
+
+        fetch('{{ '/search.json' | relative_url }}')
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            posts = data;
+          });
+
+        searchInput.addEventListener('input', function() {
+          var q = this.value.trim().toLowerCase();
+          if (q.length < 1) {
+            searchResults.style.display = 'none';
+            return;
+          }
+
+          var matches = posts.filter(function(post) {
+            return post.title.toLowerCase().includes(q);
+          }).slice(0, 10);
+
+          if (matches.length === 0) {
+            searchResults.innerHTML = '<div class="search-result-empty">未找到匹配的文章</div>';
+            searchResults.style.display = 'block';
+            return;
+          }
+
+          var html = '';
+          matches.forEach(function(post) {
+            html += '<a href="' + post.url + '" class="search-result-item">' +
+                    '<span class="search-result-title">' + post.title + '</span>' +
+                    '<span class="search-result-date">' + post.date + '</span>' +
+                    '</a>';
+          });
+          searchResults.innerHTML = html;
+          searchResults.style.display = 'block';
+        });
+
+        document.addEventListener('click', function(e) {
+          if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+            searchResults.style.display = 'none';
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
