@@ -16,6 +16,7 @@ category: Java
 因为我也不是特别会，首先肯定是引入组件了代码一,接着代码二就是我们的实例。
 漏洞关键字：
 	.process(
+	renderMergedTemplateModel
 	Configuration
 ```
 
