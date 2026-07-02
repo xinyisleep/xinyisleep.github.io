@@ -14,20 +14,28 @@ footer,
 
 .nav {
   box-shadow: 0 2px 2px -2px $shadow-color;
-  overflow: auto;
 
   &-container {
     margin: 1rem auto;
-    position: relative;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  &-brand {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
   }
 
   &-title {
     @include transition(all .2s ease-out);
     color: $default-color;
-    display: inline-block;
     margin: 0;
-    padding-right: .2rem;
+    white-space: nowrap;
 
     &:hover,
     &:focus {
@@ -35,23 +43,20 @@ footer,
     }
   }
 
-  ul {
+  &-menu {
     list-style-type: none;
-    margin: 1rem 0 0;
+    margin: 0;
     padding: 0;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
   }
 
   li {
     @include transition(all .2s ease-out);
     color: $default-color;
-    display: inline-block;
     opacity: .6;
-    padding: 0 2rem 0 0;
-
-    &:last-child {
-      padding-right: 0;
-    }
 
     &:hover,
     &:focus {
@@ -62,25 +67,25 @@ footer,
   a {
     color: $default-color;
     font-family: $sans-font;
+    text-decoration: none;
   }
 }
 
 .search-box {
   position: relative;
-  margin-top: 0.8rem;
+  flex-shrink: 0;
 
   input {
-    width: 100%;
-    padding: 8px 14px;
+    width: 200px;
+    padding: 6px 12px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     color: #e2e8f0;
-    font-size: 14px;
+    font-size: 13px;
     font-family: inherit;
     outline: none;
     transition: all 0.3s ease;
-    box-sizing: border-box;
 
     &::placeholder {
       color: rgba(255, 255, 255, 0.35);
@@ -90,6 +95,7 @@ footer,
       background: rgba(255, 255, 255, 0.1);
       border-color: rgba(56, 189, 248, 0.4);
       box-shadow: 0 0 12px rgba(56, 189, 248, 0.1);
+      width: 260px;
     }
   }
 }
@@ -147,22 +153,31 @@ footer,
   font-size: 14px;
 }
 
-@media (min-width: 600px) {
+@media (max-width: 760px) {
   .nav {
     &-container {
-      text-align: left;
+      flex-direction: column;
+      align-items: stretch;
+      text-align: center;
     }
 
-    ul {
-      bottom: 0;
-      position: absolute;
-      right: 0;
+    &-brand {
+      justify-content: center;
+    }
+
+    &-menu {
+      justify-content: center;
     }
   }
 
   .search-box {
-    margin-top: 0.8rem;
-    max-width: 360px;
+    input {
+      width: 100%;
+
+      &:focus {
+        width: 100%;
+      }
+    }
   }
 }
 
