@@ -1,73 +1,191 @@
 /* 代码块整体样式 */
 pre {
-  background-color: #1a1d23; /* 温暖暗色调，柔和，护眼优质 */
-  color: #d8dee9; /* 字体颜色清晰低饱和，减轻视觉压力 */
-  padding: 20px; /* 舒适留白，视觉布局优秀 */
-  border-radius: 16px; /* 增加强圆角设计，柔和现代感 */
-  font-family: "Cascadia Code", "Fira Code", monospace; /* 人性化、护眼等宽字体 */
-  font-size: 16px; /* 字体优化为护眼阅读大小 */
-  line-height: 1.75; /* 行距改进，便于快速扫描代码段 */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4); /* 柔和阴影，不干扰主体 */
-  border: 1px solid rgba(255, 255, 255, 0.08); /* 低调细线边框，强调代码块区域 */
-  overflow-x: auto; /* 防止长代码溢出 */
-  transition: background-color 0.3s, box-shadow 0.3s; /* 动效更平滑，减少干扰 */
+  background-color: #1a1d23;
+  color: #d8dee9;
+  padding: 20px;
+  border-radius: 16px;
+  font-family: "Cascadia Code", "Fira Code", "JetBrains Mono", Menlo, Monaco, monospace;
+  font-size: 15px;
+  line-height: 1.75;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow-x: auto;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-/* 鼠标悬停效果 */
 pre:hover {
-  background-color: #23272e; /* 鼠标悬停时浅暗，给出交互感 */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); /* 鼠标悬停时阴影稍增强，层次分明 */
+  background-color: #23272e;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
-/* 滚动条优化：保持现代美感 */
 pre::-webkit-scrollbar {
-  height: 8px; /* 横向滚动条 */
-  width: 10px; /* 纵向滚动条 */
+  height: 8px;
+  width: 10px;
 }
 pre::-webkit-scrollbar-thumb {
-  background-color: #4b4f5a; /* 滚动条颜色，与整体配色融合 */
-  border-radius: 5px; /* 滚动条圆角增添舒适感 */
+  background-color: #4b4f5a;
+  border-radius: 5px;
 }
 pre::-webkit-scrollbar-track {
-  background-color: #1a1d23; /* 滚动条轨道与代码块背景一致 */
+  background-color: #1a1d23;
 }
 
-/* 代码高亮配色 - 基础样式 */
 code {
-  color: inherit; /* 默认继承代码块颜色 */
-  font-family: inherit; /* 字体继承代码块样式 */
-  font-weight: 500; /* 字体稍加权重，减少内容混乱 */
+  color: inherit;
+  font-family: inherit;
+  font-weight: 500;
 }
 
-/* 语法高亮-关键词 */
-.keyword {
-  color: #88c0d0; /* 柔和蓝色关键词，清晰视觉引导 */
-  font-weight: 600; /* 加权，突出重要性 */
+/* ===== Rouge 语法高亮 ===== */
+.highlight {
+  background-color: #1a1d23;
+  border-radius: 16px;
 }
 
-/* 语法高亮-字符串 */
-.string {
-  color: #a3be8c; /* 柔和绿色字符串，集中注意力 */
+/* 注释 */
+.highlight .c,
+.highlight .c1,
+.highlight .cm,
+.highlight .cs {
+  color: #616e88;
+  font-style: italic;
 }
 
-/* 语法高亮-函数名 */
-.function {
-  color: #5e81ac; /* 深蓝函数名，内容主次分明 */
+/* 预处理指令 */
+.highlight .cp,
+.highlight .cpf {
+  color: #5e81ac;
+  font-weight: 600;
 }
 
-/* 语法高亮-注释 */
-.comment {
-  color: #616e88; /* 稍淡灰色注释，避免干扰理解 */
-  font-style: italic; /* 斜体弱化非重要信息 */
+/* 关键字 */
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt,
+.highlight .kv {
+  color: #88c0d0;
+  font-weight: 600;
 }
 
-/* 代码块标题样式 */
+/* 字符串 */
+.highlight .s,
+.highlight .s1,
+.highlight .s2,
+.highlight .sb,
+.highlight .sc,
+.highlight .sd,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr {
+  color: #a3be8c;
+}
+
+/* 插值表达式 */
+.highlight .si,
+.highlight .se {
+  color: #d08770;
+}
+
+/* 数字 */
+.highlight .m,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il {
+  color: #b48ead;
+}
+
+/* 运算符 */
+.highlight .o,
+.highlight .ow {
+  color: #81a1c1;
+}
+
+/* 标点 */
+.highlight .p {
+  color: #d8dee9;
+}
+
+/* XML/HTML 标签 */
+.highlight .nt,
+.highlight .dl {
+  color: #81a1c1;
+}
+
+/* XML/HTML 属性名 */
+.highlight .na {
+  color: #8fbcbb;
+}
+
+/* 属性值（XML中双引号内的内容） */
+.highlight .s + .na,
+.highlight .nt + .na {
+  /* handled by .s already */
+}
+
+/* 函数名 */
+.highlight .nf,
+.highlight .nx {
+  color: #88c0d0;
+}
+
+/* 变量 */
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi,
+.highlight .vm,
+.highlight .bp {
+  color: #d8dee9;
+}
+
+/* 类名 */
+.highlight .nc,
+.highlight .nn {
+  color: #8fbcbb;
+  font-weight: 600;
+}
+
+/* 常量 */
+.highlight .no,
+.highlight .kp {
+  color: #b48ead;
+}
+
+/* 异常/错误 */
+.highlight .ne,
+.highlight .err {
+  color: #bf616a;
+  font-weight: 600;
+}
+
+/* 属性引用 */
+.highlight .py {
+  color: #d8dee9;
+}
+
+/* 行号 */
+.highlight .lineno {
+  color: #4b4f5a;
+  padding-right: 1em;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  margin-right: 1em;
+  user-select: none;
+}
+
+/* 代码块标题 */
 .code-title {
-  background-color: #23272e; /* 标题浅暗背景色 */
-  color: #d8dee9; /* 浅明文字，便于说明 */
-  font-size: 15px; /* 标题大小适中，突显作用 */
-  font-weight: bold; /* 加粗字体说明 */
-  padding: 12px 18px; /* 标题内边距 */
-  border-radius: 16px 16px 0 0; /* 顶端圆角与代码块整体保持一致 */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 分割清晰 */
+  background-color: #23272e;
+  color: #d8dee9;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: "Cascadia Code", "Fira Code", monospace;
 }

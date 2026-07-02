@@ -6,10 +6,12 @@
   <body>
     <nav class="nav">
       <div class="nav-container">
-        <div class="nav-brand">
+        <div class="nav-header">
           <a href="{{ site.baseurl }}/">
             <h2 class="nav-title">{{ site.title }}</h2>
           </a>
+        </div>
+        <div class="nav-bar">
           <ul class="nav-menu">
             <li><a href="{{ '/2026/' | prepend: site.url }}">2026</a></li>
             <li><a href="{{ '/2025/' | prepend: site.url }}">2025</a></li>
@@ -18,10 +20,10 @@
             <li><a href="{{ '/PHP专题/' | prepend: site.url }}">PHP专题</a></li>
             <li><a href="{{ '/About/' | prepend: site.url }}">About</a></li>
           </ul>
-        </div>
-        <div class="search-box">
-          <input type="text" id="search-input" placeholder="搜索文章..." aria-label="搜索">
-          <div id="search-results" class="search-results" style="display:none;"></div>
+          <div class="search-box">
+            <input type="text" id="search-input" placeholder="搜索文章..." aria-label="搜索">
+            <div id="search-results" class="search-results"></div>
+          </div>
         </div>
     </div>
   </nav>
@@ -61,8 +63,8 @@
 
         searchInput.addEventListener('input', function() {
           var q = this.value.trim().toLowerCase();
-          if (q.length < 1) {
-            searchResults.style.display = 'none';
+          if (q.length < 2) {
+            searchResults.classList.remove('show');
             return;
           }
 
@@ -72,7 +74,7 @@
 
           if (matches.length === 0) {
             searchResults.innerHTML = '<div class="search-result-empty">未找到匹配的文章</div>';
-            searchResults.style.display = 'block';
+            searchResults.classList.add('show');
             return;
           }
 
@@ -84,12 +86,12 @@
                     '</a>';
           });
           searchResults.innerHTML = html;
-          searchResults.style.display = 'block';
+          searchResults.classList.add('show');
         });
 
         document.addEventListener('click', function(e) {
           if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-            searchResults.style.display = 'none';
+            searchResults.classList.remove('show');
           }
         });
       })();
