@@ -1,6 +1,6 @@
 ---
 layout: post
-date: 2026-7-0
+date: 2026-07-01
 title: "XXL-JOB/XSS-RCE"
 author: "XinYiSleep"
 category: Java

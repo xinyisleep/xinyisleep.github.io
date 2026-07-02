@@ -26,6 +26,6 @@ version:        99.99.99
 github:
   repo:         https://github.com/xinyisleep
 
-# Gems
-gems:
+# Plugins
+plugins:
   - jekyll-paginate
