@@ -47,15 +47,15 @@ code {
 .highlight .c1,
 .highlight .cm,
 .highlight .cs {
-  color: #616e88;
-  font-style: italic;
+  color: #616e88 !important;
+  font-style: italic !important;
 }
 
 /* 预处理指令 */
 .highlight .cp,
 .highlight .cpf {
-  color: #5e81ac;
-  font-weight: 600;
+  color: #5e81ac !important;
+  font-weight: 600 !important;
 }
 
 /* 关键字 */
@@ -66,8 +66,8 @@ code {
 .highlight .kr,
 .highlight .kt,
 .highlight .kv {
-  color: #88c0d0;
-  font-weight: 600;
+  color: #88c0d0 !important;
+  font-weight: 600 !important;
 }
 
 /* 字符串 */
@@ -78,16 +78,15 @@ code {
 .highlight .sc,
 .highlight .sd,
 .highlight .sh,
-.highlight .si,
 .highlight .sx,
 .highlight .sr {
-  color: #a3be8c;
+  color: #a3be8c !important;
 }
 
 /* 插值表达式 */
 .highlight .si,
 .highlight .se {
-  color: #d08770;
+  color: #d08770 !important;
 }
 
 /* 数字 */
@@ -97,41 +96,35 @@ code {
 .highlight .mi,
 .highlight .mo,
 .highlight .il {
-  color: #b48ead;
+  color: #b48ead !important;
 }
 
 /* 运算符 */
 .highlight .o,
 .highlight .ow {
-  color: #81a1c1;
+  color: #81a1c1 !important;
 }
 
 /* 标点 */
 .highlight .p {
-  color: #d8dee9;
+  color: #d8dee9 !important;
 }
 
 /* XML/HTML 标签 */
 .highlight .nt,
 .highlight .dl {
-  color: #81a1c1;
+  color: #81a1c1 !important;
 }
 
 /* XML/HTML 属性名 */
 .highlight .na {
-  color: #8fbcbb;
-}
-
-/* 属性值（XML中双引号内的内容） */
-.highlight .s + .na,
-.highlight .nt + .na {
-  /* handled by .s already */
+  color: #8fbcbb !important;
 }
 
 /* 函数名 */
 .highlight .nf,
 .highlight .nx {
-  color: #88c0d0;
+  color: #88c0d0 !important;
 }
 
 /* 变量 */
@@ -141,32 +134,32 @@ code {
 .highlight .vi,
 .highlight .vm,
 .highlight .bp {
-  color: #d8dee9;
+  color: #d8dee9 !important;
 }
 
 /* 类名 */
 .highlight .nc,
 .highlight .nn {
-  color: #8fbcbb;
-  font-weight: 600;
+  color: #8fbcbb !important;
+  font-weight: 600 !important;
 }
 
 /* 常量 */
 .highlight .no,
 .highlight .kp {
-  color: #b48ead;
+  color: #b48ead !important;
 }
 
 /* 异常/错误 */
 .highlight .ne,
 .highlight .err {
-  color: #bf616a;
-  font-weight: 600;
+  color: #bf616a !important;
+  font-weight: 600 !important;
 }
 
 /* 属性引用 */
 .highlight .py {
-  color: #d8dee9;
+  color: #d8dee9 !important;
 }
 
 /* 行号 */

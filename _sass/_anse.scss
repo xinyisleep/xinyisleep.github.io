@@ -36,25 +36,19 @@ p {
   letter-spacing: 0.025em;
 }
 
-span {
-  color: #ffffff !important;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+body span {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   font-weight: 500;
   letter-spacing: 0.025em;
 }
 
-.highlight span {
-  color: inherit !important;
-  text-shadow: none !important;
-  font-weight: inherit;
-  letter-spacing: normal;
-}
-
-.highlight,
-.highlight pre,
-.highlight code {
+.highlight p,
+.highlight span,
+.highlight div {
   text-shadow: none;
   letter-spacing: normal;
+  margin: 0;
 }
 
 div.post-line {
@@ -71,8 +65,7 @@ div.post-line:hover {
   border-left-color: #22d3ee;
 }
 
-p, span, div, h1, h2, h3, h4, h5, h6  {
-  /* 纯白标题 */
+h1, h2, h3, h4, h5, h6  {
   color: #ffffff !important;
   text-shadow: 0 0 1px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.2) !important;
   font-weight: 700;
