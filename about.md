@@ -15,21 +15,21 @@ permalink: /About/
     margin: 30px 0;
 }
 .terminal-box {
-    background: #1a1a2e;
-    color: #00ff41;
-    font-family: monospace;
-    padding: 20px;
-    border-radius: 6px;
-    margin: 20px 0;
+    background: #1a1a2e !important;
+    color: #00ff41 !important;
+    font-family: monospace !important;
+    padding: 20px !important;
+    border-radius: 6px !important;
+    margin: 20px 0 !important;
 }
-.terminal-box .prompt { color: #00ff41; }
-.terminal-box .cmd { color: #fff; }
-.terminal-box span { display: block; min-height: 1.4em; }
+.terminal-box .prompt { color: #00ff41 !important; }
+.terminal-box .cmd { color: #fff !important; }
+.terminal-box span { display: block; min-height: 1.4em; color: #00ff41 !important; }
 #cursor { 
     animation: blink 1s step-end infinite; 
-    color: #00ff41; 
-    display: block; 
-    margin-top: 4px; 
+    color: #00ff41 !important; 
+    display: block !important; 
+    margin-top: 4px !important; 
 }
 @keyframes blink {
     50% { opacity: 0; }
