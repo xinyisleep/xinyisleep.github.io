@@ -1,10 +1,11 @@
----
+﻿---
 layout: post
 title: "About"
 author: "XinYiSleep"
 permalink: /About/
 ---
 
+<<<<<<< Updated upstream
 <br>
 
 <div align="center">
@@ -41,6 +42,31 @@ permalink: /About/
 <br>
 
 ## ⚡ 1Day 预警
+=======
+<div align="center">
+
+# XinYiSleep
+
+**` 代码审计 · 漏洞挖掘 · 安全研究 `**
+
+<br>
+
+</div>
+
+## 原创漏洞收录
+
+| 时间 | 漏洞名称 | 编号 | 类型 |
+|:---:|:---|:---:|:---:|
+| 2026-07-01 | **XXL-JOB** XSS → RCE | — | 🏴 原创 |
+| 2024-07-15 | **ThinkPHP 3** 文件包含 | CVE-2025-50707 / CNVD-2024-39045 | 🏴 原创 |
+| 2024-04-22 | **ThinkPHP 5.1** 文件包含 | CVE-2025-50706 / CNVD-2024-29981 | 🏴 原创 |
+
+<br>
+
+## 1Day
+
+> 已有补丁 · 漏洞未公开
+>>>>>>> Stashed changes
 
 | 时间 | 漏洞名称 | 状态 |
 |:---:|:---|:---:|
@@ -50,6 +76,7 @@ permalink: /About/
 
 ---
 
+<<<<<<< Updated upstream
 <div align="center" style="margin: 20px 0;">
     <code style="color: #666;">「 一个安全研究人员的日常：挖洞、写文、踩坑、复现 」</code>
     <br><br>
@@ -58,3 +85,14 @@ permalink: /About/
     <br><br>
     <code style="color: #888;">-- keep calm and audit code --</code>
 </div>
+=======
+<br>
+
+一个安全研究人员的日常：挖洞、写文、踩坑、复现。
+
+可以给我发邮件 -> [E-mail](想了想还是先空着).
+
+<br>
+
+**保持热爱，不忘初心。** 🚀
+>>>>>>> Stashed changes
