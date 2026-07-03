@@ -7,26 +7,40 @@ permalink: /About/
 
 <br>
 
-<div align="center" style="margin-bottom: 30px;">
-    <h1 style="font-size: 2.5em; margin-bottom: 5px;">XinYiSleep</h1>
-    <code style="font-size: 1.1em; color: #666;">代码审计 · 漏洞挖掘 · 安全研究</code>
+<div align="center">
+    <pre style="font-size: 0.8em; line-height: 1.2; color: #555;">
+
+ ██╗  ██╗██╗███╗   ██╗██╗   ██╗██╗
+ ╚██╗██╔╝██║████╗  ██║██║   ██║██║
+  ╚███╔╝ ██║██╔██╗ ██║██║   ██║██║
+  ██╔██╗ ██║██║╚██╗██║╚██╗ ██╔╝╚═╝
+ ██╔╝ ██╗██║██║ ╚████║ ╚████╔╝ ██╗
+ ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝  ╚═══╝  ╚═╝
+    </pre>
+    <code style="color: #777;">代码审计 · 漏洞挖掘 · 安全研究</code>
+    <br><br>
 </div>
 
 ---
 
-<h2 style="border-bottom: 2px solid #333; padding-bottom: 8px;">🏆 原创漏洞收录</h2>
+<div style="background: #f5f5f5; border-left: 4px solid #c00; padding: 12px 18px; margin: 20px 0;">
+    <strong>▸ 近期活动</strong><br>
+    专注于 Java 安全 · 代码审计 · 漏洞复现分析
+</div>
 
-| 时间 | 漏洞名称 | 编号 | 类型 |
-|:---:|:---|:---:|:---:|
-| 2026-07-01 | **XXL-JOB** XSS → RCE | — | 🏴 原创 |
-| 2024-07-15 | **ThinkPHP 3** 文件包含 | CVE-2025-50707 / CNVD-2024-39045 | 🏴 原创 |
-| 2024-04-22 | **ThinkPHP 5.1** 文件包含 | CVE-2025-50706 / CNVD-2024-29981 | 🏴 原创 |
+---
+
+## 🏴 原创漏洞
+
+| 时间 | 漏洞名称 | 编号 |
+|:---:|:---|:---:|
+| 2026-07-01 | **XXL-JOB** XSS → RCE | — |
+| 2024-07-15 | **ThinkPHP 3** 文件包含 | CVE-2025-50707 / CNVD-2024-39045 |
+| 2024-04-22 | **ThinkPHP 5.1** 文件包含 | CVE-2025-50706 / CNVD-2024-29981 |
 
 <br>
 
-<h2 style="border-bottom: 2px solid #333; padding-bottom: 8px;">🧩 1Day 收录</h2>
-
-> 已有补丁 · 漏洞未公开
+## ⚡ 1Day 预警
 
 | 时间 | 漏洞名称 | 状态 |
 |:---:|:---|:---:|
@@ -36,12 +50,11 @@ permalink: /About/
 
 ---
 
-<br>
-
-<div align="center" style="color: #888;">
-    <p>一个安全研究人员的日常：挖洞、写文、踩坑、复现。</p>
-    <p>📧 可以给我发邮件 → <a href="mailto:">E-mail</a></p>
-    <br>
-    <p style="font-size: 1.1em; color: #666;">❤️ 保持热爱，不忘初心。</p>
-    <p style="font-size: 0.9em;">🚀</p>
+<div align="center" style="margin: 20px 0;">
+    <code style="color: #666;">「 一个安全研究人员的日常：挖洞、写文、踩坑、复现 」</code>
+    <br><br>
+    📧 xinyisleep@outlook.com<br>
+    🐙 <a href="https://github.com/xinyisleep">github.com/xinyisleep</a>
+    <br><br>
+    <code style="color: #888;">-- keep calm and audit code --</code>
 </div>
