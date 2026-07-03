@@ -71,5 +71,5 @@ table { width: 100%; }
     <br><br>
     可以给我发邮件 → <a href="mailto:">E-mail</a>
     <br><br>
-    <span style="color: #999;">— 保持热爱，不忘初心 —</span>
+    <code style="color: #999;">// No root, No talk</code>
 </div>
