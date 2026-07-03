@@ -41,7 +41,7 @@ permalink: /About/
 
 <br>
 
-## ⚡ 1Day 预警
+## ⚡ 1Day
 =======
 <div align="center">
 
