@@ -24,6 +24,16 @@ permalink: /About/
 }
 .terminal-box .prompt { color: #00ff41; }
 .terminal-box .cmd { color: #fff; }
+.terminal-box span { display: block; min-height: 1.4em; }
+#cursor { 
+    animation: blink 1s step-end infinite; 
+    color: #00ff41; 
+    display: block; 
+    margin-top: 4px; 
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
 .tagline { color: #888; font-family: monospace; }
 .divider { border: none; border-top: 1px dashed #ccc; margin: 30px 0; }
 table { width: 100%; }
@@ -40,13 +50,46 @@ table { width: 100%; }
 </pre>
 </div>
 
-<div class="terminal-box">
-    <span class="prompt">$</span> <span class="cmd">whoami</span><br>
-    root@xinyisleep<br>
-    <span class="prompt">$</span> <span class="cmd">cat /etc/profile</span><br>
-    代码审计 · 漏洞挖掘 · 安全研究<br>
-    <span class="prompt">$</span> <span class="cmd">_</span>
+<div class="terminal-box" id="terminal">
+    <span id="line1"></span>
+    <span id="line2"></span>
+    <span id="line3"></span>
+    <span id="line4"></span>
+    <span id="line5"></span>
+    <span id="cursor">$ █</span>
 </div>
+
+<script>
+(function() {
+    var lines = [
+        {text: '$ whoami', delay: 600},
+        {text: 'root@xinyisleep', delay: 400},
+        {text: '$ cat /etc/passwd', delay: 600},
+        {text: 'xinyisleep:x:1000:1000:Security Researcher:/home/xinyisleep:/bin/bash', delay: 500}
+    ];
+    var idx = 0, charIdx = 0;
+    var el = document.getElementById('line1');
+    var els = ['line1','line2','line3','line4','line5'];
+    var cursor = document.getElementById('cursor');
+    
+    function type() {
+        if (idx >= lines.length) { cursor.innerHTML = '$ █'; return; }
+        var line = lines[idx];
+        if (charIdx < line.text.length) {
+            el.innerHTML += line.text.charAt(charIdx);
+            charIdx++;
+            setTimeout(type, 80 + Math.random() * 60);
+        } else {
+            el = document.getElementById(els[idx + 1]);
+            idx++;
+            charIdx = 0;
+            if (idx < lines.length) setTimeout(type, lines[idx].delay);
+            else { cursor.innerHTML = '$ █'; }
+        }
+    }
+    setTimeout(type, 500);
+})();
+</script>
 
 ---
 
