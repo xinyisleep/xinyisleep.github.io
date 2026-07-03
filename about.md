@@ -5,17 +5,16 @@ author: "XinYiSleep"
 permalink: /About/
 ---
 
-<div align="center">
-
-# XinYiSleep
-
-**` 代码审计 · 漏洞挖掘 · 安全研究 `**
-
 <br>
 
+<div align="center" style="margin-bottom: 30px;">
+    <h1 style="font-size: 2.5em; margin-bottom: 5px;">XinYiSleep</h1>
+    <code style="font-size: 1.1em; color: #666;">代码审计 · 漏洞挖掘 · 安全研究</code>
 </div>
 
-## 原创漏洞收录
+---
+
+<h2 style="border-bottom: 2px solid #333; padding-bottom: 8px;">🏆 原创漏洞收录</h2>
 
 | 时间 | 漏洞名称 | 编号 | 类型 |
 |:---:|:---|:---:|:---:|
@@ -25,7 +24,7 @@ permalink: /About/
 
 <br>
 
-## 1Day
+<h2 style="border-bottom: 2px solid #333; padding-bottom: 8px;">🧩 1Day 收录</h2>
 
 > 已有补丁 · 漏洞未公开
 
@@ -39,10 +38,10 @@ permalink: /About/
 
 <br>
 
-一个安全研究人员的日常：挖洞、写文、踩坑、复现。
-
-可以给我发邮件 → [E-mail](想了想还是先空着).
-
-<br>
-
-**保持热爱，不忘初心。** 🚀
+<div align="center" style="color: #888;">
+    <p>一个安全研究人员的日常：挖洞、写文、踩坑、复现。</p>
+    <p>📧 可以给我发邮件 → <a href="mailto:">E-mail</a></p>
+    <br>
+    <p style="font-size: 1.1em; color: #666;">❤️ 保持热爱，不忘初心。</p>
+    <p style="font-size: 0.9em;">🚀</p>
+</div>
