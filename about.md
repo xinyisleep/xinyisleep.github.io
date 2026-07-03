@@ -69,9 +69,7 @@ table { width: 100%; }
 <div align="center" style="margin: 30px 0;">
     <span class="tagline">「 一个安全研究人员的日常 — 挖洞 · 写文 · 踩坑 · 复现 」</span>
     <br><br>
-    <code>root@xinyisleep ~ $ echo "Hello World"</code>
+    可以给我发邮件 → <a href="mailto:">E-mail</a>
     <br><br>
-    <a href="mailto:10086@qq.com">📧 10086@qq.com</a> · <a href="https://github.com/xinyisleep">🐙 GitHub</a>
-    <br><br>
-    <span style="color: #999; font-style: italic;">—保持热爱，不忘初心—</span>
+    <span style="color: #999;">— 保持热爱，不忘初心 —</span>
 </div>
